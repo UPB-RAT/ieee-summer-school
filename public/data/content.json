@@ -30,16 +30,52 @@
           "image": "https://pm.uni-paderborn.de/_Resources/Persistent/Thumbnails/310x310/98838.png"
         },
         {
-          "name": "Dr. Marcus Weber",
-          "affiliation": "ETH Zurich",
-          "topic": "Deep Reinforcement Learning for Manipulation",
-          "image": "https://picsum.photos/seed/speaker2/400/400"
+          "name": "Asst. Prof. Dr. Qinyu Chen",
+          "affiliation": "Leiden University",
+          "topic": " Low-Latency LLMs at the Edge",
+          "image": "https://www.universiteitleiden.nl/binaries/content/gallery/ul2/main-images/science/instituten/liacs/qinyu-chen.jpg/qinyu-chen.jpg/d200x250"
         },
         {
-          "name": "Prof. Sarah Jenkins",
-          "affiliation": "MIT CSAIL",
-          "topic": "Human-Robot Collaboration in Dynamic Environments",
-          "image": "https://picsum.photos/seed/speaker3/400/400"
+          "name": "Prof. Dr. Axel Ngonga",
+          "affiliation": "Paderborn University",
+          "topic": "Foundation Models for Knowledge Graphs",
+          "image": "https://pm.uni-paderborn.de/_Resources/Persistent/Thumbnails/310x310/65716.png"
+        },
+        {
+          "name": "Prof. Dr.-Ing. Oliver Wallscheid",
+          "affiliation": "Siegen University",
+          "topic": "Meta reinforcement learning – a step towards generalizable control policies",
+          "image": "https://www.uni-siegen.de/files/default/styles/personal_profile_photo/public/media/image/2025-08/wallscheid06.jpg?h=1914d769&itok=JwuRIs6z"
+        },
+        {
+          "name": "Jun. Prof. Dr. David Kappel",
+          "affiliation": "orwegian University of Science and Technology",
+          "topic": "Efficient probabilistic planning using diffusion models",
+          "image": ""
+        },
+        {
+          "name": "Welf Peter Rehberg",
+          "affiliation": "Bielefeld University",
+          "topic": "Embodiment-Informed Foundational Models for Control and Navigation of Multirotor Systems",
+          "image": "https://backends.it.ntnu.no/user-profile-service/rest/files/c4b18c17-95d8-33a7-a760-ecaedc695eb7"
+        },
+        {
+          "name": "Dr. Adrian Redder",
+          "affiliation": "Paderborn University",
+          "topic": "Shaping Success: A Practical Guide to Stability and Rewards in Deep Reinforcement Learning",
+          "image": "https://pm.uni-paderborn.de/_Resources/Persistent/Thumbnails/310x310/52265.png"
+        },
+        {
+          "name": "Dr. Alper Yegenoglu",
+          "affiliation": "Paderborn University",
+          "topic": "Meta-learning for generalized trajectory tracking in aerial robotics",
+          "image": "https://pm.uni-paderborn.de/_Resources/Persistent/Thumbnails/310x310/117951.png"
+        },
+        {
+          "name": "Dr. Erdi Sayar",
+          "affiliation": "Paderborn University",
+          "topic": "Bridging Generative Planning and Safe Control",
+          "image": "https://pm.uni-paderborn.de/_Resources/Persistent/Thumbnails/310x310/122059.png"
         }
       ]
     },
