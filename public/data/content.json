@@ -4,14 +4,20 @@
     "subtitle": "Computational Intelligence in Robotics",
     "dates": "July  27 - 30, 2026",
     "location": "Paderborn University, Germany",
-    "description": "Join us for an intensive five-day summer school focusing on the latest advancements in Computational Intelligence applied to Robotics. This program features world-renowned speakers, hands-on workshops, and networking opportunities for PhD students and early-career researchers.",
+    "description": "Join us for an intensive four-day summer school focusing on the latest advancements in Computational Intelligence applied to Robotics. This program features world-renowned speakers, hands-on workshops, and networking opportunities for PhD students and early-career researchers.",
     "heroImage": "https://planethibbel.com/wp-content/uploads/2022/08/Paderborn90-1024x683.jpg"
   },
   "sections": [
     {
       "id": "about",
       "title": "About the Summer School",
-      "content": "The IEEE Computational Intelligence Society (CIS) Summer School 2026 aims to provide participants with a deep understanding of how fuzzy logic, neural networks, and evolutionary computation are transforming the field of robotics. From autonomous navigation to human-robot interaction, we cover the most critical topics in the industry today."
+      "content": "Foundation models are fundamentally transforming artificial intelligence (AI) and robotics. Integrating these models into robotics and embodied AI marks a decisive paradigm shift from rigid, task-specific pipelines to scalable, data-driven intelligence capable of generalization and adaptation in the real world. This summer school explores the role of foundation and generative models in robotic planning, control, perception, and design, with the goal of developing adaptable, context-aware autonomous robots. The topics cover in this summer school are: ",
+      "points": [
+        "Generative models for robotic control and planning",
+        "Language-guided and multimodal robot intelligence",
+        "Meta-learning, transfer and adaptive behaviors",
+        "Generative design: Morphology and co-optimization"
+      ]
     },
     {
       "id": "speakers",
@@ -79,7 +85,7 @@
       "title": "Registration",
       "content": "Registration is open to graduate students and researchers. IEEE CIS members receive a discounted rate. Applications must include a CV and a short statement of interest.",
       "deadline": "May 15, 2026",
-      "link": "#"
+      "link": "https://tally.so/r/b5r9jZ"
     }
   ],
   "sponsors": [

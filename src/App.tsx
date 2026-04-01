@@ -242,6 +242,16 @@ const SectionWrapper = ({ section }: { section: Section; key?: any }) => {
               <p className="text-lg text-slate-600 leading-relaxed mb-8">
                 {section.content}
               </p>
+              <ul className="list-disc pl-5">
+                {section?.points?.map((point, index) => (
+                  <li
+                    key={index}
+                    className="text-lg text-slate-500 leading-relaxed"
+                  >
+                    {point}
+                  </li>
+                ))}
+              </ul>
               {section.address && (
                 <div className="flex items-start gap-3 p-6 bg-slate-50 rounded-2xl border border-slate-100">
                   <MapPin className="w-6 h-6 text-blue-600 mt-1" />

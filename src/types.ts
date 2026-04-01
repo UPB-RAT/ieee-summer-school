@@ -24,6 +24,7 @@ export interface Section {
   address?: string;
   deadline?: string;
   link?: string;
+  points?: string[];
 }
 
 export interface Sponsor {
