@@ -7,6 +7,7 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, ".", "");
   return {
     plugins: [react(), tailwindcss()],
+    base: '/ieee-summer-school/',
     resolve: {
       alias: {
         "@": path.resolve(__dirname, "."),
