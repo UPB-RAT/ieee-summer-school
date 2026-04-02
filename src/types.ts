@@ -3,6 +3,8 @@ export interface Speaker {
   affiliation: string;
   topic: string;
   image: string;
+  website?: string;
+  abstract?: string;
 }
 
 export interface ScheduleEvent {
@@ -19,12 +21,13 @@ export interface Section {
   id: string;
   title: string;
   content?: string;
+  points?: string[];
   items?: Speaker[];
   schedule?: DaySchedule[];
   address?: string;
+  googleMaps?: string;
   deadline?: string;
   link?: string;
-  points?: string[];
 }
 
 export interface Sponsor {

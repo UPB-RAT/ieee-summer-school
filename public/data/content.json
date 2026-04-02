@@ -2,7 +2,7 @@
   "school": {
     "title": "IEEE CIS Summer School 2026",
     "subtitle": "Computational Intelligence in Robotics",
-    "dates": "July  27 - 30, 2026",
+    "dates": "July 27 - 30, 2026",
     "location": "Paderborn University, Germany",
     "description": "Join us for an intensive four-day summer school focusing on the latest advancements in Computational Intelligence applied to Robotics. This program features world-renowned speakers, hands-on workshops, and networking opportunities for PhD students and early-career researchers.",
     "heroImage": "https://planethibbel.com/wp-content/uploads/2022/08/Paderborn90-1024x683.jpg"
@@ -11,7 +11,7 @@
     {
       "id": "about",
       "title": "About the Summer School",
-      "content": "Foundation models are fundamentally transforming artificial intelligence (AI) and robotics. Integrating these models into robotics and embodied AI marks a decisive paradigm shift from rigid, task-specific pipelines to scalable, data-driven intelligence capable of generalization and adaptation in the real world. This summer school explores the role of foundation and generative models in robotic planning, control, perception, and design, with the goal of developing adaptable, context-aware autonomous robots. The topics cover in this summer school are: ",
+      "content": "Foundation models are fundamentally transforming artificial intelligence (AI) and robotics. Integrating these models into robotics and embodied AI marks a decisive paradigm shift from rigid, task-specific pipelines to scalable, data-driven intelligence capable of generalization and adaptation in the real world. This summer school explores the role of foundation and generative models in robotic planning, control, perception, and design, with the goal of developing adaptable, context-aware autonomous robots. The topics covered in this summer school are: ",
       "points": [
         "Generative models for robotic control and planning",
         "Language-guided and multimodal robot intelligence",
@@ -27,55 +27,73 @@
           "name": "Prof. Dr. Erdal Kayacan",
           "affiliation": "Paderborn University",
           "topic": "Can we build drones that not only think but also adapt?",
-          "image": "https://pm.uni-paderborn.de/_Resources/Persistent/Thumbnails/310x310/98838.png"
+          "image": "https://pm.uni-paderborn.de/_Resources/Persistent/Thumbnails/310x310/98838.png",
+          "website": "#",
+          "abstract": "An abstract of the talk will be available soon."
         },
         {
           "name": "Asst. Prof. Dr. Qinyu Chen",
           "affiliation": "Leiden University",
-          "topic": " Low-Latency LLMs at the Edge",
-          "image": "https://www.universiteitleiden.nl/binaries/content/gallery/ul2/main-images/science/instituten/liacs/qinyu-chen.jpg/qinyu-chen.jpg/d200x250"
+          "topic": "Low-Latency LLMs at the Edge",
+          "image": "https://www.universiteitleiden.nl/binaries/content/gallery/ul2/main-images/science/instituten/liacs/qinyu-chen.jpg/qinyu-chen.jpg/d200x250",
+          "website": "#",
+          "abstract": "An abstract of the talk will be available soon."
         },
         {
           "name": "Prof. Dr. Axel Ngonga",
           "affiliation": "Paderborn University",
           "topic": "Foundation Models for Knowledge Graphs",
-          "image": "https://pm.uni-paderborn.de/_Resources/Persistent/Thumbnails/310x310/65716.png"
+          "image": "https://pm.uni-paderborn.de/_Resources/Persistent/Thumbnails/310x310/65716.png",
+          "website": "#",
+          "abstract": "An abstract of the talk will be available soon."
         },
         {
           "name": "Prof. Dr.-Ing. Oliver Wallscheid",
           "affiliation": "Siegen University",
           "topic": "Meta reinforcement learning – a step towards generalizable control policies",
-          "image": "https://www.uni-siegen.de/files/default/styles/personal_profile_photo/public/media/image/2025-08/wallscheid06.jpg?h=1914d769&itok=JwuRIs6z"
+          "image": "https://www.uni-siegen.de/files/default/styles/personal_profile_photo/public/media/image/2025-08/wallscheid06.jpg?h=1914d769&itok=JwuRIs6z",
+          "website": "#",
+          "abstract": "An abstract of the talk will be available soon."
         },
         {
           "name": "Jun. Prof. Dr. David Kappel",
           "affiliation": "Bielefeld University",
           "topic": "Efficient probabilistic planning using diffusion models",
-          "image": ""
+          "image": "https://raw.githubusercontent.com/alperyeg/ieee-summer-school/main/public/data/kappel.JPG",
+          "website": "#",
+          "abstract": "An abstract of the talk will be available soon."
         },
         {
           "name": "Welf Peter Rehberg",
           "affiliation": "Norwegian University of Science and Technology",
           "topic": "Embodiment-Informed Foundational Models for Control and Navigation of Multirotor Systems",
-          "image": "https://backends.it.ntnu.no/user-profile-service/rest/files/c4b18c17-95d8-33a7-a760-ecaedc695eb7"
+          "image": "https://backends.it.ntnu.no/user-profile-service/rest/files/c4b18c17-95d8-33a7-a760-ecaedc695eb7",
+          "website": "#",
+          "abstract": "An abstract of the talk will be available soon."
         },
         {
           "name": "Dr. Adrian Redder",
           "affiliation": "Paderborn University",
           "topic": "Shaping Success: A Practical Guide to Stability and Rewards in Deep Reinforcement Learning",
-          "image": "https://pm.uni-paderborn.de/_Resources/Persistent/Thumbnails/310x310/52265.png"
+          "image": "https://pm.uni-paderborn.de/_Resources/Persistent/Thumbnails/310x310/52265.png",
+          "website": "#",
+          "abstract": "An abstract of the talk will be available soon."
         },
         {
           "name": "Dr. Alper Yegenoglu",
           "affiliation": "Paderborn University",
           "topic": "Meta-learning for generalized trajectory tracking in aerial robotics",
-          "image": "https://pm.uni-paderborn.de/_Resources/Persistent/Thumbnails/310x310/117951.png"
+          "image": "https://pm.uni-paderborn.de/_Resources/Persistent/Thumbnails/310x310/117951.png",
+          "website": "#",
+          "abstract": "An abstract of the talk will be available soon."
         },
         {
           "name": "Dr. Erdi Sayar",
           "affiliation": "Paderborn University",
           "topic": "Bridging Generative Planning and Safe Control",
-          "image": "https://pm.uni-paderborn.de/_Resources/Persistent/Thumbnails/310x310/122059.png"
+          "image": "https://pm.uni-paderborn.de/_Resources/Persistent/Thumbnails/310x310/122059.png",
+          "website": "#",
+          "abstract": "An abstract of the talk will be available soon."
         }
       ]
     },
@@ -114,7 +132,8 @@
       "id": "venue",
       "title": "Venue & Travel",
       "content": "Paderborn is a historic city in Germany. The summer school will be held at the University of Paderborn.",
-      "address": "Warburger Str. 100, 33098 Paderborn, Germany"
+      "address": "Warburger Str. 100, 33098 Paderborn, Germany",
+      "googleMaps": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.546443862547!2d8.768656176866127!3d51.70566717185876!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47bb16194294828f%3A0x6a100516b976f7f!2sPaderborn%20University!5e0!3m2!1sen!2sde!4v1712044330000!5m2!1sen!2sde"
     },
     {
       "id": "registration",
