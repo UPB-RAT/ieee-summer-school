@@ -581,7 +581,7 @@ const Sponsors = ({ data }: { data: ContentData }) => (
       <p className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em] mb-10">
         Supported By
       </p>
-      <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-50 grayscale hover:grayscale-0 transition-all">
+      <div className="flex flex-wrap justify-center items-center gap-12 md:gap-20 transition-all">
         {data.sponsors.map((sponsor, idx) => (
           <a
             key={idx}
@@ -593,7 +593,7 @@ const Sponsors = ({ data }: { data: ContentData }) => (
             <img
               src={sponsor.logo}
               alt={sponsor.name}
-              className="h-12 md:h-16 object-contain dark:invert dark:opacity-80"
+              className="h-16 md:h-24 object-contain"
               referrerPolicy="no-referrer"
             />
           </a>
