@@ -59,7 +59,7 @@
           "name": "Jun. Prof. Dr. David Kappel",
           "affiliation": "Bielefeld University",
           "topic": "Efficient probabilistic planning using diffusion models",
-          "image": "https://raw.githubusercontent.com/alperyeg/ieee-summer-school/main/public/data/kappel.JPG",
+          "image": "kappel.JPG",
           "website": "https://ekvv.uni-bielefeld.de/pers_publ/publ/PersonDetail.jsp?personId=503068013",
           "abstract": "Diffusion models have emerged as a Swiss army knife of machine learning, capable of mastering complex and diverse tasks such as image generation, weather forecasting, and pattern completion. In recent years, they have also become one of the most powerful tools for solving complex planning problems. In this lecture, we will discuss the fundamentals of diffusion models, optimal transport and diffusion bridge models, exploring some of their theoretical properties and how they can be  complex probabilistic planning problems. We will also identify the computational bottlenecks of these models and discuss recently proposed methods for their efficient implementation."
         },
@@ -98,159 +98,159 @@
       ]
     },
     {
-  "id": "program",
-  "title": "Schedule",
-  "schedule": [
-    {
-      "day": "Monday (July 27th, 2026)",
-      "events": [
+      "id": "program",
+      "title": "Schedule",
+      "schedule": [
         {
-          "time": "09:00 - 10:15",
-          "title": "Registration & Reception"
+          "day": "Monday (July 27th, 2026)",
+          "events": [
+            {
+              "time": "09:00 - 10:15",
+              "title": "Registration & Reception"
+            },
+            {
+              "time": "10:15 - 10:45",
+              "title": "Coffee Break"
+            },
+            {
+              "time": "10:45 - 12:00",
+              "title": "Plenary Talk 1"
+            },
+            {
+              "time": "12:00 - 13:00",
+              "title": "Lunch Break"
+            },
+            {
+              "time": "13:00 - 14:15",
+              "title": "Lecture 1"
+            },
+            {
+              "time": "14:15 - 14:45",
+              "title": "Coffee Break"
+            },
+            {
+              "time": "14:45 - 16:00",
+              "title": "Lab Session (Hands-on)"
+            },
+            {
+              "time": "17:00 - 21:00",
+              "title": "Welcome Dinner"
+            }
+          ]
         },
         {
-          "time": "10:15 - 10:45",
-          "title": "Coffee Break"
+          "day": "Tuesday (July 28th, 2026)",
+          "events": [
+            {
+              "time": "09:00 - 10:15",
+              "title": "Plenary Talk 2"
+            },
+            {
+              "time": "10:15 - 10:45",
+              "title": "Coffee Break"
+            },
+            {
+              "time": "10:45 - 12:00",
+              "title": "Lecture 2"
+            },
+            {
+              "time": "12:00 - 13:00",
+              "title": "Lunch Break"
+            },
+            {
+              "time": "13:00 - 14:15",
+              "title": "Lecture 3"
+            },
+            {
+              "time": "14:15 - 14:45",
+              "title": "Coffee Break"
+            },
+            {
+              "time": "14:45 - 16:00",
+              "title": "Lab Session (Hands-on)"
+            },
+            {
+              "time": "17:00 - 21:00",
+              "title": "Guided City Pader Tour"
+            }
+          ]
         },
         {
-          "time": "10:45 - 12:00",
-          "title": "Plenary Talk 1"
+          "day": "Wednesday (July 29th, 2026)",
+          "events": [
+            {
+              "time": "09:00 - 10:15",
+              "title": "Plenary Talk 3"
+            },
+            {
+              "time": "10:15 - 10:45",
+              "title": "Coffee Break"
+            },
+            {
+              "time": "10:45 - 12:00",
+              "title": "Lecture 4"
+            },
+            {
+              "time": "12:00 - 13:00",
+              "title": "Lunch Break"
+            },
+            {
+              "time": "13:00 - 14:15",
+              "title": "Lab Session (Hands-on)"
+            },
+            {
+              "time": "14:15 - 14:45",
+              "title": "Coffee Break"
+            },
+            {
+              "time": "14:45 - 16:00",
+              "title": "Lab Session (Hands-on)"
+            },
+            {
+              "time": "17:00 - 21:00",
+              "title": "Archery Activity"
+            }
+          ]
         },
         {
-          "time": "12:00 - 13:00",
-          "title": "Lunch Break"
-        },
-        {
-          "time": "13:00 - 14:15",
-          "title": "Lecture 1"
-        },
-        {
-          "time": "14:15 - 14:45",
-          "title": "Coffee Break"
-        },
-        {
-          "time": "14:45 - 16:00",
-          "title": "Lab Session (Hands-on)"
-        },
-        {
-          "time": "17:00 - 21:00",
-          "title": "Welcome Dinner"
+          "day": "Thursday (July 30th, 2026)",
+          "events": [
+            {
+              "time": "09:00 - 10:15",
+              "title": "Plenary Talk 4"
+            },
+            {
+              "time": "10:15 - 10:45",
+              "title": "Coffee Break"
+            },
+            {
+              "time": "10:45 - 12:00",
+              "title": "Lecture 5"
+            },
+            {
+              "time": "12:00 - 13:00",
+              "title": "Lunch Break"
+            },
+            {
+              "time": "13:00 - 14:15",
+              "title": "Lab Session (Hands-on)"
+            },
+            {
+              "time": "14:15 - 14:45",
+              "title": "Coffee Break"
+            },
+            {
+              "time": "14:45 - 16:00",
+              "title": "D-Space Visit (Industry Tour)"
+            },
+            {
+              "time": "17:00 - 21:00",
+              "title": "Computer Museum"
+            }
+          ]
         }
       ]
     },
-    {
-      "day": "Tuesday (July 28th, 2026)",
-      "events": [
-        {
-          "time": "09:00 - 10:15",
-          "title": "Plenary Talk 2"
-        },
-        {
-          "time": "10:15 - 10:45",
-          "title": "Coffee Break"
-        },
-        {
-          "time": "10:45 - 12:00",
-          "title": "Lecture 2"
-        },
-        {
-          "time": "12:00 - 13:00",
-          "title": "Lunch Break"
-        },
-        {
-          "time": "13:00 - 14:15",
-          "title": "Lecture 3"
-        },
-        {
-          "time": "14:15 - 14:45",
-          "title": "Coffee Break"
-        },
-        {
-          "time": "14:45 - 16:00",
-          "title": "Lab Session (Hands-on)"
-        },
-        {
-          "time": "17:00 - 21:00",
-          "title": "Guided City Pader Tour"
-        }
-      ]
-    },
-    {
-      "day": "Wednesday (July 29th, 2026)",
-      "events": [
-        {
-          "time": "09:00 - 10:15",
-          "title": "Plenary Talk 3"
-        },
-        {
-          "time": "10:15 - 10:45",
-          "title": "Coffee Break"
-        },
-        {
-          "time": "10:45 - 12:00",
-          "title": "Lecture 4"
-        },
-        {
-          "time": "12:00 - 13:00",
-          "title": "Lunch Break"
-        },
-        {
-          "time": "13:00 - 14:15",
-          "title": "Lab Session (Hands-on)"
-        },
-        {
-          "time": "14:15 - 14:45",
-          "title": "Coffee Break"
-        },
-        {
-          "time": "14:45 - 16:00",
-          "title": "Lab Session (Hands-on)"
-        },
-        {
-          "time": "17:00 - 21:00",
-          "title": "Archery Activity"
-        }
-      ]
-    },
-    {
-      "day": "Thursday (July 30th, 2026)",
-      "events": [
-        {
-          "time": "09:00 - 10:15",
-          "title": "Plenary Talk 4"
-        },
-        {
-          "time": "10:15 - 10:45",
-          "title": "Coffee Break"
-        },
-        {
-          "time": "10:45 - 12:00",
-          "title": "Lecture 5"
-        },
-        {
-          "time": "12:00 - 13:00",
-          "title": "Lunch Break"
-        },
-        {
-          "time": "13:00 - 14:15",
-          "title": "Lab Session (Hands-on)"
-        },
-        {
-          "time": "14:15 - 14:45",
-          "title": "Coffee Break"
-        },
-        {
-          "time": "14:45 - 16:00",
-          "title": "D-Space Visit (Industry Tour)"
-        },
-        {
-          "time": "17:00 - 21:00",
-          "title": "Computer Museum"
-        }
-      ]
-    }
-  ]
-},
     {
       "id": "handson",
       "title": "Sessions",
@@ -276,96 +276,88 @@
       "title": "Social Activities",
       "content": "Beyond the technical sessions, we have organized several social events to help you network and enjoy the beautiful city of Paderborn.",
       "socialItems": [
-  {
-    "day": "Monday",
-    "title": "Welcome Dinner",
-    "image":
-      "https://imgs.search.brave.com/pFVkvsDMaNxYPMbmiZV3aFSWgR0hJPi14smjek5WmQY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMuc3F1YXJlc3Bh/Y2UtY2RuLmNvbS9j/b250ZW50L3YxLzYy/NWVkNjY1NjkwYmZi/MzUyMzVjOWI1Yi9j/YzYzMzdiZS1hMzM1/LTQ0M2UtYWJkNC00/YWJlNTVkMmI0MmQv/Q29uZmVyZW5jZStE/aW5uZXIucG5n",
-    "description":
-      "A welcome dinner to facilitate initial introductions among participants in a relaxed atmosphere."
-  },
-  {
-    "day": "Tuesday",
-    "title": "Guided City Tour",
-    "image":
-      "https://imgs.search.brave.com/olb7l9Hh41Z3fSCCSxxVs8CX2ULNRCP6V4c4Z4PFmi0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/cGFkZXJib3JuLmRl/L21pY3Jvc2l0ZS93/ZWxjb21lL3RvdXJp/c20tY3VsdHVyZS9z/cF9hdXRvXzEwNTYz/LnBocC5tZWRpYS80/MTE0MC9QYWRlcmJv/cm5fRG9tX0RpZWxl/bnBhZGVyX2tsZWlu/LmpwZy5zY2FsZWQv/YWU3YzkzNTlhZDMz/NDgxODMyNTY2M2U2/MjU5MWExNGIuanBn",
-    "description":
-      "A guided city tour organized by the City of Paderborn, showcasing the rich history and landmarks of the city."
-  },
-  {
-    "day": "Wednesday",
-    "title": "Outdoor Archery",
-    "image":
-      "https://imgs.search.brave.com/Q6uvFpvfTmrsyGnKujamCPNZt_RQXFgL8t4GoUjKIjw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nb2tvbmZldHRp/LmNvbS84NTA2NC81/MDB4MC9ncm91cC1h/cmNoZXJ5LWxhdWdo/aW5nLW91dGRvb3Jz/LTU4amtrNG0xLndl/YnA",
-    "description":
-      "An outdoor archery activity designed to promote team spirit, focus, and precision among attendees."
-  },
-  {
-    "day": "Thursday",
-    "title": "MuseumsForum Visit",
-    "image":
-      "https://www.hnf.de/fileadmin/content/pictures/HNF/Dauerausstellung/Virtueller_Rundgang/Virtueller_Rundgang_EG.jpg",
-    "description":
-      "A farewell visit to the Heinz Nixdorf MuseumsForum, the world’s largest computer museum, exploring the history of computing."
-  }
-]
-    },
-{
-  "id": "registration",
-  "title": "Registration",
-  "content": "Registration is open to graduate students and researchers. IEEE CIS members receive a discounted rate. Applications must include a CV and a short statement of interest. All participants receive access to sessions, lunch, coffee breaks, welcome dinner, a name tag, USB drive with materials, a workshop T-shirt, note-taking supplies, a mug, and a certificate of participation.",
-  "deadline": "June 15, 2026",
-  "link": "https://tally.so/r/b5r9jZ",
-  "fees": [
-    {
-      "category": "BSc & MSc Student",
-      "memberFee": "90 €",
-      "nonMemberFee": "120 €"
+        {
+          "day": "Monday",
+          "title": "Welcome Dinner",
+          "image": "https://imgs.search.brave.com/pFVkvsDMaNxYPMbmiZV3aFSWgR0hJPi14smjek5WmQY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMuc3F1YXJlc3Bh/Y2UtY2RuLmNvbS9j/b250ZW50L3YxLzYy/NWVkNjY1NjkwYmZi/MzUyMzVjOWI1Yi9j/YzYzMzdiZS1hMzM1/LTQ0M2UtYWJkNC00/YWJlNTVkMmI0MmQv/Q29uZmVyZW5jZStE/aW5uZXIucG5n",
+          "description": "A welcome dinner to facilitate initial introductions among participants in a relaxed atmosphere."
+        },
+        {
+          "day": "Tuesday",
+          "title": "Guided City Tour",
+          "image": "https://imgs.search.brave.com/olb7l9Hh41Z3fSCCSxxVs8CX2ULNRCP6V4c4Z4PFmi0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/cGFkZXJib3JuLmRl/L21pY3Jvc2l0ZS93/ZWxjb21lL3RvdXJp/c20tY3VsdHVyZS9z/cF9hdXRvXzEwNTYz/LnBocC5tZWRpYS80/MTE0MC9QYWRlcmJv/cm5fRG9tX0RpZWxl/bnBhZGVyX2tsZWlu/LmpwZy5zY2FsZWQv/YWU3YzkzNTlhZDMz/NDgxODMyNTY2M2U2/MjU5MWExNGIuanBn",
+          "description": "A guided city tour organized by the City of Paderborn, showcasing the rich history and landmarks of the city."
+        },
+        {
+          "day": "Wednesday",
+          "title": "Outdoor Archery",
+          "image": "https://imgs.search.brave.com/Q6uvFpvfTmrsyGnKujamCPNZt_RQXFgL8t4GoUjKIjw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nb2tvbmZldHRp/LmNvbS84NTA2NC81/MDB4MC9ncm91cC1h/cmNoZXJ5LWxhdWdo/aW5nLW91dGRvb3Jz/LTU4amtrNG0xLndl/YnA",
+          "description": "An outdoor archery activity designed to promote team spirit, focus, and precision among attendees."
+        },
+        {
+          "day": "Thursday",
+          "title": "MuseumsForum Visit",
+          "image": "https://www.hnf.de/fileadmin/content/pictures/HNF/Dauerausstellung/Virtueller_Rundgang/Virtueller_Rundgang_EG.jpg",
+          "description": "A farewell visit to the Heinz Nixdorf MuseumsForum, the world’s largest computer museum, exploring the history of computing."
+        }
+      ]
     },
     {
-      "category": "PhD Student",
-      "memberFee": "120 €",
-      "nonMemberFee": "180 €"
+      "id": "registration",
+      "title": "Registration",
+      "content": "Registration is open to graduate students and researchers. IEEE CIS members receive a discounted rate. Applications must include a CV and a short statement of interest. All participants receive access to sessions, lunch, coffee breaks, welcome dinner, a name tag, USB drive with materials, a workshop T-shirt, note-taking supplies, a mug, and a certificate of participation.",
+      "deadline": "June 15, 2026",
+      "link": "https://tally.so/r/b5r9jZ",
+      "fees": [
+        {
+          "category": "BSc & MSc Student",
+          "memberFee": "90 €",
+          "nonMemberFee": "120 €"
+        },
+        {
+          "category": "PhD Student",
+          "memberFee": "120 €",
+          "nonMemberFee": "180 €"
+        },
+        {
+          "category": "Post-doc",
+          "memberFee": "240 €",
+          "nonMemberFee": "300 €"
+        },
+        {
+          "category": "Industry",
+          "memberFee": "400 €",
+          "nonMemberFee": "500 €"
+        }
+      ]
     },
     {
-      "category": "Post-doc",
-      "memberFee": "240 €",
-      "nonMemberFee": "300 €"
+      "id": "scholarships",
+      "title": "Scholarships",
+      "content": "We offer a variety of scholarships and support to encourage participation from outstanding students and underrepresented groups.",
+      "categories": [
+        {
+          "category": "Academic Merit",
+          "details": "10 free registrations for exceptionally strong students, selected based on academic merit (e.g., CGPA, publications, and overall academic achievements)."
+        },
+        {
+          "category": "Female Applicants",
+          "details": "3 free registrations reserved for female applicants to encourage gender diversity."
+        },
+        {
+          "category": "Travel Support",
+          "details": "Travel support of up to €300 for 3 selected students."
+        },
+        {
+          "category": "Developing Countries",
+          "details": "3 free registrations for participants from developing countries."
+        },
+        {
+          "category": "Accommodation",
+          "details": "Free accommodation for all participants, provided in shared rooms (three people per room)."
+        }
+      ]
     },
-    {
-      "category": "Industry",
-      "memberFee": "400 €",
-      "nonMemberFee": "500 €"
-    }
-  ]
-},
-{
-  "id": "scholarships",
-  "title": "Scholarships",
-  "content": "We offer a variety of scholarships and support to encourage participation from outstanding students and underrepresented groups.",
-  "categories": [
-    {
-      "category": "Academic Merit",
-      "details": "10 free registrations for exceptionally strong students, selected based on academic merit (e.g., CGPA, publications, and overall academic achievements)."
-    },
-    {
-      "category": "Female Applicants",
-      "details": "3 free registrations reserved for female applicants to encourage gender diversity."
-    },
-    {
-      "category": "Travel Support",
-      "details": "Travel support of up to €300 for 3 selected students."
-    },
-    {
-      "category": "Developing Countries",
-      "details": "3 free registrations for participants from developing countries."
-    },
-    {
-      "category": "Accommodation",
-      "details": "Free accommodation for all participants, provided in shared rooms (three people per room)."
-    }
-  ]
-},
     {
       "id": "faq",
       "title": "FAQs",

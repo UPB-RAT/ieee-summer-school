@@ -418,30 +418,11 @@ const Schedule = ({ schedule }: { schedule: DaySchedule[] }) => {
           ))}
           <button
             onClick={() => setShowPreview(true)}
-            className="group relative ml-4 mb-1 p-2 rounded-full bg-slate-800 dark:bg-slate-200 hover:scale-105 transition"
+            className={`px-5 py-2 rounded-full text-sm font-semibold transition bg-blue-600 text-white shadow`}
           >
-            {/* Icon (grid style) */}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-4 h-4 text-white dark:text-slate-900"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeWidth={2}
-                d="M3 3h7v7H3V3zm11 0h7v7h-7V3zM3 14h7v7H3v-7zm11 0h7v7h-7v-7z"
-              />
-            </svg>
-
-            {/* Tooltip */}
-            <span className="absolute bottom-full mb-2 hidden group-hover:block text-xs px-2 py-1 rounded bg-black text-white whitespace-nowrap">
-              Quick Preview
-            </span>
+            Preview
           </button>
         </div>
-
-        {/* Quick Preview Button */}
       </div>
 
       {/* Timeline View */}
