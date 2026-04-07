@@ -59,7 +59,7 @@
           "name": "Jun. Prof. Dr. David Kappel",
           "affiliation": "Bielefeld University",
           "topic": "Efficient probabilistic planning using diffusion models",
-          "image": "kappel.JPG",
+          "image": "ieee-summer-school/data/kappel.JPG",
           "website": "https://ekvv.uni-bielefeld.de/pers_publ/publ/PersonDetail.jsp?personId=503068013",
           "abstract": "Diffusion models have emerged as a Swiss army knife of machine learning, capable of mastering complex and diverse tasks such as image generation, weather forecasting, and pattern completion. In recent years, they have also become one of the most powerful tools for solving complex planning problems. In this lecture, we will discuss the fundamentals of diffusion models, optimal transport and diffusion bridge models, exploring some of their theoretical properties and how they can be  complex probabilistic planning problems. We will also identify the computational bottlenecks of these models and discuss recently proposed methods for their efficient implementation."
         },
