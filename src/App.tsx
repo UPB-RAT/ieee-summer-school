@@ -8,7 +8,6 @@ import {
   Calendar,
   MapPin,
   Users,
-  Clock,
   Mail,
   Globe,
   Twitter,
@@ -25,9 +24,45 @@ import {
   Train,
   Hotel,
   Wifi,
+  Mic,
+  BookOpen,
+  FlaskConical,
+  Target,
+  Building,
+  Linkedin,
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { ContentData, Section, Speaker, DaySchedule } from "./types";
+import ReactGA from "react-ga4";
+
+const getEventMeta = (title: string) => {
+  const t = title.toLowerCase();
+
+  if (t.includes("plenary")) return { icon: Mic, color: "bg-purple-500" };
+
+  if (t.includes("lecture")) return { icon: BookOpen, color: "bg-blue-500" };
+
+  if (t.includes("lab")) return { icon: FlaskConical, color: "bg-green-500" };
+
+  if (t.includes("break")) return { icon: Coffee, color: "bg-gray-400" };
+
+  if (t.includes("tour") || t.includes("visit"))
+    return { icon: MapPin, color: "bg-orange-500" };
+
+  if (t.includes("dinner")) return { icon: Users, color: "bg-pink-500" };
+
+  if (t.includes("activity")) return { icon: Target, color: "bg-indigo-500" };
+
+  if (t.includes("museum")) return { icon: Building, color: "bg-yellow-500" };
+
+  return { icon: BookOpen, color: "bg-slate-500" };
+};
+
+const getTimeSlots = (schedule: DaySchedule[]) => {
+  const set = new Set<string>();
+  schedule.forEach((day) => day.events.forEach((e) => set.add(e.time)));
+  return Array.from(set).sort();
+};
 
 const Navbar = ({
   data,
@@ -179,7 +214,7 @@ const Hero = ({ data }: { data: ContentData }) => (
         <span className="inline-block px-4 py-1.5 mb-6 text-xs font-semibold tracking-widest uppercase bg-blue-600/20 border border-blue-500/30 rounded-full">
           IEEE CIS Summer School 2026
         </span>
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight leading-tight">
+        <h1 className="text-5xl md:text-6xl font-bold mb-6 tracking-tight leading-tight">
           {data.school.subtitle}
         </h1>
         <p className="text-xl md:text-2xl text-white/80 mb-10 max-w-2xl mx-auto font-light leading-relaxed">
@@ -269,21 +304,47 @@ const SpeakerCard = ({ speaker }: { speaker: Speaker; key?: any }) => (
 const SocialCard = ({ item }: { item: any; key?: any }) => (
   <motion.div
     whileHover={{ y: -5 }}
-    className="p-6 bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded-2xl shadow-sm hover:shadow-xl transition-all flex flex-col gap-4"
+    className="bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded-2xl shadow-sm hover:shadow-xl transition-all flex flex-col overflow-hidden"
   >
-    <div className="flex items-center justify-between">
-      <span className="px-3 py-1 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs font-bold rounded-full uppercase tracking-wider">
+    {/* Top image */}
+    <div className="relative w-full h-40 md:h-48 overflow-hidden">
+      <img
+        src={item.image}
+        alt={item.title}
+        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+      />
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+
+      {/* Day badge */}
+      <span className="absolute top-3 left-3 px-3 py-1 bg-blue-50 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 text-xs font-bold rounded-full uppercase tracking-wider shadow-md">
         {item.day}
       </span>
-      <Coffee className="w-5 h-5 text-slate-300 dark:text-slate-600" />
+
+      {/* Icon */}
+      <Coffee className="absolute top-3 right-3 w-5 h-5 text-slate-200 dark:text-slate-400" />
     </div>
-    <div>
-      <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
+
+    {/* Content */}
+    <div className="p-6 flex flex-col gap-3">
+      <h3 className="text-lg md:text-xl font-bold text-slate-900 dark:text-white">
         {item.title}
       </h3>
-      <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+      <p className="text-sm md:text-base text-slate-500 dark:text-slate-400 leading-relaxed">
         {item.description}
       </p>
+
+      {/* Optional footer for links or tags */}
+      {item.link && (
+        <a
+          href={item.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-2 inline-block text-blue-600 dark:text-blue-400 font-semibold text-sm hover:underline"
+        >
+          Learn More →
+        </a>
+      )}
     </div>
   </motion.div>
 );
@@ -334,49 +395,221 @@ const FAQAccordion = ({ items }: { items: any[] }) => {
 
 const Schedule = ({ schedule }: { schedule: DaySchedule[] }) => {
   const [activeDay, setActiveDay] = useState(0);
+  const [showPreview, setShowPreview] = useState(false);
 
   return (
-    <div className="space-y-10">
-      {/* Day Selector */}
-      <div className="flex flex-wrap gap-3 border-b border-slate-100 dark:border-slate-800 pb-6">
-        {schedule.map((day, idx) => (
+    <div className="space-y-12">
+      {/* Header */}
+      <div className="flex justify-between items-center">
+        {/* Day Selector */}
+        <div className="flex flex-wrap gap-3 border-b border-slate-200 dark:border-slate-800 pb-6">
+          {schedule.map((day, idx) => (
+            <button
+              key={idx}
+              onClick={() => setActiveDay(idx)}
+              className={`px-5 py-2 rounded-full text-sm font-semibold transition ${
+                activeDay === idx
+                  ? "bg-blue-600 text-white shadow"
+                  : "bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-slate-200"
+              }`}
+            >
+              {day.day}
+            </button>
+          ))}
           <button
-            key={idx}
-            onClick={() => setActiveDay(idx)}
-            className={`px-6 py-3 rounded-full text-sm font-bold transition-all ${
-              activeDay === idx
-                ? "bg-blue-600 text-white shadow-lg shadow-blue-200"
-                : "bg-slate-50 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700"
-            }`}
+            onClick={() => setShowPreview(true)}
+            className="group relative ml-4 mb-1 p-2 rounded-full bg-slate-800 dark:bg-slate-200 hover:scale-105 transition"
           >
-            {day.day}
+            {/* Icon (grid style) */}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-4 h-4 text-white dark:text-slate-900"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeWidth={2}
+                d="M3 3h7v7H3V3zm11 0h7v7h-7V3zM3 14h7v7H3v-7zm11 0h7v7h-7v-7z"
+              />
+            </svg>
+
+            {/* Tooltip */}
+            <span className="absolute bottom-full mb-2 hidden group-hover:block text-xs px-2 py-1 rounded bg-black text-white whitespace-nowrap">
+              Quick Preview
+            </span>
           </button>
-        ))}
+        </div>
+
+        {/* Quick Preview Button */}
       </div>
 
-      {/* Events List */}
-      <motion.div
-        key={activeDay}
-        initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.4 }}
-        className="space-y-4"
-      >
-        {schedule[activeDay].events.map((event, eIdx) => (
+      {/* Timeline View */}
+      <div className="relative">
+        <div className="absolute left-1/2 top-0 bottom-0 w-[2px] bg-slate-200 dark:bg-slate-700" />
+
+        <motion.div
+          key={activeDay}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="space-y-12"
+        >
+          {schedule[activeDay].events.map((event, idx) => {
+            const isLeft = idx % 2 === 0;
+            const { icon: Icon, color } = getEventMeta(event.title);
+
+            return (
+              <div
+                key={idx}
+                className={`relative flex items-center ${
+                  isLeft ? "justify-start" : "justify-end"
+                }`}
+              >
+                {/* Dot */}
+                <div
+                  className={`absolute left-1/2 -translate-x-1/2 w-10 h-10 ${color} rounded-full flex items-center justify-center border-4 border-white dark:border-slate-900 z-10 shadow-md`}
+                >
+                  <Icon className="w-5 h-5 text-white" />
+                </div>
+
+                {/* Card */}
+                <div
+                  className={`w-[45%] p-5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm hover:shadow-md transition ${
+                    isLeft ? "mr-auto pr-8" : "ml-auto pl-8"
+                  }`}
+                >
+                  <div className="text-blue-600 dark:text-blue-400 font-mono text-sm font-semibold mb-1">
+                    {event.time}
+                  </div>
+
+                  <div className="text-slate-800 dark:text-slate-200 font-semibold flex items-center gap-2">
+                    <Icon className="w-4 h-4 opacity-70" />
+                    {event.title}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </motion.div>
+      </div>
+
+      {/* MODAL: Grid Schedule */}
+      {showPreview && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+          {/* Backdrop */}
           <div
-            key={eIdx}
-            className="flex flex-col sm:flex-row sm:items-center gap-6 p-6 bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 hover:border-blue-200 dark:hover:border-blue-800 hover:shadow-md transition-all group"
-          >
-            <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400 font-mono text-sm font-bold min-w-[140px] bg-blue-50 dark:bg-blue-900/30 px-3 py-1 rounded-lg w-fit">
-              <Clock className="w-4 h-4" />
-              {event.time}
+            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+            onClick={() => setShowPreview(false)}
+          />
+
+          {/* Modal */}
+          <div className="relative z-10 w-[95%] max-w-6xl bg-white dark:bg-slate-900 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700 p-6 overflow-auto">
+            <div className="flex justify-between items-center mb-6">
+              <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-200">
+                Weekly Schedule – Quick Preview
+              </h2>
+
+              <button
+                onClick={() => setShowPreview(false)}
+                className="text-slate-500 hover:text-slate-800 dark:hover:text-white"
+              >
+                ✕
+              </button>
             </div>
-            <div className="font-bold text-slate-800 dark:text-slate-200 text-lg group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors">
-              {event.title}
+
+            {/* TABLE */}
+            <div className="overflow-x-auto">
+              <table className="w-full border-collapse text-sm">
+                <thead>
+                  <tr className="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200">
+                    <th className="p-3 border">Time</th>
+                    {schedule.map((d, i) => (
+                      <th key={i} className="p-3 border font-semibold">
+                        {d.day}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+
+                <tbody>
+                  {getTimeSlots(schedule).map((slot, idx) => {
+                    const rowEvents = schedule.map((day) =>
+                      day.events.find((e) => e.time === slot),
+                    );
+
+                    const isBreak = rowEvents.some((e) =>
+                      e?.title.toLowerCase().includes("break"),
+                    );
+
+                    return (
+                      <tr key={idx}>
+                        {/* Time */}
+                        <td className="border p-3 font-mono text-blue-600 dark:text-blue-400 font-semibold">
+                          {slot}
+                        </td>
+
+                        {/* Break row */}
+                        {isBreak ? (
+                          <td
+                            colSpan={schedule.length}
+                            className="border p-3 text-center italic bg-yellow-100 dark:bg-yellow-900/30"
+                          >
+                            {rowEvents.find((e) => e)?.title}
+                          </td>
+                        ) : (
+                          rowEvents.map((event, i) => {
+                            if (!event)
+                              return <td key={i} className="border p-3" />;
+
+                            const { icon: Icon, color } = getEventMeta(
+                              event.title,
+                            );
+
+                            return (
+                              <td
+                                key={i}
+                                className="border p-3 text-center align-middle"
+                              >
+                                <div
+                                  className={`inline-flex flex-col items-center justify-center gap-1 px-3 py-2 rounded-lg text-white ${color}`}
+                                >
+                                  <Icon className="w-4 h-4" />
+                                  <span className="font-semibold text-xs leading-tight">
+                                    {event.title}
+                                  </span>
+                                </div>
+                              </td>
+                            );
+                          })
+                        )}
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+
+            {/* Legend */}
+            <div className="mt-6 flex flex-wrap gap-3 text-xs">
+              {[
+                { label: "Plenary", color: "bg-blue-500" },
+                { label: "Lecture", color: "bg-green-500" },
+                { label: "Lab", color: "bg-purple-500" },
+                { label: "Visit", color: "bg-orange-500" },
+                { label: "Break", color: "bg-yellow-400 text-black" },
+                { label: "Evening", color: "bg-pink-500" },
+              ].map((item, idx) => (
+                <div
+                  key={idx}
+                  className={`px-3 py-1 rounded-md text-white ${item.color}`}
+                >
+                  {item.label}
+                </div>
+              ))}
             </div>
           </div>
-        ))}
-      </motion.div>
+        </div>
+      )}
     </div>
   );
 };
@@ -529,22 +762,98 @@ const SectionWrapper = ({ section }: { section: Section; key?: any }) => {
                 </div>
               )}
               {section.deadline && (
-                <div className="flex flex-col sm:flex-row gap-8 mt-12">
-                  <div className="flex-1 p-8 bg-blue-600 text-white rounded-2xl shadow-lg shadow-blue-200 dark:shadow-none">
-                    <p className="text-blue-100 text-sm font-bold uppercase tracking-wider mb-2">
-                      Application Deadline
-                    </p>
-                    <p className="text-3xl font-bold">{section.deadline}</p>
+                <div className="flex flex-col gap-12 mt-12">
+                  {section.fees && (
+                    <div className="flex flex-col gap-6">
+                      <h3 className="text-lg md:text-xl font-bold text-slate-900 dark:text-white mb-6 border-b border-slate-200 dark:border-slate-700 pb-2">
+                        Registration Fees
+                      </h3>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+                        {section.fees.map((fee, idx) => (
+                          <div
+                            key={idx}
+                            className="p-6 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm hover:shadow-xl transition-all flex flex-col gap-4"
+                          >
+                            <div className="flex items-center gap-2">
+                              <div className="w-6 h-6 bg-slate-100 dark:bg-slate-700 rounded-full flex items-center justify-center">
+                                {/* Optional icon placeholder */}
+                                <span className="text-slate-400 dark:text-slate-300 text-xs">
+                                  💰
+                                </span>
+                              </div>
+                              <p className="font-semibold text-slate-700 dark:text-slate-300 text-sm uppercase tracking-wider">
+                                {fee.category}
+                              </p>
+                            </div>
+                            <div className="flex justify-between items-center text-lg font-bold">
+                              <span className="text-green-500">
+                                {fee.memberFee}
+                              </span>
+                              <span className="text-slate-600 dark:text-slate-400">
+                                {fee.nonMemberFee}
+                              </span>
+                            </div>
+                            <p className="text-xs text-slate-400 dark:text-slate-500 mt-2">
+                              * IEEE CIS members enjoy discounted rates
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  <div className="flex flex-col sm:flex-row gap-8">
+                    <div className="flex-1 p-8 rounded-2xl shadow-lg shadow-blue-200 dark:shadow-none relative overflow-hidden bg-blue-600 text-white">
+                      {/* Decorative Accent */}
+                      <div className="absolute -top-4 -right-4 w-24 h-24 bg-blue-400 opacity-20 rounded-full"></div>
+                      <p className="text-blue-100 text-sm font-bold uppercase tracking-wider mb-2 z-10 relative">
+                        Application Deadline
+                      </p>
+                      <p className="text-3xl font-extrabold z-10 relative">
+                        {section.deadline}
+                      </p>
+                    </div>
+
+                    <div className="flex-1 flex items-center">
+                      <a
+                        href={section.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full py-12 px-6 border-2 border-slate-900 dark:border-white text-slate-900 dark:text-white font-bold rounded-2xl text-center hover:bg-slate-900 dark:hover:bg-white hover:text-white dark:hover:text-slate-900 transition-all transform hover:-translate-y-1 shadow hover:shadow-md flex items-center justify-center gap-3"
+                      >
+                        Registration Portal
+                        <ExternalLink className="w-5 h-5" />
+                      </a>
+                    </div>
                   </div>
-                  <div className="flex-1 flex items-center">
-                    <a
-                      href={section.link}
-                      className="w-full py-4 px-6 border-2 border-slate-900 dark:border-white text-slate-900 dark:text-white font-bold rounded-2xl text-center hover:bg-slate-900 dark:hover:bg-white hover:text-white dark:hover:text-slate-900 transition-all flex items-center justify-center gap-2"
+                </div>
+              )}
+              {section.categories && (
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6">
+                  {section.categories.map((item, idx) => (
+                    <div
+                      key={idx}
+                      className="p-6 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm hover:shadow-xl transition-all flex flex-col gap-4"
                     >
-                      Registration Portal
-                      <ExternalLink className="w-4 h-4" />
-                    </a>
-                  </div>
+                      {/* Header with optional icon */}
+                      <div className="flex items-center gap-2">
+                        <div className="w-6 h-6 bg-slate-100 dark:bg-slate-700 rounded-full flex items-center justify-center">
+                          {/* Optional icon placeholder */}
+                          <span className="text-slate-400 dark:text-slate-300 text-xs">
+                            🎓
+                          </span>
+                        </div>
+                        <p className="font-semibold text-slate-700 dark:text-slate-300 text-sm uppercase tracking-wider">
+                          {item.category}
+                        </p>
+                      </div>
+
+                      {/* Scholarship details */}
+                      <p className="text-slate-600 dark:text-slate-400 text-sm mt-2">
+                        {item.details}
+                      </p>
+                    </div>
+                  ))}
                 </div>
               )}
             </div>
@@ -576,11 +885,16 @@ const SectionWrapper = ({ section }: { section: Section; key?: any }) => {
 };
 
 const Sponsors = ({ data }: { data: ContentData }) => (
-  <section className="py-20 bg-slate-50 dark:bg-slate-900/50">
-    <div className="max-w-7xl mx-auto px-6 text-center">
+  <section className="py-20 bg-slate-50 dark:bg-slate-900/50 relative overflow-hidden">
+    {/* Background decorative circles */}
+    <div className="absolute -top-32 -left-32 w-64 h-64 bg-blue-200/20 dark:bg-blue-900/30 rounded-full filter blur-3xl animate-slow-spin"></div>
+    <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-pink-200/20 dark:bg-pink-900/30 rounded-full filter blur-3xl animate-slow-spin-reverse"></div>
+
+    <div className="relative max-w-7xl mx-auto px-6 text-center">
       <p className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em] mb-10">
         Supported By
       </p>
+
       <div className="flex flex-wrap justify-center items-center gap-12 md:gap-20 transition-all">
         {data.sponsors.map((sponsor, idx) => (
           <a
@@ -588,14 +902,20 @@ const Sponsors = ({ data }: { data: ContentData }) => (
             href={sponsor.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:scale-110 transition-transform"
+            className="relative group transform transition-transform hover:scale-105"
           >
-            <img
-              src={sponsor.logo}
-              alt={sponsor.name}
-              className="h-16 md:h-24 object-contain"
-              referrerPolicy="no-referrer"
-            />
+            {/* Circular badge container */}
+            <div className="p-4 rounded-full bg-white dark:bg-slate-800 shadow-md dark:shadow-black/20 flex items-center justify-center w-48 h-48 md:w-48 md:h-48">
+              <img
+                src={sponsor.logo}
+                alt={sponsor.name}
+                className="max-h-full max-w-full object-contain"
+                referrerPolicy="no-referrer"
+              />
+            </div>
+
+            {/* Optional hover pulse ring */}
+            <span className="absolute inset-0 rounded-full border-2 border-blue-400/30 opacity-0 group-hover:opacity-100 animate-pulse transition-all"></span>
           </a>
         ))}
       </div>
@@ -616,21 +936,27 @@ const Footer = ({ data }: { data: ContentData }) => (
           <div className="flex gap-6">
             <a
               href={`mailto:${data.contact.email}`}
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-slate-400 hover:text-white transition-colors"
             >
               <Mail className="w-6 h-6" />
             </a>
             <a
               href={data.contact.website}
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-slate-400 hover:text-white transition-colors"
             >
               <Globe className="w-6 h-6" />
             </a>
             <a
-              href="#"
+              href={data.contact.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-slate-400 hover:text-white transition-colors"
             >
-              <Twitter className="w-6 h-6" />
+              <Linkedin className="w-6 h-6" />
             </a>
           </div>
         </div>
@@ -657,6 +983,10 @@ export default function App() {
   });
 
   useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: "/" });
+  }, []);
+
+  useEffect(() => {
     if (theme === "dark") {
       document.documentElement.classList.add("dark");
     } else {
@@ -673,8 +1003,8 @@ export default function App() {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "https://raw.githubusercontent.com/alperyeg/ieee-summer-school/refs/heads/main/public/data/content.json",
-          // "/data/content.json",
+          // "https://raw.githubusercontent.com/alperyeg/ieee-summer-school/refs/heads/main/public/data/content.json",
+          "/ieee-summer-school/data/content.json",
         );
         if (!response.ok) {
           throw new Error("Failed to fetch content");
