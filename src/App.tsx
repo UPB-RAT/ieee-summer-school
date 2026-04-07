@@ -982,9 +982,9 @@ export default function App() {
     return "light";
   });
 
-  useEffect(() => {
-    ReactGA.send({ hitType: "pageview", page: "/" });
-  }, []);
+  // useEffect(() => {
+  //   ReactGA.send({ hitType: "pageview", page: "/" });
+  // }, []);
 
   useEffect(() => {
     if (theme === "dark") {
