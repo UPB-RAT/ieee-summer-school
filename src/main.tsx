@@ -5,7 +5,7 @@ import "./index.css";
 import ReactGA from "react-ga4";
 
 // Initialize Google Analytics 4
-ReactGA.initialize(import.meta.env.VITE_GOOGLE_ANALYTICS_ID!);
+ReactGA.initialize('G-XXXXXXXXXX');
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
