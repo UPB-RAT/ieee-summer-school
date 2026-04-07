@@ -1,16 +1,16 @@
 {
   "school": {
     "title": "IEEE CIS Summer School 2026",
-    "subtitle": "Computational Intelligence in Robotics",
+    "subtitle": "Foundational Models Meet Robotics: From Language and Vision to Action",
     "dates": "July 27 - 30, 2026",
     "location": "Paderborn University, Germany",
     "description": "Join us for an intensive four-day summer school focusing on the latest advancements in Computational Intelligence applied to Robotics. This program features world-renowned speakers, hands-on workshops, and networking opportunities for PhD students and early-career researchers.",
-    "heroImage": "https://planethibbel.com/wp-content/uploads/2022/08/Paderborn90-1024x683.jpg"
+    "heroImage": "/ieee-summer-school/assets/PB.jpg"
   },
   "sections": [
     {
       "id": "about",
-      "title": "About the Summer School",
+      "title": "About",
       "content": "Foundation models are fundamentally transforming artificial intelligence (AI) and robotics. Integrating these models into robotics and embodied AI marks a decisive paradigm shift from rigid, task-specific pipelines to scalable, data-driven intelligence capable of generalization and adaptation in the real world. This summer school explores the role of foundation and generative models in robotic planning, control, perception, and design, with the goal of developing adaptable, context-aware autonomous robots. The topics covered in this summer school are: ",
       "points": [
         "Generative models for robotic control and planning",
@@ -21,7 +21,7 @@
     },
     {
       "id": "speakers",
-      "title": "Confirmed Speakers",
+      "title": "Speakers",
       "items": [
         {
           "name": "Prof. Dr. Erdal Kayacan",
@@ -98,39 +98,167 @@
       ]
     },
     {
-      "id": "program",
-      "title": "Program Schedule",
-      "schedule": [
+  "id": "program",
+  "title": "Schedule",
+  "schedule": [
+    {
+      "day": "Monday (July 27th, 2026)",
+      "events": [
         {
-          "day": "Day 1: Foundations",
-          "events": [
-            {
-              "time": "09:00 - 10:30",
-              "title": "Introduction to CIS in Robotics"
-            },
-            {
-              "time": "11:00 - 12:30",
-              "title": "Neural Networks for Perception"
-            },
-            {
-              "time": "14:00 - 17:00",
-              "title": "Workshop: Python for Robotics"
-            }
-          ]
+          "time": "09:00 - 10:15",
+          "title": "Registration & Reception"
         },
         {
-          "day": "Day 2: Navigation",
-          "events": [
-            { "time": "09:00 - 10:30", "title": "Fuzzy Logic Controllers" },
-            { "time": "11:00 - 12:30", "title": "SLAM and Path Planning" },
-            { "time": "14:00 - 17:00", "title": "Hands-on: ROS2 Integration" }
-          ]
+          "time": "10:15 - 10:45",
+          "title": "Coffee Break"
+        },
+        {
+          "time": "10:45 - 12:00",
+          "title": "Plenary Talk 1"
+        },
+        {
+          "time": "12:00 - 13:00",
+          "title": "Lunch Break"
+        },
+        {
+          "time": "13:00 - 14:15",
+          "title": "Lecture 1"
+        },
+        {
+          "time": "14:15 - 14:45",
+          "title": "Coffee Break"
+        },
+        {
+          "time": "14:45 - 16:00",
+          "title": "Lab Session (Hands-on)"
+        },
+        {
+          "time": "17:00 - 21:00",
+          "title": "Welcome Dinner"
         }
       ]
     },
     {
+      "day": "Tuesday (July 28th, 2026)",
+      "events": [
+        {
+          "time": "09:00 - 10:15",
+          "title": "Plenary Talk 2"
+        },
+        {
+          "time": "10:15 - 10:45",
+          "title": "Coffee Break"
+        },
+        {
+          "time": "10:45 - 12:00",
+          "title": "Lecture 2"
+        },
+        {
+          "time": "12:00 - 13:00",
+          "title": "Lunch Break"
+        },
+        {
+          "time": "13:00 - 14:15",
+          "title": "Lecture 3"
+        },
+        {
+          "time": "14:15 - 14:45",
+          "title": "Coffee Break"
+        },
+        {
+          "time": "14:45 - 16:00",
+          "title": "Lab Session (Hands-on)"
+        },
+        {
+          "time": "17:00 - 21:00",
+          "title": "Guided City Pader Tour"
+        }
+      ]
+    },
+    {
+      "day": "Wednesday (July 29th, 2026)",
+      "events": [
+        {
+          "time": "09:00 - 10:15",
+          "title": "Plenary Talk 3"
+        },
+        {
+          "time": "10:15 - 10:45",
+          "title": "Coffee Break"
+        },
+        {
+          "time": "10:45 - 12:00",
+          "title": "Lecture 4"
+        },
+        {
+          "time": "12:00 - 13:00",
+          "title": "Lunch Break"
+        },
+        {
+          "time": "13:00 - 14:15",
+          "title": "Lab Session (Hands-on)"
+        },
+        {
+          "time": "14:15 - 14:45",
+          "title": "Coffee Break"
+        },
+        {
+          "time": "14:45 - 16:00",
+          "title": "Lab Session (Hands-on)"
+        },
+        {
+          "time": "17:00 - 21:00",
+          "title": "Archery Activity"
+        }
+      ]
+    },
+    {
+      "day": "Thursday (July 30th, 2026)",
+      "events": [
+        {
+          "time": "09:00 - 10:15",
+          "title": "Plenary Talk 4"
+        },
+        {
+          "time": "10:15 - 10:45",
+          "title": "Coffee Break"
+        },
+        {
+          "time": "10:45 - 12:00",
+          "title": "Lecture 5"
+        },
+        {
+          "time": "12:00 - 13:00",
+          "title": "Lunch Break"
+        },
+        {
+          "time": "13:00 - 14:15",
+          "title": "Lab Session (Hands-on)"
+        },
+        {
+          "time": "14:15 - 14:45",
+          "title": "Coffee Break"
+        },
+        {
+          "time": "14:45 - 16:00",
+          "title": "D-Space Visit (Industry Tour)"
+        },
+        {
+          "time": "17:00 - 21:00",
+          "title": "Computer Museum"
+        }
+      ]
+    }
+  ]
+},
+    {
+      "id": "handson",
+      "title": "Sessions",
+      "content": "In addition to the lectures, the summer school will feature hands-on sessions where participants can apply the concepts learned in the lectures to real-world problems. These sessions will cover topics such as implementing diffusion models for motion planning, designing reward functions for reinforcement learning, and applying meta-learning techniques for rapid adaptation in robotic control. Participants will have the opportunity to work with state-of-the-art tools and frameworks, and receive guidance from experts in the field."
+    },
+    {
       "id": "venue",
-      "title": "Venue & Travel",
+      "title": "Logistics",
       "content": "The summer school will be held at Paderborn University, specifically in the O-Building. Paderborn is a historic city in Germany, known for its university and the world's largest computer museum. The venue is easily accessible by public transport and is located within walking distance of several hotels.",
       "address": "Warburger Str. 100, 33098 Paderborn, Germany",
       "googleMaps": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2485.466046777353!2d8.771216315768564!3d51.7056639796674!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47ba49f697f66a2f%3A0x4227219107990!2sPaderborn%20University!5e0!3m2!1sen!2sde!4v1625565000000!5m2!1sen!2sde",
@@ -148,38 +276,99 @@
       "title": "Social Activities",
       "content": "Beyond the technical sessions, we have organized several social events to help you network and enjoy the beautiful city of Paderborn.",
       "socialItems": [
-        {
-          "day": "Monday",
-          "title": "Welcome Dinner",
-          "description": "A welcome dinner to facilitate initial introductions among participants in a relaxed atmosphere."
-        },
-        {
-          "day": "Tuesday",
-          "title": "Guided City Tour",
-          "description": "A guided city tour organized by the City of Paderborn, showcasing the rich history and landmarks of the city."
-        },
-        {
-          "day": "Wednesday",
-          "title": "Outdoor Archery",
-          "description": "An outdoor archery activity designed to promote team spirit, focus, and precision among attendees."
-        },
-        {
-          "day": "Thursday",
-          "title": "MuseumsForum Visit",
-          "description": "A farewell visit to the Heinz Nixdorf MuseumsForum, the world’s largest computer museum, exploring the history of computing."
-        }
-      ]
+  {
+    "day": "Monday",
+    "title": "Welcome Dinner",
+    "image":
+      "https://imgs.search.brave.com/pFVkvsDMaNxYPMbmiZV3aFSWgR0hJPi14smjek5WmQY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMuc3F1YXJlc3Bh/Y2UtY2RuLmNvbS9j/b250ZW50L3YxLzYy/NWVkNjY1NjkwYmZi/MzUyMzVjOWI1Yi9j/YzYzMzdiZS1hMzM1/LTQ0M2UtYWJkNC00/YWJlNTVkMmI0MmQv/Q29uZmVyZW5jZStE/aW5uZXIucG5n",
+    "description":
+      "A welcome dinner to facilitate initial introductions among participants in a relaxed atmosphere."
+  },
+  {
+    "day": "Tuesday",
+    "title": "Guided City Tour",
+    "image":
+      "https://imgs.search.brave.com/olb7l9Hh41Z3fSCCSxxVs8CX2ULNRCP6V4c4Z4PFmi0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/cGFkZXJib3JuLmRl/L21pY3Jvc2l0ZS93/ZWxjb21lL3RvdXJp/c20tY3VsdHVyZS9z/cF9hdXRvXzEwNTYz/LnBocC5tZWRpYS80/MTE0MC9QYWRlcmJv/cm5fRG9tX0RpZWxl/bnBhZGVyX2tsZWlu/LmpwZy5zY2FsZWQv/YWU3YzkzNTlhZDMz/NDgxODMyNTY2M2U2/MjU5MWExNGIuanBn",
+    "description":
+      "A guided city tour organized by the City of Paderborn, showcasing the rich history and landmarks of the city."
+  },
+  {
+    "day": "Wednesday",
+    "title": "Outdoor Archery",
+    "image":
+      "https://imgs.search.brave.com/Q6uvFpvfTmrsyGnKujamCPNZt_RQXFgL8t4GoUjKIjw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nb2tvbmZldHRp/LmNvbS84NTA2NC81/MDB4MC9ncm91cC1h/cmNoZXJ5LWxhdWdo/aW5nLW91dGRvb3Jz/LTU4amtrNG0xLndl/YnA",
+    "description":
+      "An outdoor archery activity designed to promote team spirit, focus, and precision among attendees."
+  },
+  {
+    "day": "Thursday",
+    "title": "MuseumsForum Visit",
+    "image":
+      "https://www.hnf.de/fileadmin/content/pictures/HNF/Dauerausstellung/Virtueller_Rundgang/Virtueller_Rundgang_EG.jpg",
+    "description":
+      "A farewell visit to the Heinz Nixdorf MuseumsForum, the world’s largest computer museum, exploring the history of computing."
+  }
+]
+    },
+{
+  "id": "registration",
+  "title": "Registration",
+  "content": "Registration is open to graduate students and researchers. IEEE CIS members receive a discounted rate. Applications must include a CV and a short statement of interest. All participants receive access to sessions, lunch, coffee breaks, welcome dinner, a name tag, USB drive with materials, a workshop T-shirt, note-taking supplies, a mug, and a certificate of participation.",
+  "deadline": "June 15, 2026",
+  "link": "https://tally.so/r/b5r9jZ",
+  "fees": [
+    {
+      "category": "BSc & MSc Student",
+      "memberFee": "90 €",
+      "nonMemberFee": "120 €"
     },
     {
-      "id": "registration",
-      "title": "Registration",
-      "content": "Registration is open to graduate students and researchers. IEEE CIS members receive a discounted rate. Applications must include a CV and a short statement of interest.",
-      "deadline": "June 15, 2026",
-      "link": "https://tally.so/r/b5r9jZ"
+      "category": "PhD Student",
+      "memberFee": "120 €",
+      "nonMemberFee": "180 €"
     },
+    {
+      "category": "Post-doc",
+      "memberFee": "240 €",
+      "nonMemberFee": "300 €"
+    },
+    {
+      "category": "Industry",
+      "memberFee": "400 €",
+      "nonMemberFee": "500 €"
+    }
+  ]
+},
+{
+  "id": "scholarships",
+  "title": "Scholarships",
+  "content": "We offer a variety of scholarships and support to encourage participation from outstanding students and underrepresented groups.",
+  "categories": [
+    {
+      "category": "Academic Merit",
+      "details": "10 free registrations for exceptionally strong students, selected based on academic merit (e.g., CGPA, publications, and overall academic achievements)."
+    },
+    {
+      "category": "Female Applicants",
+      "details": "3 free registrations reserved for female applicants to encourage gender diversity."
+    },
+    {
+      "category": "Travel Support",
+      "details": "Travel support of up to €300 for 3 selected students."
+    },
+    {
+      "category": "Developing Countries",
+      "details": "3 free registrations for participants from developing countries."
+    },
+    {
+      "category": "Accommodation",
+      "details": "Free accommodation for all participants, provided in shared rooms (three people per room)."
+    }
+  ]
+},
     {
       "id": "faq",
-      "title": "Frequently Asked Questions",
+      "title": "FAQs",
       "content": "Find answers to common questions about the summer school, registration, and logistics.",
       "faqItems": [
         {
@@ -208,23 +397,23 @@
   "sponsors": [
     {
       "name": "IEEE CIS",
-      "logo": "https://picsum.photos/seed/ieee/200/100",
+      "logo": "https://cis.ieee.org/images/files/template/cis-logo.png",
       "link": "https://cis.ieee.org/"
     },
     {
       "name": "Paderborn University",
-      "logo": "https://picsum.photos/seed/upb/200/100",
+      "logo": "https://www.uni-paderborn.de/_assets/41f313ddc60e6583fa91411440628db0/Dist/Media/images/upb-logo-de.svg",
       "link": "https://www.uni-paderborn.de/"
     },
     {
       "name": "COLOURS",
-      "logo": "https://www.uni-paderborn.de/fileadmin/_processed_/5/7/csm_SYMBOL_WORDMARK_EUA_HORIZONTAL_v1.0_01_14b471a4a6.jpg",
+      "logo": "https://colours-alliance.eu/wp-content/uploads/2024/05/New-logo-1.png",
       "link": "https://colours-alliance.eu/"
     }
   ],
   "contact": {
     "email": "cis-summerschool2026@upb.de",
-    "twitter": "@IEEECIS_SS26",
-    "website": "https://www.upb.de/cis-ss2026"
+    "website": "https://en.ei.uni-paderborn.de/rat",
+    "linkedin": "https://www.linkedin.com/company/upb-automatic-control-group"
   }
 }
