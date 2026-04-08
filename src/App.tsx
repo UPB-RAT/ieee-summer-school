@@ -335,55 +335,95 @@ const AccommodationModal = ({
   );
 };
 
-const SpeakerCard = ({ speaker }: { speaker: Speaker }) => (
-  <motion.div
-    whileHover={{ y: -5 }}
-    whileTap={{ scale: 0.98 }}
-    className="group bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all"
-  >
-    <div className="aspect-square overflow-hidden bg-slate-100 dark:bg-slate-700 flex items-center justify-center">
-      {speaker.image ? (
-        <img
-          src={speaker.image}
-          alt={speaker.name}
-          className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
-          referrerPolicy="no-referrer"
-        />
-      ) : (
-        <div className="w-full h-full flex items-center justify-center bg-slate-200 dark:bg-slate-600 text-slate-400 dark:text-slate-500">
-          <Users className="w-12 h-12" />
-        </div>
-      )}
-    </div>
-    <div className="p-6">
-      <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-1">
-        {speaker.name}
-      </h3>
-      <p className="text-sm font-semibold text-blue-600 dark:text-blue-400 mb-3">
-        {speaker.affiliation}
-      </p>
-      <div className="h-px w-8 bg-slate-200 dark:bg-slate-700 mb-3" />
-      <p className="text-sm text-slate-800 dark:text-slate-200 font-medium mb-2">
-        {speaker.topic}
-      </p>
-      {speaker.abstract && (
-        <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-4 line-clamp-3 group-hover:line-clamp-none transition-all">
-          {speaker.abstract}
+const SpeakerCard = ({ speaker }: { speaker: Speaker }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  return (
+    <motion.div
+      whileHover={{ y: -4 }}
+      whileTap={{ scale: 0.98 }}
+      className="group bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all active:scale-[0.985] cursor-pointer touch-manipulation"
+      onClick={() => setIsExpanded(!isExpanded)} // Click anywhere on card to toggle on mobile
+    >
+      {/* Image Section */}
+      <div className="aspect-square overflow-hidden bg-slate-100 dark:bg-slate-700 relative">
+        {speaker.image ? (
+          <img
+            src={speaker.image}
+            alt={speaker.name}
+            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+            referrerPolicy="no-referrer"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center bg-slate-200 dark:bg-slate-600 text-slate-400">
+            <Users className="w-16 h-16" />
+          </div>
+        )}
+      </div>
+
+      {/* Content Section */}
+      <div className="p-6">
+        <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-1">
+          {speaker.name}
+        </h3>
+        <p className="text-sm font-semibold text-blue-600 dark:text-blue-400 mb-3">
+          {speaker.affiliation}
         </p>
-      )}
-      {speaker.website && (
-        <a
-          href={speaker.website}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-xs font-bold text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 inline-flex items-center gap-1"
-        >
-          Speaker Profile <ExternalLink className="w-3 h-3" />
-        </a>
-      )}
-    </div>
-  </motion.div>
-);
+
+        <div className="h-px w-10 bg-slate-200 dark:bg-slate-700 mb-4" />
+
+        <p className="text-sm text-slate-700 dark:text-slate-200 font-medium mb-3">
+          {speaker.topic}
+        </p>
+
+        {/* Abstract - Now properly expandable on mobile */}
+        {speaker.abstract && (
+          <div className="mt-2">
+            <p
+              className={`text-sm text-slate-500 dark:text-slate-400 leading-relaxed transition-all duration-300 overflow-hidden ${
+                isExpanded ? "line-clamp-none" : "line-clamp-3"
+              }`}
+            >
+              {speaker.abstract}
+            </p>
+
+            {/* Expand/Collapse Button - Visible on all devices, but especially helpful on mobile */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation(); // Prevent triggering card click twice
+                setIsExpanded(!isExpanded);
+              }}
+              className="mt-3 text-blue-600 dark:text-blue-400 text-sm font-medium flex items-center gap-1 hover:underline active:underline focus:outline-none"
+            >
+              {isExpanded ? (
+                <>
+                  Show Less <ChevronUp className="w-4 h-4" />
+                </>
+              ) : (
+                <>
+                  Read More <ChevronDown className="w-4 h-4" />
+                </>
+              )}
+            </button>
+          </div>
+        )}
+
+        {/* Speaker Website Link */}
+        {speaker.website && (
+          <a
+            href={speaker.website}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()} // Prevent card click
+            className="mt-4 inline-flex items-center gap-1 text-xs font-bold text-blue-600 dark:text-blue-400 hover:text-blue-700 transition-colors"
+          >
+            Speaker Profile <ExternalLink className="w-3 h-3" />
+          </a>
+        )}
+      </div>
+    </motion.div>
+  );
+};
 
 const SocialCard = ({ item }: { item: any }) => (
   <motion.div
