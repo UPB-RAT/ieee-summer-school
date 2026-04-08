@@ -10,7 +10,7 @@ import {
   Users,
   Mail,
   Globe,
-  Twitter,
+  Phone,
   ChevronRight,
   Menu,
   X,
@@ -33,26 +33,18 @@ import {
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { ContentData, Section, Speaker, DaySchedule } from "./types";
-import ReactGA from "react-ga4";
 
 const getEventMeta = (title: string) => {
   const t = title.toLowerCase();
 
   if (t.includes("plenary")) return { icon: Mic, color: "bg-purple-500" };
-
   if (t.includes("lecture")) return { icon: BookOpen, color: "bg-blue-500" };
-
   if (t.includes("lab")) return { icon: FlaskConical, color: "bg-green-500" };
-
   if (t.includes("break")) return { icon: Coffee, color: "bg-gray-400" };
-
   if (t.includes("tour") || t.includes("visit"))
     return { icon: MapPin, color: "bg-orange-500" };
-
   if (t.includes("dinner")) return { icon: Users, color: "bg-pink-500" };
-
   if (t.includes("activity")) return { icon: Target, color: "bg-indigo-500" };
-
   if (t.includes("museum")) return { icon: Building, color: "bg-yellow-500" };
 
   return { icon: BookOpen, color: "bg-slate-500" };
@@ -63,6 +55,28 @@ const getTimeSlots = (schedule: DaySchedule[]) => {
   schedule.forEach((day) => day.events.forEach((e) => set.add(e.time)));
   return Array.from(set).sort();
 };
+
+const FloatingActions = () => (
+  <div className="fixed bottom-8 right-8 z-[9999] flex flex-col gap-3">
+    <motion.a
+      href="#registration"
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      className="flex items-center gap-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-5 rounded-3xl font-semibold shadow-2xl active:scale-95"
+    >
+      Register Now <ChevronRight className="w-6 h-6" />
+    </motion.a>
+
+    <motion.a
+      href="#scholarships"
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      className="flex items-center gap-4 bg-gradient-to-r from-emerald-500 to-teal-600 text-white px-8 py-5 rounded-3xl font-semibold shadow-2xl active:scale-95"
+    >
+      Scholarships <Target className="w-6 h-6" />
+    </motion.a>
+  </div>
+);
 
 const Navbar = ({
   data,
@@ -152,7 +166,10 @@ const Navbar = ({
               <Moon className="w-5 h-5" />
             )}
           </button>
-          <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="p-2"
+          >
             {isMenuOpen ? (
               <X
                 className={
@@ -182,7 +199,7 @@ const Navbar = ({
               key={link.name}
               href={link.href}
               onClick={() => setIsMenuOpen(false)}
-              className="text-slate-600 dark:text-slate-300 font-medium"
+              className="text-slate-600 dark:text-slate-300 font-medium py-2"
             >
               {link.name}
             </a>
@@ -232,79 +249,187 @@ const Hero = ({ data }: { data: ContentData }) => (
             <span className="font-medium">{data.school.location}</span>
           </div>
         </div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-          className="mt-12"
-        >
-          <a
-            href="#registration"
-            className="px-8 py-4 bg-white text-slate-900 font-bold rounded-lg hover:bg-blue-50 transition-colors inline-flex items-center gap-2 group"
-          >
-            Apply Now
-            <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </a>
-        </motion.div>
       </motion.div>
     </div>
   </section>
 );
 
-const SpeakerCard = ({ speaker }: { speaker: Speaker; key?: any }) => (
-  <motion.div
-    whileHover={{ y: -5 }}
-    className="group bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all"
-  >
-    <div className="aspect-square overflow-hidden bg-slate-100 dark:bg-slate-700 flex items-center justify-center">
-      {speaker.image ? (
-        <img
-          src={speaker.image}
-          alt={speaker.name}
-          className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
-          referrerPolicy="no-referrer"
-        />
-      ) : (
-        <div className="w-full h-full flex items-center justify-center bg-slate-200 dark:bg-slate-600 text-slate-400 dark:text-slate-500">
-          <Users className="w-12 h-12" />
-        </div>
-      )}
-    </div>
-    <div className="p-6">
-      <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-1">
-        {speaker.name}
-      </h3>
-      <p className="text-sm font-semibold text-blue-600 dark:text-blue-400 mb-3">
-        {speaker.affiliation}
-      </p>
-      <div className="h-px w-8 bg-slate-200 dark:bg-slate-700 mb-3" />
-      <p className="text-sm text-slate-800 dark:text-slate-200 font-medium mb-2">
-        {speaker.topic}
-      </p>
-      {speaker.abstract && (
-        <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-4 line-clamp-3 group-hover:line-clamp-none transition-all">
-          {speaker.abstract}
-        </p>
-      )}
-      {speaker.website && (
-        <a
-          href={speaker.website}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-xs font-bold text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 inline-flex items-center gap-1"
-        >
-          Speaker Profile <ExternalLink className="w-3 h-3" />
-        </a>
-      )}
-    </div>
-  </motion.div>
-);
+const AccommodationModal = ({
+  show,
+  setShow,
+  accommodations,
+}: {
+  show: boolean;
+  setShow: (b: boolean) => void;
+  accommodations: any[];
+}) => {
+  if (!show) return null;
 
-const SocialCard = ({ item }: { item: any; key?: any }) => (
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+      {/* Backdrop */}
+      <div
+        className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+        onClick={() => setShow(false)}
+      />
+
+      {/* Modal */}
+      <div className="relative z-10 w-full max-w-4xl bg-white dark:bg-slate-900 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700 p-6 overflow-auto max-h-[90vh]">
+        {/* Header */}
+        <div className="flex justify-between items-center mb-6">
+          <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-200">
+            Recommended Accommodations
+          </h2>
+          <button
+            onClick={() => setShow(false)}
+            className="text-slate-500 hover:text-slate-800 dark:hover:text-white text-xl font-bold"
+          >
+            ✕
+          </button>
+        </div>
+
+        {/* Accommodation List */}
+        <div className="flex flex-col gap-6">
+          {accommodations.map((hotel, idx) => (
+            <div
+              key={idx}
+              className="bg-slate-50 dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm"
+            >
+              <h3 className="text-md md:text-lg font-bold text-slate-900 dark:text-white mb-2">
+                {hotel.name}
+              </h3>
+              <ul className="list-disc list-inside text-sm md:text-base text-slate-700 dark:text-slate-300 space-y-1">
+                <li>
+                  <span className="font-semibold">Location:</span>{" "}
+                  {hotel.location}
+                </li>
+                <li>
+                  <span className="font-semibold">Room types:</span>{" "}
+                  {hotel.rooms}
+                </li>
+                <li>
+                  <span className="font-semibold">Price range:</span>{" "}
+                  {hotel.price}
+                </li>
+                <li>
+                  <span className="font-semibold">Contact/Rates:</span>{" "}
+                  <a
+                    href={hotel.contact}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 dark:text-blue-400 hover:underline"
+                  >
+                    {hotel.contact}
+                  </a>
+                </li>
+                <li>
+                  <span className="font-semibold">Booking:</span>{" "}
+                  {hotel.booking}
+                </li>
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const SpeakerCard = ({ speaker }: { speaker: Speaker }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  return (
+    <motion.div
+      whileHover={{ y: -4 }}
+      whileTap={{ scale: 0.98 }}
+      className="group bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all active:scale-[0.985] cursor-pointer touch-manipulation"
+      onClick={() => setIsExpanded(!isExpanded)} // Click anywhere on card to toggle on mobile
+    >
+      {/* Image Section */}
+      <div className="aspect-square overflow-hidden bg-slate-100 dark:bg-slate-700 relative">
+        {speaker.image ? (
+          <img
+            src={speaker.image}
+            alt={speaker.name}
+            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+            referrerPolicy="no-referrer"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center bg-slate-200 dark:bg-slate-600 text-slate-400">
+            <Users className="w-16 h-16" />
+          </div>
+        )}
+      </div>
+
+      {/* Content Section */}
+      <div className="p-6">
+        <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-1">
+          {speaker.name}
+        </h3>
+        <p className="text-sm font-semibold text-blue-600 dark:text-blue-400 mb-3">
+          {speaker.affiliation}
+        </p>
+
+        <div className="h-px w-10 bg-slate-200 dark:bg-slate-700 mb-4" />
+
+        <p className="text-sm text-slate-700 dark:text-slate-200 font-medium mb-3">
+          {speaker.topic}
+        </p>
+
+        {/* Abstract - Now properly expandable on mobile */}
+        {speaker.abstract && (
+          <div className="mt-2">
+            <p
+              className={`text-sm text-slate-500 dark:text-slate-400 leading-relaxed transition-all duration-300 overflow-hidden ${
+                isExpanded ? "line-clamp-none" : "line-clamp-3"
+              }`}
+            >
+              {speaker.abstract}
+            </p>
+
+            {/* Expand/Collapse Button - Visible on all devices, but especially helpful on mobile */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation(); // Prevent triggering card click twice
+                setIsExpanded(!isExpanded);
+              }}
+              className="mt-3 text-blue-600 dark:text-blue-400 text-sm font-medium flex items-center gap-1 hover:underline active:underline focus:outline-none"
+            >
+              {isExpanded ? (
+                <>
+                  Show Less <ChevronUp className="w-4 h-4" />
+                </>
+              ) : (
+                <>
+                  Read More <ChevronDown className="w-4 h-4" />
+                </>
+              )}
+            </button>
+          </div>
+        )}
+
+        {/* Speaker Website Link */}
+        {speaker.website && (
+          <a
+            href={speaker.website}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()} // Prevent card click
+            className="mt-4 inline-flex items-center gap-1 text-xs font-bold text-blue-600 dark:text-blue-400 hover:text-blue-700 transition-colors"
+          >
+            Speaker Profile <ExternalLink className="w-3 h-3" />
+          </a>
+        )}
+      </div>
+    </motion.div>
+  );
+};
+
+const SocialCard = ({ item }: { item: any }) => (
   <motion.div
     whileHover={{ y: -5 }}
-    className="bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded-2xl shadow-sm hover:shadow-xl transition-all flex flex-col overflow-hidden"
+    whileTap={{ scale: 0.98 }}
+    className="group bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded-2xl shadow-sm hover:shadow-xl transition-all flex flex-col overflow-hidden"
   >
     {/* Top image */}
     <div className="relative w-full h-40 md:h-48 overflow-hidden">
@@ -345,6 +470,32 @@ const SocialCard = ({ item }: { item: any; key?: any }) => (
           Learn More →
         </a>
       )}
+    </div>
+  </motion.div>
+);
+
+const OrganizerCard = ({ organizer }: { organizer: any }) => (
+  <motion.div
+    whileHover={{ y: -5 }}
+    whileTap={{ scale: 0.98 }}
+    className="group bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded-2xl shadow-sm hover:shadow-xl transition-all flex flex-col overflow-hidden"
+  >
+    {/* Top image */}
+    <div className="relative w-full h-40 md:h-48 overflow-hidden rounded-t-2xl">
+      <img
+        src={organizer.image}
+        alt={organizer.name}
+        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+      />
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
+    </div>
+
+    {/* Content */}
+    <div className="p-6 flex flex-col gap-2 text-center">
+      <h4 className="text-lg md:text-xl font-bold text-slate-900 dark:text-white">
+        {organizer.name}
+      </h4>
     </div>
   </motion.div>
 );
@@ -418,16 +569,21 @@ const Schedule = ({ schedule }: { schedule: DaySchedule[] }) => {
           ))}
           <button
             onClick={() => setShowPreview(true)}
-            className={`px-5 py-2 rounded-full text-sm font-semibold transition bg-blue-600 text-white shadow`}
+            className="px-8 py-2 rounded-2xl text-lg font-bold transition 
+             bg-orange-500 hover:bg-orange-600 
+             text-white shadow-lg hover:shadow-xl active:scale-95
+             focus:ring-4 focus:ring-orange-300 
+             transform hover:scale-105 active:scale-95"
           >
             Preview
           </button>
         </div>
       </div>
 
-      {/* Timeline View */}
+      {/* Timeline View - Mobile-first with alternating layout on md+ */}
       <div className="relative">
-        <div className="absolute left-1/2 top-0 bottom-0 w-[2px] bg-slate-200 dark:bg-slate-700" />
+        {/* Vertical timeline line */}
+        <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-[2px] bg-slate-200 dark:bg-slate-700" />
 
         <motion.div
           key={activeDay}
@@ -442,21 +598,21 @@ const Schedule = ({ schedule }: { schedule: DaySchedule[] }) => {
             return (
               <div
                 key={idx}
-                className={`relative flex items-center ${
-                  isLeft ? "justify-start" : "justify-end"
+                className={`relative flex flex-col md:flex-row md:items-center ${
+                  isLeft ? "md:justify-start" : "md:justify-end"
                 }`}
               >
-                {/* Dot */}
+                {/* Dot - centered on line (mobile left-aligned, desktop centered) */}
                 <div
-                  className={`absolute left-1/2 -translate-x-1/2 w-10 h-10 ${color} rounded-full flex items-center justify-center border-4 border-white dark:border-slate-900 z-10 shadow-md`}
+                  className={`absolute left-8 md:left-1/2 -translate-x-1/2 w-10 h-10 ${color} rounded-full flex items-center justify-center border-4 border-white dark:border-slate-900 z-10 shadow-md`}
                 >
                   <Icon className="w-5 h-5 text-white" />
                 </div>
 
-                {/* Card */}
+                {/* Card - full width on mobile (indented), alternating on desktop */}
                 <div
-                  className={`w-[45%] p-5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm hover:shadow-md transition ${
-                    isLeft ? "mr-auto pr-8" : "ml-auto pl-8"
+                  className={`w-full md:w-[45%] p-5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm hover:shadow-md transition ml-16 md:ml-0 ${
+                    isLeft ? "md:mr-auto md:pr-8" : "md:ml-auto md:pl-8"
                   }`}
                 >
                   <div className="text-blue-600 dark:text-blue-400 font-mono text-sm font-semibold mb-1">
@@ -476,7 +632,7 @@ const Schedule = ({ schedule }: { schedule: DaySchedule[] }) => {
 
       {/* MODAL: Grid Schedule */}
       {showPreview && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           {/* Backdrop */}
           <div
             className="absolute inset-0 bg-black/50 backdrop-blur-sm"
@@ -484,7 +640,7 @@ const Schedule = ({ schedule }: { schedule: DaySchedule[] }) => {
           />
 
           {/* Modal */}
-          <div className="relative z-10 w-[95%] max-w-6xl bg-white dark:bg-slate-900 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700 p-6 overflow-auto">
+          <div className="relative z-10 w-full max-w-6xl bg-white dark:bg-slate-900 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700 p-6 overflow-auto">
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-200">
                 Weekly Schedule – Quick Preview
@@ -595,11 +751,12 @@ const Schedule = ({ schedule }: { schedule: DaySchedule[] }) => {
   );
 };
 
-const SectionWrapper = ({ section }: { section: Section; key?: any }) => {
+const SectionWrapper = ({ section }: { section: Section }) => {
+  const [showModal, setShowModal] = useState(false);
   return (
     <section
       id={section.id}
-      className="py-24 border-b border-slate-100 dark:border-slate-800 last:border-0"
+      className="py-20 md:py-24 border-b border-slate-100 dark:border-slate-800 last:border-0"
     >
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
@@ -633,24 +790,9 @@ const SectionWrapper = ({ section }: { section: Section; key?: any }) => {
                 </ul>
               )}
 
-              {section.address && (
+              {section.airports && (
                 <div className="space-y-8">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {/* Address Card */}
-                    <div className="flex items-start gap-4 p-6 bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded-2xl shadow-sm">
-                      <div className="p-3 bg-blue-50 dark:bg-blue-900/30 rounded-xl">
-                        <MapPin className="w-6 h-6 text-blue-600 dark:text-blue-400" />
-                      </div>
-                      <div>
-                        <p className="font-bold text-slate-900 dark:text-white mb-1">
-                          Address
-                        </p>
-                        <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
-                          {section.address}
-                        </p>
-                      </div>
-                    </div>
-
                     {/* Airports Card */}
                     {section.airports && (
                       <div className="flex items-start gap-4 p-6 bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded-2xl shadow-sm">
@@ -694,18 +836,39 @@ const SectionWrapper = ({ section }: { section: Section; key?: any }) => {
 
                     {/* Accommodation Card */}
                     {section.accommodation && (
-                      <div className="flex items-start gap-4 p-6 bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded-2xl shadow-sm">
-                        <div className="p-3 bg-blue-50 dark:bg-blue-900/30 rounded-xl">
+                      <div className="flex flex-col md:flex-row items-start md:items-center gap-4 p-6 bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded-2xl shadow-sm">
+                        {/* Icon */}
+                        <div className="p-3 bg-blue-50 dark:bg-blue-900/30 rounded-xl flex-shrink-0">
                           <Hotel className="w-6 h-6 text-blue-600 dark:text-blue-400" />
                         </div>
-                        <div>
+
+                        {/* Text */}
+                        <div className="flex-1">
                           <p className="font-bold text-slate-900 dark:text-white mb-1">
                             Accommodation
                           </p>
                           <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
-                            {section.accommodation}
+                            {section.accommodation.description}
                           </p>
                         </div>
+
+                        {/* Button */}
+                        <div className="mt-3 md:mt-0 md:ml-auto">
+                          <button
+                            onClick={() => setShowModal(true)}
+                            className="inline-flex items-center gap-2 px-5 py-2 bg-gradient-to-r from-blue-600 to-blue-500 text-white dark:from-blue-500 dark:to-blue-400 rounded-xl text-sm font-semibold shadow-lg hover:scale-105 hover:shadow-2xl active:scale-95 transition-transform duration-300 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-700 cursor-pointer"
+                          >
+                            <Hotel className="w-4 h-4" />
+                            View Options
+                          </button>
+                        </div>
+
+                        {/* Modal */}
+                        <AccommodationModal
+                          show={showModal}
+                          setShow={setShowModal}
+                          accommodations={section.accommodation?.hotels}
+                        />
                       </div>
                     )}
 
@@ -726,115 +889,173 @@ const SectionWrapper = ({ section }: { section: Section; key?: any }) => {
                       </div>
                     )}
                   </div>
-
-                  {section.googleMaps && (
-                    <div className="w-full h-[450px] rounded-2xl overflow-hidden border border-slate-100 dark:border-slate-700 shadow-lg">
-                      <iframe
-                        src={section.googleMaps}
-                        width="100%"
-                        height="100%"
-                        style={{ border: 0 }}
-                        allowFullScreen
-                        loading="lazy"
-                        referrerPolicy="no-referrer-when-downgrade"
-                      />
-                    </div>
-                  )}
                 </div>
               )}
-              {section.deadline && (
+
+              {section.deadlines && (
                 <div className="flex flex-col gap-12 mt-12">
+                  <div className="flex flex-col gap-6">
+                    {/* Deadlines Grid */}
+                    <div className="flex flex-col sm:flex-row flex-wrap gap-6">
+                      {section.deadlines?.map((item, idx) => (
+                        <div
+                          key={idx}
+                          className={`flex-1 p-6 rounded-2xl shadow-lg relative overflow-hidden text-white ${item.bgGradient} transform transition hover:-translate-y-1 hover:shadow-2xl active:scale-95`}
+                        >
+                          {/* Decorative Accent */}
+                          <div
+                            className={`absolute -top-6 -right-6 w-24 h-24 opacity-20 rounded-full ${item.accentColor}`}
+                          ></div>
+
+                          {/* Optional icon */}
+                          {item.icon && (
+                            <item.icon className="w-6 h-6 mb-2 text-white z-10 relative" />
+                          )}
+
+                          <p className="text-blue-100 text-sm font-bold uppercase tracking-wider mb-2 z-10 relative">
+                            {item.label}
+                          </p>
+                          <p className="text-3xl font-extrabold z-10 relative">
+                            {item.date}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Registration Button at Bottom */}
+                    <div className="flex justify-center mt-4">
+                      <a
+                        href={section.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full max-w-md py-4 px-6 bg-gradient-to-r from-blue-600 to-blue-500 dark:from-blue-500 dark:to-blue-400 text-white font-bold rounded-2xl text-center hover:scale-105 hover:shadow-2xl active:scale-95 transition transform cursor-pointer flex items-center justify-center gap-3"
+                      >
+                        <Hotel className="w-5 h-5" />
+                        Registration Portal
+                      </a>
+                    </div>
+                  </div>
+
                   {section.fees && (
-                    <div className="flex flex-col gap-6">
+                    <div className="flex flex-col gap-8">
                       <h3 className="text-lg md:text-xl font-bold text-slate-900 dark:text-white mb-6 border-b border-slate-200 dark:border-slate-700 pb-2">
                         Registration Fees
                       </h3>
+
                       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
                         {section.fees.map((fee, idx) => (
                           <div
                             key={idx}
-                            className="p-6 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm hover:shadow-xl transition-all flex flex-col gap-4"
+                            className="relative p-6 rounded-2xl shadow-lg overflow-hidden bg-gradient-to-tr from-white to-slate-50 dark:from-slate-800 dark:to-slate-700 border border-slate-200 dark:border-slate-700 flex flex-col gap-4 hover:scale-105 hover:shadow-2xl active:scale-95 transition-transform duration-300"
                           >
-                            <div className="flex items-center gap-2">
-                              <div className="w-6 h-6 bg-slate-100 dark:bg-slate-700 rounded-full flex items-center justify-center">
-                                {/* Optional icon placeholder */}
-                                <span className="text-slate-400 dark:text-slate-300 text-xs">
-                                  💰
-                                </span>
-                              </div>
+                            {/* Decorative Circle */}
+                            <div className="absolute -top-4 -right-4 w-16 h-16 bg-blue-100 dark:bg-blue-900/30 opacity-30 rounded-full"></div>
+
+                            {/* Icon + Category */}
+                            <div className="flex items-center gap-3 z-10 relative">
                               <p className="font-semibold text-slate-700 dark:text-slate-300 text-sm uppercase tracking-wider">
                                 {fee.category}
                               </p>
                             </div>
-                            <div className="flex justify-between items-center text-lg font-bold">
-                              <span className="text-green-500">
-                                {fee.memberFee}
-                              </span>
-                              <span className="text-slate-600 dark:text-slate-400">
-                                {fee.nonMemberFee}
+
+                            {/* Fee Details */}
+                            <div className="flex flex-col gap-2 z-10 relative">
+                              {/* Member Fee */}
+                              <div className="flex justify-between items-center bg-green-50 dark:bg-green-900/30 px-3 py-2 rounded-lg">
+                                <span className="text-sm font-semibold text-green-700 dark:text-green-400">
+                                  Member Fee
+                                </span>
+                                <span className="text-lg font-bold text-green-600 dark:text-green-400">
+                                  {fee.memberFee}
+                                </span>
+                              </div>
+
+                              {/* Non-Member Fee */}
+                              <div className="flex justify-between items-center bg-slate-50 dark:bg-slate-700 px-3 py-2 rounded-lg">
+                                <span className="text-sm font-semibold text-slate-600 dark:text-slate-300">
+                                  Non-Member Fee
+                                </span>
+                                <span className="text-lg font-bold text-slate-700 dark:text-slate-200">
+                                  {fee.nonMemberFee}
+                                </span>
+                              </div>
+
+                              <span className="text-xs text-slate-400 dark:text-slate-500 mt-1">
+                                * IEEE CIS members enjoy discounted rates
                               </span>
                             </div>
-                            <p className="text-xs text-slate-400 dark:text-slate-500 mt-2">
-                              * IEEE CIS members enjoy discounted rates
-                            </p>
                           </div>
                         ))}
                       </div>
                     </div>
                   )}
-
-                  <div className="flex flex-col sm:flex-row gap-8">
-                    <div className="flex-1 p-8 rounded-2xl shadow-lg shadow-blue-200 dark:shadow-none relative overflow-hidden bg-blue-600 text-white">
-                      {/* Decorative Accent */}
-                      <div className="absolute -top-4 -right-4 w-24 h-24 bg-blue-400 opacity-20 rounded-full"></div>
-                      <p className="text-blue-100 text-sm font-bold uppercase tracking-wider mb-2 z-10 relative">
-                        Application Deadline
-                      </p>
-                      <p className="text-3xl font-extrabold z-10 relative">
-                        {section.deadline}
-                      </p>
-                    </div>
-
-                    <div className="flex-1 flex items-center">
-                      <a
-                        href={section.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-full py-12 px-6 border-2 border-slate-900 dark:border-white text-slate-900 dark:text-white font-bold rounded-2xl text-center hover:bg-slate-900 dark:hover:bg-white hover:text-white dark:hover:text-slate-900 transition-all transform hover:-translate-y-1 shadow hover:shadow-md flex items-center justify-center gap-3"
-                      >
-                        Registration Portal
-                        <ExternalLink className="w-5 h-5" />
-                      </a>
-                    </div>
-                  </div>
                 </div>
               )}
-              {section.categories && (
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6">
-                  {section.categories.map((item, idx) => (
-                    <div
-                      key={idx}
-                      className="p-6 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm hover:shadow-xl transition-all flex flex-col gap-4"
-                    >
-                      {/* Header with optional icon */}
-                      <div className="flex items-center gap-2">
-                        <div className="w-6 h-6 bg-slate-100 dark:bg-slate-700 rounded-full flex items-center justify-center">
-                          {/* Optional icon placeholder */}
-                          <span className="text-slate-400 dark:text-slate-300 text-xs">
-                            🎓
-                          </span>
-                        </div>
-                        <p className="font-semibold text-slate-700 dark:text-slate-300 text-sm uppercase tracking-wider">
-                          {item.category}
-                        </p>
-                      </div>
 
-                      {/* Scholarship details */}
-                      <p className="text-slate-600 dark:text-slate-400 text-sm mt-2">
-                        {item.details}
-                      </p>
+              {section.categories && (
+                <div className="flex flex-col gap-10">
+                  {/* Free Registration Row */}
+                  {section.categories.find(
+                    (c) => c.category === "Free Registration",
+                  ) && (
+                    <div>
+                      <h3 className="text-lg font-bold text-slate-800 dark:text-slate-200 mb-4">
+                        Free Registrations
+                      </h3>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                        {section.categories
+                          .find((c) => c.category === "Free Registration")
+                          .subcategories.map((sub, idx) => (
+                            <div
+                              key={idx}
+                              className="relative p-4 rounded-2xl shadow-lg bg-gradient-to-tr from-white to-slate-50 dark:from-slate-800 dark:to-slate-700 border border-slate-200 dark:border-slate-700 flex flex-col gap-3 hover:scale-105 hover:shadow-2xl active:scale-95 transition-transform duration-300 min-h-[160px]"
+                            >
+                              <div className="absolute -top-4 -right-4 w-16 h-16 opacity-20 rounded-full bg-blue-100 dark:bg-blue-900/30"></div>
+                              <p className="font-semibold text-blue-600 dark:text-blue-300 text-sm uppercase tracking-wide">
+                                {sub.subcategory}
+                              </p>
+                              <p className="text-slate-700 dark:text-slate-300 text-sm mt-1">
+                                {sub.details}
+                              </p>
+                            </div>
+                          ))}
+                      </div>
                     </div>
-                  ))}
+                  )}
+
+                  {/* Combined Travel + Accommodation Row */}
+                  <div>
+                    <h3 className="text-lg font-bold text-slate-800 dark:text-slate-200 mb-4">
+                      Travel & Accommodation
+                    </h3>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-center">
+                      {section.categories
+                        .filter(
+                          (c) =>
+                            c.category === "Travel" ||
+                            c.category === "Accommodation",
+                        )
+                        .map((item, idx) => (
+                          <div
+                            key={idx}
+                            className="relative p-6 rounded-2xl shadow-lg bg-gradient-to-tr from-white to-slate-50 dark:from-slate-800 dark:to-slate-700 border border-slate-200 dark:border-slate-700 flex flex-col gap-3 hover:scale-105 hover:shadow-2xl active:scale-95 transition-transform duration-300 min-h-[160px]"
+                          >
+                            <div className="absolute -top-4 -right-4 w-16 h-16 opacity-20 rounded-full bg-blue-100 dark:bg-blue-900/30"></div>
+                            <div className="flex items-center gap-3">
+                              <div className="w-10 h-10 bg-blue-50 dark:bg-blue-800 rounded-full flex items-center justify-center text-xl">
+                                {item.category === "Travel" ? "✈️" : "🏨"}
+                              </div>
+                              <p className="font-bold text-slate-800 dark:text-slate-200 text-sm uppercase tracking-wide">
+                                {item.category}
+                              </p>
+                            </div>
+                            <p className="text-slate-600 dark:text-slate-400 text-sm mt-2">
+                              {item.details}
+                            </p>
+                          </div>
+                        ))}
+                    </div>
+                  </div>
                 </div>
               )}
             </div>
@@ -856,12 +1077,72 @@ const SectionWrapper = ({ section }: { section: Section; key?: any }) => {
             </div>
           )}
 
+          {section.organizers && (
+            <div className="grid sm:grid-cols-2 md:grid-cols-5 gap-6">
+              {section.organizers.map((org, idx) => (
+                <OrganizerCard key={idx} organizer={org} />
+              ))}
+            </div>
+          )}
+
           {section.faqItems && <FAQAccordion items={section.faqItems} />}
 
           {section.schedule && <Schedule schedule={section.schedule} />}
+
+          {section.contact_data && (
+            <ContactSection data={section.contact_data} />
+          )}
         </motion.div>
       </div>
     </section>
+  );
+};
+
+const ContactSection = ({ data }: { data: any }) => {
+  return (
+    <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-stretch py-10">
+      {/* Contact Info */}
+      <div className="flex flex-col gap-6 bg-gradient-to-b from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-900 p-6 rounded-2xl shadow-lg min-h-full">
+        {/* Email */}
+        <div className="flex items-center gap-4 p-4 rounded-lg hover:bg-blue-50 dark:hover:bg-slate-700 transition-colors cursor-pointer shadow-sm">
+          <div className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900 text-blue-600">
+            <Mail className="w-5 h-5" />
+          </div>
+          <span className="text-slate-700 dark:text-slate-300 font-medium">
+            {data.email}
+          </span>
+        </div>
+
+        {/* Phone */}
+        <div className="flex items-center gap-4 p-4 rounded-lg hover:bg-blue-50 dark:hover:bg-slate-700 transition-colors cursor-pointer shadow-sm">
+          <div className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900 text-blue-600">
+            <Phone className="w-5 h-5" />
+          </div>
+          <span className="text-slate-700 dark:text-slate-300 font-medium">
+            {data.phone}
+          </span>
+        </div>
+
+        {/* Address */}
+        <div className="flex items-center gap-4 p-4 rounded-lg hover:bg-blue-50 dark:hover:bg-slate-700 transition-colors cursor-pointer shadow-sm">
+          <div className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900 text-blue-600">
+            <MapPin className="w-5 h-5" />
+          </div>
+          <span className="text-slate-700 dark:text-slate-300 font-medium">
+            {data.address}
+          </span>
+        </div>
+      </div>
+
+      {/* Map */}
+      <div className="min-h-full h-full rounded-2xl overflow-hidden shadow-xl border border-slate-200 dark:border-slate-700 relative">
+        <iframe
+          src={data.mapEmbed}
+          className="w-full h-full border-0 rounded-2xl"
+          loading="lazy"
+        ></iframe>
+      </div>
+    </div>
   );
 };
 
@@ -883,7 +1164,7 @@ const Sponsors = ({ data }: { data: ContentData }) => (
             href={sponsor.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="relative group transform transition-transform hover:scale-105"
+            className="relative group transform transition-transform hover:scale-105 active:scale-95"
           >
             {/* Circular badge container */}
             <div className="p-4 rounded-full bg-white dark:bg-slate-800 shadow-md dark:shadow-black/20 flex items-center justify-center w-48 h-48 md:w-48 md:h-48">
@@ -905,7 +1186,7 @@ const Sponsors = ({ data }: { data: ContentData }) => (
 );
 
 const Footer = ({ data }: { data: ContentData }) => (
-  <footer className="bg-slate-900 dark:bg-black text-white py-20">
+  <footer className="bg-slate-900 dark:bg-slate-950 text-white py-20">
     <div className="max-w-7xl mx-auto px-6">
       <div className="grid md:grid-cols-2 gap-12 items-center">
         <div>
@@ -916,7 +1197,7 @@ const Footer = ({ data }: { data: ContentData }) => (
           </p>
           <div className="flex gap-6">
             <a
-              href={`mailto:${data.contact.email}`}
+              href={`mailto:${data.footer.email}`}
               target="_blank"
               rel="noopener noreferrer"
               className="text-slate-400 hover:text-white transition-colors"
@@ -924,7 +1205,7 @@ const Footer = ({ data }: { data: ContentData }) => (
               <Mail className="w-6 h-6" />
             </a>
             <a
-              href={data.contact.website}
+              href={data.footer.website}
               target="_blank"
               rel="noopener noreferrer"
               className="text-slate-400 hover:text-white transition-colors"
@@ -932,7 +1213,7 @@ const Footer = ({ data }: { data: ContentData }) => (
               <Globe className="w-6 h-6" />
             </a>
             <a
-              href={data.contact.linkedin}
+              href={data.footer.linkedin}
               target="_blank"
               rel="noopener noreferrer"
               className="text-slate-400 hover:text-white transition-colors"
@@ -958,14 +1239,10 @@ export default function App() {
   const [error, setError] = useState<string | null>(null);
   const [theme, setTheme] = useState(() => {
     if (typeof window !== "undefined") {
-      return localStorage.getItem("theme") || "light";
+      return localStorage.getItem("theme") || "dark";
     }
     return "light";
   });
-
-  // useEffect(() => {
-  //   ReactGA.send({ hitType: "pageview", page: "/" });
-  // }, []);
 
   useEffect(() => {
     if (theme === "dark") {
@@ -984,7 +1261,6 @@ export default function App() {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          // "https://raw.githubusercontent.com/UPB-RAT/ieee-summer-school/refs/heads/main/public/data/content.json",
           "/ieee-summer-school/data/content.json",
         );
         if (!response.ok) {
@@ -1004,7 +1280,7 @@ export default function App() {
 
   if (loading) {
     return (
-      <div className="h-screen flex items-center justify-center bg-white">
+      <div className="h-screen flex items-center justify-center bg-white dark:bg-slate-900">
         <div className="w-12 h-12 border-4 border-blue-600 border-t-transparent rounded-full animate-spin" />
       </div>
     );
@@ -1012,10 +1288,12 @@ export default function App() {
 
   if (error || !data) {
     return (
-      <div className="h-screen flex items-center justify-center bg-white text-slate-900">
+      <div className="h-screen flex items-center justify-center bg-white dark:bg-slate-900 text-slate-900 dark:text-white">
         <div className="text-center">
           <h2 className="text-2xl font-bold mb-2">Oops!</h2>
-          <p className="text-slate-600">{error || "Failed to load content"}</p>
+          <p className="text-slate-600 dark:text-slate-400">
+            {error || "Failed to load content"}
+          </p>
         </div>
       </div>
     );
@@ -1034,6 +1312,7 @@ export default function App() {
 
       <Sponsors data={data} />
       <Footer data={data} />
+      <FloatingActions />
     </div>
   );
 }
