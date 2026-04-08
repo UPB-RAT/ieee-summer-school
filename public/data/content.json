@@ -27,7 +27,7 @@
           "name": "Prof. Dr. Erdal Kayacan",
           "affiliation": "Paderborn University",
           "topic": "Can we build drones that not only think but also adapt?",
-          "image": "https://pm.uni-paderborn.de/_Resources/Persistent/Thumbnails/310x310/98838.png",
+          "image": "/ieee-summer-school/assets/98838.png",
           "website": "https://www.uni-paderborn.de/en/person/98838",
           "abstract": "Automated co-design – the joint optimization of a robot’s morphology and its control policy – has recently caught more attention in robotics and artificial intelligence. Co-design frameworks explore the coupled space of structures and policies, allowing learning signals from control to inform morphology and, reciprocally, morphology to guide control."
         },
@@ -35,7 +35,7 @@
           "name": "Asst. Prof. Dr. Qinyu Chen",
           "affiliation": "Leiden University",
           "topic": "Low-Latency LLMs at the Edge",
-          "image": "https://www.universiteitleiden.nl/binaries/content/gallery/ul2/main-images/science/instituten/liacs/qinyu-chen.jpg/qinyu-chen.jpg/d200x250",
+          "image": "/ieee-summer-school/assets/qinyu-chen.jpg",
           "website": "https://www.universiteitleiden.nl/en/staffmembers/qinyu-chen",
           "abstract": "Large Language Models (LLMs) have demonstrated remarkable capabilities in perception, reasoning, and decision-making. However, their high computational cost and latency remain major obstacles for real-time deployment on resource-constrained platforms. In applications such as robotics and unmanned aerial vehicles, systems are required to perceive dynamic environments and respond within strict time constraints, making low-latency inference a critical requirement. This talk focuses on enabling low-latency LLM inference on mobile and edge platforms, including edge GPUs and specialized hardware accelerators. We first analyze the main sources of latency in modern LLMs, covering model architecture, memory access, and runtime execution. We then introduce a series of techniques for reducing computational complexity and inference delay, such as model compression, quantization, efficient attention mechanisms, and hardware-aware optimization"
         },
@@ -43,7 +43,7 @@
           "name": "Prof. Dr. Axel Ngonga",
           "affiliation": "Paderborn University",
           "topic": "Foundation Models for Knowledge Graphs",
-          "image": "https://pm.uni-paderborn.de/_Resources/Persistent/Thumbnails/310x310/65716.png",
+          "image": "/ieee-summer-school/assets/65716.png",
           "website": "https://www.uni-paderborn.de/person/65716",
           "abstract": "Foundation models are changed the way we interact with data. In particular, large language models have heralded novel approaches to accessing, integrating, fusing and using data at scale. However, this family of foundation models has also been chosen to be intrinsically limited with respect to their entropy and hence also to the guarantees they can deliver. In this talk, we argue that large language models should be coupled with foundation models for knowledge and exemplify how such  built for knowledge graphs, a family of data representation mechanism that marry explicit semantics with scale. We present some of the most recent results in this field and point open questions that must be answered to achieve the link between large language models and foundation models for knowledge graphs."
         },
@@ -51,7 +51,7 @@
           "name": "Prof. Dr.-Ing. Oliver Wallscheid",
           "affiliation": "Siegen University",
           "topic": "Meta reinforcement learning – a step towards generalizable control policies",
-          "image": "https://www.uni-siegen.de/files/default/styles/personal_profile_photo/public/media/image/2025-08/wallscheid06.jpg?h=1914d769&itok=JwuRIs6z",
+          "image": "/ieee-summer-school/assets/wallscheid06.jpg",
           "website": "https://www.uni-siegen.de/person/oliver-wallscheid",
           "abstract": "Meta reinforcement learning (meta-RL) aims to move from task-specific controllers toward generalizable control policies by learning from a distribution of optimal control problems rather than solving each instance from scratch. In the optimal control view, meta-RL learns how to adapt quickly—using only a small amount of new interaction data—to changes in dynamics, disturbances, constraints, or cost functions. This mini-lecture focuses on context-based meta-RL, where the policy is  on an inferred context variable that summarizes recent trajectories and rewards, yielding controllers of the form ut = π(xt, zt). The context zt acts as an online estimate of latent task properties (e.g., unknown parameters or regime shifts), connecting meta-RL to adaptive/Bayesian control while retaining RL scalability. We discuss key algorithmic patterns for context inference, and control-specific and deployment-relevant challenges."
         },
@@ -59,7 +59,7 @@
           "name": "Jun. Prof. Dr. David Kappel",
           "affiliation": "Bielefeld University",
           "topic": "Efficient probabilistic planning using diffusion models",
-          "image": "ieee-summer-school/data/kappel.JPG",
+          "image": "/ieee-summer-school/assets/kappel.jpg",
           "website": "https://ekvv.uni-bielefeld.de/pers_publ/publ/PersonDetail.jsp?personId=503068013",
           "abstract": "Diffusion models have emerged as a Swiss army knife of machine learning, capable of mastering complex and diverse tasks such as image generation, weather forecasting, and pattern completion. In recent years, they have also become one of the most powerful tools for solving complex planning problems. In this lecture, we will discuss the fundamentals of diffusion models, optimal transport and diffusion bridge models, exploring some of their theoretical properties and how they can be  complex probabilistic planning problems. We will also identify the computational bottlenecks of these models and discuss recently proposed methods for their efficient implementation."
         },
@@ -67,7 +67,7 @@
           "name": "Welf Peter Rehberg",
           "affiliation": "Norwegian University of Science and Technology",
           "topic": "Embodiment-Informed Foundational Models for Control and Navigation of Multirotor Systems",
-          "image": "https://backends.it.ntnu.no/user-profile-service/rest/files/c4b18c17-95d8-33a7-a760-ecaedc695eb7",
+          "image": "/ieee-summer-school/assets/rehberg.jpg",
           "website": "https://www.ntnu.edu/employees/welf.rehberg",
           "abstract": "Classical control and learning-based methods that are trained for specific robotic embodiments often require substantial effort to transfer to new systems. While models designed to generalize across families of systems can alleviate this limitation, they still depend on accurate information about the particular embodiment they operate on. Embodiment-Informed Foundation Models address this by conditioning explicitly on available information about the system, rather than relying on implicitly inferring embodiment details from observation histories."
         },
@@ -75,7 +75,7 @@
           "name": "Dr. Adrian Redder",
           "affiliation": "Paderborn University",
           "topic": "Shaping Success: A Practical Guide to Stability and Rewards in Deep Reinforcement Learning",
-          "image": "https://pm.uni-paderborn.de/_Resources/Persistent/Thumbnails/310x310/52265.png",
+          "image": "/ieee-summer-school/assets/52265.png",
           "website": "https://www.uni-paderborn.de/en/person/52265",
           "abstract": "Training DRL agents for robotic control is often less about algorithm choice and more about the rigorous design of a Markov Decision Process (MDP). This tutorial provides a deep dive into the critical components of training successful agents, with a specific focus on reward engineering. We will explore the ”dos and don’ts” of crafting reward signals, examining how to transition from sparse to dense rewards and how reward polarity (strictly positive vs. negative) fundamentally alters  agent’s approach to terminal states. Beyond reward shaping, we will cover essential preprocessing steps that stabilize training, such as state normalization techniques. We will also discuss common pitfalls, specifically explaining why regularization techniques such as dropout—while popular in supervised learning—often introduce detrimental variance in DRL contexts. Attendees will leave with a concrete checklist for debugging and refining their reinforcement learning setups."
         },
@@ -83,7 +83,7 @@
           "name": "Dr. Alper Yegenoglu",
           "affiliation": "Paderborn University",
           "topic": "Meta-learning for generalized trajectory tracking in aerial robotics",
-          "image": "https://pm.uni-paderborn.de/_Resources/Persistent/Thumbnails/310x310/117951.png",
+          "image": "/ieee-summer-school/assets/117951.png",
           "website": "https://www.uni-paderborn.de/en/person/117951",
           "abstract": "This lecture introduces meta-learning as a framework for enabling rapid adaptation and generalization in learning-based control systems. After an overview of core meta-learning and meta-reinforcement learning concepts and their relevance to robotics, we will focus on trajectory tracking in aerial robots as a motivating application. Drawing on recent work in meta-reinforcement learning, we will examine how control policies can be trained to generalize across a family of parameterized UAV trajectory tasks and adapt to new trajectories with minimal additional data. The lecture highlightshow shared structure can be exploited across tasks and how curriculum design influences generalization. The lecture aims to provide participants with both conceptual understanding and insight into applying meta-learning for generalized trajectory tracking in aerial robotics"
         },
@@ -91,7 +91,7 @@
           "name": "Dr. Erdi Sayar",
           "affiliation": "Paderborn University",
           "topic": "Bridging Generative Planning and Safe Control",
-          "image": "https://pm.uni-paderborn.de/_Resources/Persistent/Thumbnails/310x310/122059.png",
+          "image": "/ieee-summer-school/assets/122059.png",
           "website": "https://www.uni-paderborn.de/en/person/122059",
           "abstract": "Diffusion models have recently emerged as a powerful tool for robotic motion planning, capable of generating diverse and multimodal trajectories. However, because these models frame planning as a problem of probabilistic inference, they often lack the intrinsic ability to enforce strict physical constraints. This can lead to generated trajectories that violate system dynamics or result in collisions with obstacles. While existing literature suggests using guided diffusion to encourage safer behaviors or sequential projection methods to force trajectories into a safe set, applying these effectively remains a challenge. In this talk, we will explore and implement various techniques to ensure safety in generated plans. We will demonstrate how to handle environments with randomly placed obstacles and unsafe regions without the need for retraining the diffusion model. Participants will learn how to adapt these models to maintain safety across both static and dynamic environments, ensuring that the flexibility of generative modeling meets the rigor of physical safety requirements."
         }
@@ -257,47 +257,125 @@
       "content": "In addition to the lectures, the summer school will feature hands-on sessions where participants can apply the concepts learned in the lectures to real-world problems. These sessions will cover topics such as implementing diffusion models for motion planning, designing reward functions for reinforcement learning, and applying meta-learning techniques for rapid adaptation in robotic control. Participants will have the opportunity to work with state-of-the-art tools and frameworks, and receive guidance from experts in the field."
     },
     {
+      "id": "local-organizers",
+      "title": "Organizers",
+      "content": "The local team from Paderborn University will play a key role in the summer school by contributing to lectures, organizing hands-on sessions, and coordinating other on-site activities. Each member of the team brings extensive expertise in robotic simulation, navigation, and control algorithms, ensuring that participants gain both theoretical knowledge and practical skills. Their experience in designing, implementing, and testing robotic systems will allow attendees to engage deeply with advanced topics, receive personalized guidance during exercises, and benefit from real-world insights into state-of-the-art robotics research.",
+      "organizers": [
+        {
+          "name": "Dr. Adrian Redder",
+          "affiliation": "Paderborn University",
+          "image": "/ieee-summer-school/assets/52265.png"
+        },
+        {
+          "name": "Dr. Alper Yegenoglu",
+          "affiliation": "Paderborn University",
+          "image": "/ieee-summer-school/assets/117951.png"
+        },
+        {
+          "name": "Dr. Erdi Sayar",
+          "affiliation": "Paderborn University",
+          "image": "/ieee-summer-school/assets/122059.png"
+        },
+        {
+          "name": "Van Huyen Dang",
+          "affiliation": "Paderborn University",
+          "image": "/ieee-summer-school/assets/dang.png"
+        },
+        {
+          "name": "Quang Dung Dinh",
+          "affiliation": "Paderborn University",
+          "image": "/ieee-summer-school/assets/dinh.png"
+        },
+        {
+          "name": "Vikas Chidananda",
+          "affiliation": "Paderborn University",
+          "image": "/ieee-summer-school/assets/chidananda.png"
+        },
+        {
+          "name": "Hürkan Sahin",
+          "affiliation": "Paderborn University",
+          "image": "/ieee-summer-school/assets/sahin.png"
+        },
+        {
+          "name": "Sebnem Sariozkan",
+          "affiliation": "Paderborn University",
+          "image": "/ieee-summer-school/assets/sariozkan.png"
+        },
+        {
+          "name": "Dr. Marcus Hund",
+          "affiliation": "Paderborn University",
+          "image": "/ieee-summer-school/assets/hund.png"
+        }
+      ]
+    },
+    {
       "id": "venue",
       "title": "Logistics",
       "content": "The summer school will be held at Paderborn University, specifically in the O-Building. Paderborn is a historic city in Germany, known for its university and the world's largest computer museum. The venue is easily accessible by public transport and is located within walking distance of several hotels.",
-      "address": "Warburger Str. 100, 33098 Paderborn, Germany",
-      "googleMaps": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2485.466046777353!2d8.771216315768564!3d51.7056639796674!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47ba49f697f66a2f%3A0x4227219107990!2sPaderborn%20University!5e0!3m2!1sen!2sde!4v1625565000000!5m2!1sen!2sde",
       "airports": [
         "Paderborn-Lippstadt Airport (PAD) — 20 min by car",
         "Düsseldorf Airport (DUS) — 2 h by train",
         "Frankfurt Airport (FRA) — 3 h by train"
       ],
       "train": "Paderborn Hauptbahnhof, then Bus 4 or 9 to \"Uni/Südring\" (15 min)",
-      "accommodation": "Discounted rates at partner hotels near campus and the city centre — details will be sent after registration.",
+      "accommodation": {
+        "description": "Discounted rates at partner hotels near campus and the city centre — details will be sent after registration.",
+        "hotels": [
+          {
+            "name": "B&B Hotel Paderborn (Budget)",
+            "location": "Hafenstraße 31, 33102 Paderborn. Approx. 25 min via public transit.",
+            "rooms": "Single and Double rooms",
+            "price": "Starting at approx. $97 USD per night",
+            "contact": "https://www.hotel-bb.com/de/hotel/paderborn",
+            "booking": "Direct reservation via the website provided (includes breakfast)"
+          },
+          {
+            "name": "IntercityHotel Paderborn (Standard)",
+            "location": "Bahnhofstraße 29, 33102 Paderborn. Approx. 20 min via public transit.",
+            "rooms": "Standard and Superior rooms",
+            "price": "Starting at approx. $108 USD per night",
+            "contact": "https://hrewards.com/de/intercityhotel-paderborn",
+            "booking": "Reservations via the H Rewards portal (includes breakfast)"
+          },
+          {
+            "name": "Welcome Hotel Paderborn (Premium)",
+            "location": "Fürstenweg 13, 33102 Paderborn. Approx. 20 min via public transit.",
+            "rooms": "Comfort rooms and Suites",
+            "price": "Starting at approx. $145 USD per night",
+            "contact": "https://www.welcome-hotels.com/hotels/paderborn/",
+            "booking": "Direct reservation via the Welcome Hotel website (includes breakfast)"
+          }
+        ]
+      },
       "wifi": "Eduroam available campus-wide. Guest accounts provided on arrival."
     },
     {
       "id": "social",
-      "title": "Social Activities",
+      "title": "Networking",
       "content": "Beyond the technical sessions, we have organized several social events to help you network and enjoy the beautiful city of Paderborn.",
       "socialItems": [
         {
           "day": "Monday",
           "title": "Welcome Dinner",
-          "image": "https://imgs.search.brave.com/pFVkvsDMaNxYPMbmiZV3aFSWgR0hJPi14smjek5WmQY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMuc3F1YXJlc3Bh/Y2UtY2RuLmNvbS9j/b250ZW50L3YxLzYy/NWVkNjY1NjkwYmZi/MzUyMzVjOWI1Yi9j/YzYzMzdiZS1hMzM1/LTQ0M2UtYWJkNC00/YWJlNTVkMmI0MmQv/Q29uZmVyZW5jZStE/aW5uZXIucG5n",
+          "image": "/ieee-summer-school/assets/conference-dinner.png",
           "description": "A welcome dinner to facilitate initial introductions among participants in a relaxed atmosphere."
         },
         {
           "day": "Tuesday",
           "title": "Guided City Tour",
-          "image": "https://imgs.search.brave.com/olb7l9Hh41Z3fSCCSxxVs8CX2ULNRCP6V4c4Z4PFmi0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/cGFkZXJib3JuLmRl/L21pY3Jvc2l0ZS93/ZWxjb21lL3RvdXJp/c20tY3VsdHVyZS9z/cF9hdXRvXzEwNTYz/LnBocC5tZWRpYS80/MTE0MC9QYWRlcmJv/cm5fRG9tX0RpZWxl/bnBhZGVyX2tsZWlu/LmpwZy5zY2FsZWQv/YWU3YzkzNTlhZDMz/NDgxODMyNTY2M2U2/MjU5MWExNGIuanBn",
+          "image": "/ieee-summer-school/assets/guided-city-tour.jpg",
           "description": "A guided city tour organized by the City of Paderborn, showcasing the rich history and landmarks of the city."
         },
         {
           "day": "Wednesday",
           "title": "Outdoor Archery",
-          "image": "https://imgs.search.brave.com/Q6uvFpvfTmrsyGnKujamCPNZt_RQXFgL8t4GoUjKIjw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nb2tvbmZldHRp/LmNvbS84NTA2NC81/MDB4MC9ncm91cC1h/cmNoZXJ5LWxhdWdo/aW5nLW91dGRvb3Jz/LTU4amtrNG0xLndl/YnA",
+          "image": "/ieee-summer-school/assets/group-archery.jpg",
           "description": "An outdoor archery activity designed to promote team spirit, focus, and precision among attendees."
         },
         {
           "day": "Thursday",
           "title": "MuseumsForum Visit",
-          "image": "https://www.hnf.de/fileadmin/content/pictures/HNF/Dauerausstellung/Virtueller_Rundgang/Virtueller_Rundgang_EG.jpg",
+          "image": "/ieee-summer-school/assets/museum-forum.jpg",
           "description": "A farewell visit to the Heinz Nixdorf MuseumsForum, the world’s largest computer museum, exploring the history of computing."
         }
       ]
@@ -306,7 +384,32 @@
       "id": "registration",
       "title": "Registration",
       "content": "Registration is open to graduate students and researchers. IEEE CIS members receive a discounted rate. Applications must include a CV and a short statement of interest. All participants receive access to sessions, lunch, coffee breaks, welcome dinner, a name tag, USB drive with materials, a workshop T-shirt, note-taking supplies, a mug, and a certificate of participation.",
-      "deadline": "June 15, 2026",
+      "deadlines": [
+        {
+          "label": "Application Deadline",
+          "date": "June 10, 2026",
+          "bgGradient": "bg-gradient-to-r from-blue-600 to-blue-500",
+          "accentColor": "bg-blue-400"
+        },
+        {
+          "label": "Invitation Notification",
+          "date": "June 17, 2026",
+          "bgGradient": "bg-gradient-to-r from-purple-600 to-purple-500",
+          "accentColor": "bg-purple-400"
+        },
+        {
+          "label": "Fee Submission",
+          "date": "June 30, 2026",
+          "bgGradient": "bg-gradient-to-r from-green-600 to-green-500",
+          "accentColor": "bg-green-400"
+        },
+        {
+          "label": "Workshop Materials",
+          "date": "July 10, 2026",
+          "bgGradient": "bg-gradient-to-r from-pink-600 to-pink-500",
+          "accentColor": "bg-pink-400"
+        }
+      ],
       "link": "https://tally.so/r/b5r9jZ",
       "fees": [
         {
@@ -337,20 +440,26 @@
       "content": "We offer a variety of scholarships and support to encourage participation from outstanding students and underrepresented groups.",
       "categories": [
         {
-          "category": "Academic Merit",
-          "details": "10 free registrations for exceptionally strong students, selected based on academic merit (e.g., CGPA, publications, and overall academic achievements)."
+          "category": "Free Registration",
+          "subcategories": [
+
+            {
+              "subcategory": "Merit",
+              "details": "10 free registrations for exceptionally strong students, selected based on academic merit (e.g., CGPA, publications, and overall academic achievements)."
+            },
+            {
+              "subcategory": "Females",
+              "details": "5 free registrations reserved for female applicants to encourage gender diversity."
+            },
+            {
+              "subcategory": "Developing Countries",
+              "details": "5 free registrations for participants from developing countries."
+            }
+          ]
         },
         {
-          "category": "Female Applicants",
-          "details": "3 free registrations reserved for female applicants to encourage gender diversity."
-        },
-        {
-          "category": "Travel Support",
-          "details": "Travel support of up to €300 for 3 selected students."
-        },
-        {
-          "category": "Developing Countries",
-          "details": "3 free registrations for participants from developing countries."
+          "category": "Travel",
+          "details": "Travel support via reimbursements of up to €300 for 3 selected students."
         },
         {
           "category": "Accommodation",
@@ -384,26 +493,37 @@
           "answer": "Participants should have a basic understanding of Python and machine learning concepts."
         }
       ]
+    },
+    {
+      "id": "contact",
+      "title": "Contact",
+      "content": "Have questions about the CIS Summer School? Reach out to us anytime — we’re happy to help!",
+      "contact_data": {
+        "email": "cis-summerschool@uni-paderborn.de",
+        "phone": "+49 5251 60-0",
+        "address": "Paderborn University, Warburger Str. 100, 33098 Paderborn, Germany",
+        "mapEmbed": "https://www.google.com/maps?q=Paderborn+University&output=embed"
+      }
     }
   ],
   "sponsors": [
     {
       "name": "IEEE CIS",
-      "logo": "https://cis.ieee.org/images/files/template/cis-logo.png",
+      "logo": "/ieee-summer-school/assets/cis-logo.png",
       "link": "https://cis.ieee.org/"
     },
     {
       "name": "Paderborn University",
-      "logo": "https://www.uni-paderborn.de/_assets/41f313ddc60e6583fa91411440628db0/Dist/Media/images/upb-logo-de.svg",
+      "logo": "/ieee-summer-school/assets/upb-logo-de.svg",
       "link": "https://www.uni-paderborn.de/"
     },
     {
       "name": "COLOURS",
-      "logo": "https://colours-alliance.eu/wp-content/uploads/2024/05/New-logo-1.png",
+      "logo": "/ieee-summer-school/assets/colors-alliance.png",
       "link": "https://colours-alliance.eu/"
     }
   ],
-  "contact": {
+  "footer": {
     "email": "cis-summerschool2026@upb.de",
     "website": "https://en.ei.uni-paderborn.de/rat",
     "linkedin": "https://www.linkedin.com/company/upb-automatic-control-group"
