@@ -106,7 +106,7 @@
           "events": [
             {
               "time": "09:00 - 10:15",
-              "title": "Registration & Reception"
+              "title": "Welcome Speech by Prof. Dr. Heike Trautmann"
             },
             {
               "time": "10:15 - 10:45",
@@ -114,7 +114,8 @@
             },
             {
               "time": "10:45 - 12:00",
-              "title": "Plenary Talk 1"
+              "title": "Plenary Talk 1",
+              "speaker": "Prof. Dr. Erdal Kayacan"
             },
             {
               "time": "12:00 - 13:00",
@@ -122,7 +123,8 @@
             },
             {
               "time": "13:00 - 14:15",
-              "title": "Lecture 1"
+              "title": "Lecture 1",
+              "speaker": "Dr. Adrian Redder"
             },
             {
               "time": "14:15 - 14:45",
@@ -143,7 +145,8 @@
           "events": [
             {
               "time": "09:00 - 10:15",
-              "title": "Plenary Talk 2"
+              "title": "Plenary Talk 2",
+              "speaker": "Jun. Prof. Dr. David Kappel"
             },
             {
               "time": "10:15 - 10:45",
@@ -151,7 +154,8 @@
             },
             {
               "time": "10:45 - 12:00",
-              "title": "Lecture 2"
+              "title": "Lecture 2",
+              "speaker": "Dr. Erdi Sayar"
             },
             {
               "time": "12:00 - 13:00",
@@ -159,7 +163,8 @@
             },
             {
               "time": "13:00 - 14:15",
-              "title": "Lecture 3"
+              "title": "Lecture 3",
+              "speaker": "Welf Peter Rehberg"
             },
             {
               "time": "14:15 - 14:45",
@@ -180,7 +185,8 @@
           "events": [
             {
               "time": "09:00 - 10:15",
-              "title": "Plenary Talk 3"
+              "title": "Plenary Talk 3",
+              "speaker": "Prof. Dr.-Ing. Oliver Wallscheid"
             },
             {
               "time": "10:15 - 10:45",
@@ -188,7 +194,8 @@
             },
             {
               "time": "10:45 - 12:00",
-              "title": "Lecture 4"
+              "title": "Lecture 4",
+              "speaker": "Dr. Alper Yegenoglu"
             },
             {
               "time": "12:00 - 13:00",
@@ -217,7 +224,8 @@
           "events": [
             {
               "time": "09:00 - 10:15",
-              "title": "Plenary Talk 4"
+              "title": "Plenary Talk 4",
+              "speaker": "Prof. Dr. Axel Ngonga"
             },
             {
               "time": "10:15 - 10:45",
@@ -225,7 +233,8 @@
             },
             {
               "time": "10:45 - 12:00",
-              "title": "Lecture 5"
+              "title": "Lecture 5",
+              "speaker": "Asst. Prof. Dr. Qinyu Chen"
             },
             {
               "time": "12:00 - 13:00",
@@ -254,11 +263,23 @@
     {
       "id": "handson",
       "title": "Sessions",
-      "content": "In addition to the talks, the summer school will feature hands-on sessions where participants can apply the concepts learned in the lectures to real-world problems. These sessions will cover topics such as implementing diffusion models for motion planning, designing reward functions for reinforcement learning, and applying meta-learning techniques for rapid adaptation in robotic control. Participants will have the opportunity to work with state-of-the-art tools and frameworks, and receive guidance from experts in the field."
+      "content": "In addition to the talks, the summer school will feature hands-on sessions where participants can apply the concepts learned in the lectures to real-world problems. These sessions will cover topics such as implementing diffusion models for motion planning, designing reward functions for reinforcement learning, and applying meta-learning techniques for rapid adaptation in robotic control. Participants will have the opportunity to work with state-of-the-art tools and frameworks, and receive guidance from experts in the field.",
+      "sessionCards": [
+        {
+          "title": "Isaac Sim Session 1",
+          "description": "Isaac simulation session for training",
+          "image": "/ieee-summer-school/assets/isaacsim_task1.jpg"
+        },
+        {
+          "title": "Isaac Sim Session 2",
+          "description": "Isaac simulation session for training",
+          "image": "/ieee-summer-school/assets/isaacsim_task2.jpg" 
+        }
+      ]
     },
     {
       "id": "local-organizers",
-      "title": "Organizers",
+      "title": "Local Organizers",
       "content": "The local team from Paderborn University will play a key role in the summer school by contributing to lectures, organizing hands-on sessions, and coordinating other on-site activities. Each member of the team brings extensive expertise in robotic simulation, navigation, and control algorithms, ensuring that participants gain both theoretical knowledge and practical skills. Their experience in designing, implementing, and testing robotic systems will allow attendees to engage deeply with advanced topics, receive personalized guidance during exercises, and benefit from real-world insights into state-of-the-art robotics research.",
       "organizers": [
         {
@@ -311,7 +332,7 @@
     {
       "id": "venue",
       "title": "Logistics",
-      "content": "The summer school will be held at Paderborn University, specifically in the O-Building. Paderborn is a historic city in Germany, known for its university and the world's largest computer museum. The venue is easily accessible by public transport and is located within walking distance of several hotels.",
+      "content": "The summer school will be held at Paderborn University. Paderborn is a historic city in Germany, known for its university and the world's largest computer museum. The venue is easily accessible by public transport and is located within walking distance of several hotels.",
       "airports": [
         "Paderborn-Lippstadt Airport (PAD) — 20 min by car",
         "Düsseldorf Airport (DUS) — 2 h by train",
@@ -356,9 +377,9 @@
       "socialItems": [
         {
           "day": "Monday",
-          "title": "Welcome Dinner",
-          "image": "/ieee-summer-school/assets/conference-dinner.png",
-          "description": "A welcome dinner to facilitate initial introductions among participants in a relaxed atmosphere."
+          "title": "Welcome Dinner and Social Mixer",
+          "image": "/ieee-summer-school/assets/dinner_prof.jpeg",
+          "description": "A welcome dinner to facilitate initial introductions among participants in a relaxed atmosphere. The evening will include icebreaker activities to encourage interaction and foster connections among participants."
         },
         {
           "day": "Tuesday",
@@ -369,7 +390,7 @@
         {
           "day": "Wednesday",
           "title": "Outdoor Archery",
-          "image": "/ieee-summer-school/assets/group-archery.jpg",
+          "image": "/ieee-summer-school/assets/archery.jpeg",
           "description": "An outdoor archery activity designed to promote team spirit, focus, and precision among attendees."
         },
         {
@@ -402,12 +423,6 @@
           "date": "June 30, 2026",
           "bgGradient": "bg-gradient-to-r from-green-600 to-green-500",
           "accentColor": "bg-green-400"
-        },
-        {
-          "label": "Workshop Materials",
-          "date": "July 10, 2026",
-          "bgGradient": "bg-gradient-to-r from-pink-600 to-pink-500",
-          "accentColor": "bg-pink-400"
         }
       ],
       "link": "https://tally.so/r/b5r9jZ",
@@ -437,7 +452,7 @@
     {
       "id": "scholarships",
       "title": "Scholarships",
-      "content": "We offer a variety of scholarships and support to encourage participation from outstanding students and underrepresented groups.",
+      "content": "We offer a variety of scholarships and support to encourage participation from outstanding students and underrepresented groups. All scholarships will be provided as reimbursements after successful participation. Students will be informed about scholarship decisions one week after the application deadline.",
       "categories": [
         {
           "category": "Free Registration",
@@ -459,7 +474,7 @@
         },
         {
           "category": "Travel",
-          "details": "Travel support via reimbursements of up to €300 for 3 selected students."
+          "details": "Travel support of up to €300 for 3 selected students."
         },
         {
           "category": "Accommodation",
@@ -499,8 +514,7 @@
       "title": "Contact",
       "content": "Have questions about the CIS Summer School? Reach out to us anytime — we’re happy to help!",
       "contact_data": {
-        "email": "cis-summerschool@uni-paderborn.de",
-        "phone": "+49 5251 60-0",
+        "email": "upbacgroup@gmail.com",
         "address": "Paderborn University, Warburger Str. 100, 33098 Paderborn, Germany",
         "mapEmbed": "https://www.google.com/maps?q=Paderborn+University&output=embed"
       }
@@ -524,8 +538,60 @@
     }
   ],
   "footer": {
-    "email": "cis-summerschool2026@upb.de",
+    "email": "upbacgroup@gmail.com",
     "website": "https://en.ei.uni-paderborn.de/rat",
     "linkedin": "https://www.linkedin.com/company/upb-automatic-control-group"
+  },
+  "legal": {
+    "impressum": {
+      "title": "Impressum",
+      "sections": [
+        {
+          "heading": "Information according to §5 DDG",
+          "text": "Prof. Dr. Erdal Kayacan\nPaderborn University\nWarburger Str. 100\n33098 Paderborn, Germany"
+        },
+        {
+          "heading": "Represented by",
+          "text": "Ekansh Bajpai"
+        },
+        {
+          "heading": "Contact",
+          "text": "Phone: +49 15906175652\nEmail: ekansh@mail.uni-paderborn.de"
+        },
+        {
+          "heading": "Consumer Dispute Resolution / Universal Arbitration Board",
+          "text": "We do not participate in dispute resolution proceedings before a consumer arbitration board and are not obliged to do so."
+        },
+        {
+          "heading": "Liability for Content",
+          "text": "The contents of our pages have been created with the utmost care. However, we cannot guarantee the accuracy, completeness and timeliness of the content. As a service provider, we are responsible for our own content on these pages in accordance with general laws, in accordance with § 7 para.1 DDG. However, according to §§ 8 to 10 DDG, we as service providers are not obliged to monitor transmitted or stored third-party information or to research circumstances that indicate an unlawful activity. This does not affect obligations to remove or block the use of information under general laws. However, liability in this regard is only possible from the moment of knowledge of a specific infringement.If any such violations become known, we will immediately remove this content."
+        },
+        {
+          "heading": "Copyright",
+          "text": "The content and works on these pages created by the site operators are subject to German copyright law. Reproduction, editing, distribution and any kind of exploitation outside the limits of copyright require the written consent of the respective author or creator. Downloads and copies of this page are permitted for private, non-commercial use only. To the extent that the content on this page has not been created by the operator, the copyrights of third parties will be respected. In particular, third-party content is marked as such. If you still become aware of a copyright infringement, please let us know. If violations become known, we will immediately remove such content."
+        }
+      ]
+    },
+    "privacy": {
+      "title": "Datenschutz",
+      "sections": [
+        {
+          "heading": "General Information",
+          "text": "This website processes personal data in accordance with GDPR."
+        },
+        {
+          "heading": "Google Analytics",
+          "text": "This website uses Google Analytics, a web analytics service provided by Google Ireland Limited. Cookies are used to analyze website usage."
+        },
+        {
+          "heading": "IP Anonymization",
+          "text": "IP anonymization is enabled on this website."
+        },
+        {
+          "heading": "Opt-out",
+          "text": "https://tools.google.com/dlpage/gaoptout"
+        }
+      ]
+    }
   }
 }
