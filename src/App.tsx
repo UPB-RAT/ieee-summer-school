@@ -34,6 +34,8 @@ import {
 import { useState, useEffect } from "react";
 import { ContentData, Section, Speaker, DaySchedule } from "./types";
 
+const VITE_GOOGLE_ANALYTICS_ID = import.meta.env.VITE_GOOGLE_ANALYTICS_ID;
+
 const getEventMeta = (title: string) => {
   const t = title.toLowerCase();
 
@@ -54,6 +56,130 @@ const getTimeSlots = (schedule: DaySchedule[]) => {
   const set = new Set<string>();
   schedule.forEach((day) => day.events.forEach((e) => set.add(e.time)));
   return Array.from(set).sort();
+};
+
+const LegalModal = ({
+  show,
+  setShow,
+  legal,
+  initialTab,
+}: {
+  show: boolean;
+  setShow: (b: boolean) => void;
+  legal: any;
+  initialTab: "impressum" | "privacy";
+}) => {
+  const [activeTab, setActiveTab] = useState(initialTab);
+
+  // IMPORTANT: sync when user clicks different footer link
+  useEffect(() => {
+    setActiveTab(initialTab);
+  }, [initialTab]);
+
+  useEffect(() => {
+    if (show) document.body.style.overflow = "hidden";
+    else document.body.style.overflow = "auto";
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [show]);
+
+  if (!show) return null;
+
+  const current = legal[activeTab];
+
+  return (
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
+      {/* Backdrop */}
+      <div
+        className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+        onClick={() => setShow(false)}
+      />
+
+      {/* Modal */}
+      <div className="relative z-10 w-full max-w-3xl bg-white dark:bg-slate-900 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700 p-6 max-h-[90vh] overflow-auto">
+        {/* Header */}
+        <div className="flex justify-between items-center mb-6">
+          <h2 className="text-lg font-bold text-slate-900 dark:text-white">
+            {current.title}
+          </h2>
+          <button onClick={() => setShow(false)}>✕</button>
+        </div>
+
+        {/* Tabs */}
+        <div className="flex gap-6 border-b mb-6">
+          <button
+            onClick={() => setActiveTab("impressum")}
+            className={`pb-2 font-semibold ${
+              activeTab === "impressum"
+                ? "border-b-2 border-blue-600 text-blue-600"
+                : "text-slate-500"
+            }`}
+          >
+            Impressum
+          </button>
+
+          <button
+            onClick={() => setActiveTab("privacy")}
+            className={`pb-2 font-semibold ${
+              activeTab === "privacy"
+                ? "border-b-2 border-blue-600 text-blue-600"
+                : "text-slate-500"
+            }`}
+          >
+            Datenschutz
+          </button>
+        </div>
+
+        {/* Content */}
+        <div className="space-y-6 text-sm text-slate-700 dark:text-slate-300">
+          {current.sections.map((section: any, idx: number) => (
+            <div key={idx}>
+              <h3 className="font-semibold mb-1">{section.heading}</h3>
+              <p className="whitespace-pre-line leading-relaxed">
+                {section.text}
+              </p>
+            </div>
+          ))}
+          {activeTab === "impressum" && (
+            <p>
+              Created with the{" "}
+              <a href="https://impressum-generator.de" rel="dofollow">
+                Impressum-Generator
+              </a>{" "}
+              from WebsiteWissen.com, the guide for{" "}
+              <a
+                href="https://websitewissen.com/website-erstellen"
+                rel="dofollow"
+              >
+                Website creation
+              </a>
+              ,{" "}
+              <a
+                href="https://websitewissen.com/homepage-baukasten-vergleich"
+                rel="dofollow"
+              >
+                Homepage construction kits
+              </a>{" "}
+              und{" "}
+              <a
+                href="https://websitewissen.com/shopsysteme-vergleich"
+                rel="dofollow"
+              >
+                Shop systems
+              </a>
+              . Legal text from the{" "}
+              <a href="https://www.kanzlei-hasselbach.de/" rel="dofollow">
+                Hasselbach Law Firm
+              </a>
+              .
+            </p>
+          )}
+        </div>
+      </div>
+    </div>
+  );
 };
 
 const FloatingActions = () => (
@@ -166,10 +292,7 @@ const Navbar = ({
               <Moon className="w-5 h-5" />
             )}
           </button>
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="p-2"
-          >
+          <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="p-2">
             {isMenuOpen ? (
               <X
                 className={
@@ -474,6 +597,35 @@ const SocialCard = ({ item }: { item: any }) => (
   </motion.div>
 );
 
+const SessionCard = ({ item }: { item: any }) => (
+  <motion.div
+    whileHover={{ y: -5 }}
+    whileTap={{ scale: 0.98 }}
+    className="group bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded-2xl shadow-sm hover:shadow-xl transition-all flex flex-col overflow-hidden"
+  >
+    {/* Top image */}
+    <div className="relative w-full h-40 md:h-48 overflow-hidden">
+      <img
+        src={item.image}
+        alt={item.title}
+        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+      />
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+    </div>
+
+    {/* Content */}
+    <div className="p-6 flex flex-col gap-3">
+      <h3 className="text-lg md:text-xl font-bold text-slate-900 dark:text-white">
+        {item.title}
+      </h3>
+      <p className="text-sm md:text-base text-slate-500 dark:text-slate-400 leading-relaxed">
+        {item.description}
+      </p>
+    </div>
+  </motion.div>
+);
+
 const OrganizerCard = ({ organizer }: { organizer: any }) => (
   <motion.div
     whileHover={{ y: -5 }}
@@ -611,18 +763,29 @@ const Schedule = ({ schedule }: { schedule: DaySchedule[] }) => {
 
                 {/* Card - full width on mobile (indented), alternating on desktop */}
                 <div
-                  className={`w-full md:w-[45%] p-5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm hover:shadow-md transition ml-16 md:ml-0 ${
-                    isLeft ? "md:mr-auto md:pr-8" : "md:ml-auto md:pl-8"
-                  }`}
+                  className={`w-full md:w-[45%] p-6 rounded-2xl border border-slate-200 dark:border-slate-700 
+  bg-white/80 dark:bg-slate-800/80 backdrop-blur shadow-sm hover:shadow-lg 
+  transition-all duration-300 ml-12 md:ml-0 ${
+    isLeft ? "md:mr-auto md:pr-10" : "md:ml-auto md:pl-10"
+  }`}
                 >
-                  <div className="text-blue-600 dark:text-blue-400 font-mono text-sm font-semibold mb-1">
+                  {/* Time */}
+                  <div className="text-blue-600 dark:text-blue-400 font-mono text-xs font-semibold tracking-wide mb-2">
                     {event.time}
                   </div>
 
-                  <div className="text-slate-800 dark:text-slate-200 font-semibold flex items-center gap-2">
-                    <Icon className="w-4 h-4 opacity-70" />
-                    {event.title}
+                  {/* Title */}
+                  <div className="text-slate-900 dark:text-slate-100 font-semibold flex items-center gap-2 text-base">
+                    <Icon className="w-4 h-4 opacity-70 shrink-0" />
+                    <span>{event.title}</span>
                   </div>
+
+                  {/* Speaker */}
+                  {event.speaker && (
+                    <div className="mt-1 text-slate-600 dark:text-slate-400 text-sm">
+                      {event.speaker}
+                    </div>
+                  )}
                 </div>
               </div>
             );
@@ -714,6 +877,11 @@ const Schedule = ({ schedule }: { schedule: DaySchedule[] }) => {
                                   <span className="font-semibold text-xs leading-tight">
                                     {event.title}
                                   </span>
+                                  {event.speaker && (
+                                    <span className="text-xs text-slate-200">
+                                      {event.speaker}
+                                    </span>
+                                  )}
                                 </div>
                               </td>
                             );
@@ -1092,6 +1260,14 @@ const SectionWrapper = ({ section }: { section: Section }) => {
           {section.contact_data && (
             <ContactSection data={section.contact_data} />
           )}
+
+          {section.sessionCards && (
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {section.sessionCards.map((item, idx) => (
+                <SessionCard key={idx} item={item} />
+              ))}
+            </div>
+          )}
         </motion.div>
       </div>
     </section>
@@ -1114,14 +1290,14 @@ const ContactSection = ({ data }: { data: any }) => {
         </div>
 
         {/* Phone */}
-        <div className="flex items-center gap-4 p-4 rounded-lg hover:bg-blue-50 dark:hover:bg-slate-700 transition-colors cursor-pointer shadow-sm">
+        {/* <div className="flex items-center gap-4 p-4 rounded-lg hover:bg-blue-50 dark:hover:bg-slate-700 transition-colors cursor-pointer shadow-sm">
           <div className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900 text-blue-600">
             <Phone className="w-5 h-5" />
           </div>
           <span className="text-slate-700 dark:text-slate-300 font-medium">
             {data.phone}
           </span>
-        </div>
+        </div> */}
 
         {/* Address */}
         <div className="flex items-center gap-4 p-4 rounded-lg hover:bg-blue-50 dark:hover:bg-slate-700 transition-colors cursor-pointer shadow-sm">
@@ -1167,7 +1343,11 @@ const Sponsors = ({ data }: { data: ContentData }) => (
             className="relative group transform transition-transform hover:scale-105 active:scale-95"
           >
             {/* Circular badge container */}
-            <div className="p-4 rounded-full bg-white dark:bg-slate-800 shadow-md dark:shadow-black/20 flex items-center justify-center w-48 h-48 md:w-48 md:h-48">
+            <div
+              className="p-4 rounded-full bg-white shadow-md dark:shadow-black/30 
+                   ring-1 ring-slate-200 flex items-center justify-center 
+                   w-48 h-48"
+            >
               <img
                 src={sponsor.logo}
                 alt={sponsor.name}
@@ -1185,64 +1365,199 @@ const Sponsors = ({ data }: { data: ContentData }) => (
   </section>
 );
 
-const Footer = ({ data }: { data: ContentData }) => (
-  <footer className="bg-slate-900 dark:bg-slate-950 text-white py-20">
-    <div className="max-w-7xl mx-auto px-6">
-      <div className="grid md:grid-cols-2 gap-12 items-center">
-        <div>
-          <h2 className="text-3xl font-bold mb-6">{data.school.title}</h2>
-          <p className="text-slate-400 max-w-md mb-8">
-            An IEEE Computational Intelligence Society initiative hosted by
-            Paderborn University.
-          </p>
-          <div className="flex gap-6">
-            <a
-              href={`mailto:${data.footer.email}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-slate-400 hover:text-white transition-colors"
-            >
-              <Mail className="w-6 h-6" />
-            </a>
-            <a
-              href={data.footer.website}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-slate-400 hover:text-white transition-colors"
-            >
-              <Globe className="w-6 h-6" />
-            </a>
-            <a
-              href={data.footer.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-slate-400 hover:text-white transition-colors"
-            >
-              <Linkedin className="w-6 h-6" />
-            </a>
+const Footer = ({
+  data,
+  openModal,
+}: {
+  data: ContentData;
+  openModal: (tab: "impressum" | "privacy") => void;
+}) => {
+  const socialClass =
+    "text-slate-400 hover:text-white transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-white/30 rounded";
+
+  const legalClass =
+    "hover:text-white transition-colors cursor-pointer focus:outline-none focus:underline";
+
+  return (
+    <footer className="bg-slate-900 dark:bg-slate-950 text-white py-20">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          {/* LEFT */}
+          <div>
+            <h2 className="text-3xl font-bold mb-6">{data.school.title}</h2>
+
+            <p className="text-slate-400 max-w-md mb-8">
+              An IEEE Computational Intelligence Society initiative hosted by
+              Paderborn University.
+            </p>
+
+            {/* Social Links */}
+            <div className="flex gap-6 mb-6">
+              <a
+                href={`mailto:${data.footer.email}`}
+                aria-label="Send email"
+                className={socialClass}
+              >
+                <Mail className="w-6 h-6" />
+              </a>
+
+              <a
+                href={data.footer.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit website"
+                className={socialClass}
+              >
+                <Globe className="w-6 h-6" />
+              </a>
+
+              <a
+                href={data.footer.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn profile"
+                className={socialClass}
+              >
+                <Linkedin className="w-6 h-6" />
+              </a>
+            </div>
+          </div>
+
+          {/* RIGHT */}
+          <div className="flex flex-col items-start md:items-end text-slate-500 text-sm gap-4">
+            <div className="text-left md:text-right">
+              <p>© 2026 IEEE CIS Summer School. All rights reserved.</p>
+
+              <p className="mt-2">
+                Designed for the Computational Intelligence in Robotics
+                community.
+              </p>
+            </div>
+
+            {/* Legal Links */}
+            <div className="flex gap-6 text-slate-400">
+              <button
+                onClick={() => openModal("impressum")}
+                className={legalClass}
+              >
+                Impressum
+              </button>
+
+              <button
+                onClick={() => openModal("privacy")}
+                className={legalClass}
+              >
+                Datenschutz
+              </button>
+            </div>
           </div>
         </div>
-        <div className="text-right md:text-right text-slate-500 text-sm">
-          <p>© 2026 IEEE CIS Summer School. All rights reserved.</p>
-          <p className="mt-2">
-            Designed for the Computational Intelligence in Robotics community.
-          </p>
+      </div>
+    </footer>
+  );
+};
+
+const CookieConsent = ({
+  onAccept,
+  onReject,
+}: {
+  onAccept: () => void;
+  onReject: () => void;
+}) => {
+  return (
+    <div className="fixed bottom-0 left-0 right-0 z-[9999] bg-slate-900 text-white p-4 shadow-lg">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+        <p className="text-sm text-slate-300">
+          We use cookies (Google Analytics) to analyze website traffic. You can
+          accept or reject analytics tracking.
+        </p>
+
+        <div className="flex gap-3">
+          <button
+            onClick={onReject}
+            className="px-4 py-2 text-sm bg-slate-700 hover:bg-slate-600 rounded cursor-pointer"
+          >
+            Reject
+          </button>
+
+          <button
+            onClick={onAccept}
+            className="px-4 py-2 text-sm bg-blue-600 hover:bg-blue-500 rounded cursor-pointer"
+          >
+            Accept
+          </button>
         </div>
       </div>
     </div>
-  </footer>
-);
+  );
+};
 
 export default function App() {
   const [data, setData] = useState<ContentData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [showLegal, setShowLegal] = useState(false);
+  const [consent, setConsent] = useState<"accepted" | "rejected" | null>(null);
+  const [activeLegalTab, setActiveLegalTab] = useState<"impressum" | "privacy">(
+    "impressum",
+  );
   const [theme, setTheme] = useState(() => {
     if (typeof window !== "undefined") {
       return localStorage.getItem("theme") || "dark";
     }
     return "light";
   });
+
+  const openLegal = (tab: "impressum" | "privacy") => {
+    setActiveLegalTab(tab);
+    setShowLegal(true);
+  };
+
+  useEffect(() => {
+    const saved = localStorage.getItem("cookie-consent");
+
+    if (saved === "accepted") {
+      setConsent("accepted");
+      loadGoogleAnalytics();
+    } else if (saved === "rejected") {
+      setConsent("rejected");
+    }
+  }, []);
+
+  const loadGoogleAnalytics = () => {
+    if (window.gtag) return; // prevent duplicate load
+
+    const script = document.createElement("script");
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${VITE_GOOGLE_ANALYTICS_ID}`;
+    script.async = true;
+    document.head.appendChild(script);
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag(...args: any[]) {
+      window.dataLayer.push(args);
+    }
+
+    window.gtag = gtag;
+
+    gtag("js", new Date());
+
+    gtag("config", VITE_GOOGLE_ANALYTICS_ID, {
+      anonymize_ip: true,
+      allow_google_signals: false,
+      allow_ad_personalization_signals: false,
+    });
+  };
+
+  const handleAccept = () => {
+    localStorage.setItem("cookie-consent", "accepted");
+    setConsent("accepted");
+    loadGoogleAnalytics();
+  };
+
+  const handleReject = () => {
+    localStorage.setItem("cookie-consent", "rejected");
+    setConsent("rejected");
+  };
 
   useEffect(() => {
     if (theme === "dark") {
@@ -1260,9 +1575,7 @@ export default function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(
-          "/ieee-summer-school/data/content.json",
-        );
+        const response = await fetch("/ieee-summer-school/data/content.json");
         if (!response.ok) {
           throw new Error("Failed to fetch content");
         }
@@ -1311,8 +1624,17 @@ export default function App() {
       </main>
 
       <Sponsors data={data} />
-      <Footer data={data} />
+      <Footer data={data} openModal={openLegal} />
+      <LegalModal
+        show={showLegal}
+        setShow={setShowLegal}
+        legal={data.legal}
+        initialTab={activeLegalTab}
+      />
       <FloatingActions />
+      {consent === null && (
+        <CookieConsent onAccept={handleAccept} onReject={handleReject} />
+      )}
     </div>
   );
 }
