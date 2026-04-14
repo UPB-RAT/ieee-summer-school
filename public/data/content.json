@@ -5,7 +5,8 @@
     "dates": "July 27 - 30, 2026",
     "location": "Paderborn University, Germany",
     "description": "Join us for an intensive four-day summer school focusing on the latest advancements in Computational Intelligence applied to Robotics. This program features world-renowned speakers, hands-on workshops, and networking opportunities for PhD students and early-career researchers.",
-    "heroImage": "/ieee-summer-school/assets/PB.jpg"
+    "heroImage": "/ieee-summer-school/assets/PB.jpg",
+    "extraText": "Free accommodation for all participants, provided in shared rooms (3 people per room)."
   },
   "sections": [
     {
@@ -109,12 +110,17 @@
               "title": "Welcome Speech by Prof. Dr. Heike Trautmann"
             },
             {
+              "time": "09:30 - 10:15",
+              "title": "Plenary Talk 1",
+              "speaker": "Prof. Dr. Erdal Kayacan"
+            },
+            {
               "time": "10:15 - 10:45",
               "title": "Coffee Break"
             },
             {
               "time": "10:45 - 12:00",
-              "title": "Plenary Talk 1",
+              "title": "Plenary Talk 2",
               "speaker": "Prof. Dr. Erdal Kayacan"
             },
             {
@@ -233,7 +239,7 @@
             },
             {
               "time": "10:45 - 12:00",
-              "title": "Lecture 5",
+              "title": "Plenary Talk 5",
               "speaker": "Asst. Prof. Dr. Qinyu Chen"
             },
             {
@@ -285,47 +291,56 @@
         {
           "name": "Dr. Adrian Redder",
           "affiliation": "Paderborn University",
-          "image": "/ieee-summer-school/assets/52265.png"
+          "image": "/ieee-summer-school/assets/52265.png",
+          "link": "https://www.uni-paderborn.de/person/52265"
         },
         {
           "name": "Dr. Alper Yegenoglu",
           "affiliation": "Paderborn University",
-          "image": "/ieee-summer-school/assets/117951.png"
+          "image": "/ieee-summer-school/assets/117951.png",
+          "link": "https://www.uni-paderborn.de/person/117951"
         },
         {
           "name": "Dr. Erdi Sayar",
           "affiliation": "Paderborn University",
-          "image": "/ieee-summer-school/assets/122059.png"
+          "image": "/ieee-summer-school/assets/122059.png",
+          "link": "https://www.uni-paderborn.de/person/122059"
         },
         {
           "name": "Van Huyen Dang",
           "affiliation": "Paderborn University",
-          "image": "/ieee-summer-school/assets/dang.png"
+          "image": "/ieee-summer-school/assets/dang.png",
+          "link": "https://www.uni-paderborn.de/person/103900"
         },
         {
           "name": "Quang Dung Dinh",
           "affiliation": "Paderborn University",
-          "image": "/ieee-summer-school/assets/dinh.png"
+          "image": "/ieee-summer-school/assets/dinh.png",
+          "link": "https://www.uni-paderborn.de/person/114179"
         },
         {
           "name": "Vikas Chidananda",
           "affiliation": "Paderborn University",
-          "image": "/ieee-summer-school/assets/chidananda.png"
+          "image": "/ieee-summer-school/assets/chidananda.png",
+          "link": "https://www.uni-paderborn.de/person/82373"
         },
         {
           "name": "Hürkan Sahin",
           "affiliation": "Paderborn University",
-          "image": "/ieee-summer-school/assets/sahin.png"
+          "image": "/ieee-summer-school/assets/sahin.png",
+          "link": "https://www.uni-paderborn.de/person/94526"
         },
         {
           "name": "Sebnem Sariozkan",
           "affiliation": "Paderborn University",
-          "image": "/ieee-summer-school/assets/sariozkan.png"
+          "image": "/ieee-summer-school/assets/sariozkan.png",
+          "link": "https://www.uni-paderborn.de/person/94456"
         },
         {
           "name": "Dr. Marcus Hund",
           "affiliation": "Paderborn University",
-          "image": "/ieee-summer-school/assets/hund.png"
+          "image": "/ieee-summer-school/assets/hund.png",
+          "link": "https://www.uni-paderborn.de/person/238"
         }
       ]
     },
@@ -338,7 +353,7 @@
         "Düsseldorf Airport (DUS) — 2 h by train",
         "Frankfurt Airport (FRA) — 3 h by train"
       ],
-      "train": "Paderborn Hauptbahnhof, then Bus 4 or 9 to \"Uni/Südring\" (15 min)",
+      "train": "From Paderborn Hauptbahnhof, take Bus 4 or Bus 1 to \"Uni/Südring\", or Bus 6, Bus 480, S85, or Bus 100 to \"Uni/Schöne Aussicht\" (15 min).",
       "accommodation": {
         "description": "Discounted rates at partner hotels near campus and the city centre — details will be sent after registration.",
         "hotels": [
@@ -396,7 +411,7 @@
         {
           "day": "Thursday",
           "title": "MuseumsForum Visit",
-          "image": "/ieee-summer-school/assets/museum-forum.jpg",
+          "image": "/ieee-summer-school/assets/PXL_20260222_151935515.jpg",
           "description": "A farewell visit to the Heinz Nixdorf MuseumsForum, the world’s largest computer museum, exploring the history of computing."
         }
       ]
