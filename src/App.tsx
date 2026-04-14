@@ -372,6 +372,9 @@ const Hero = ({ data }: { data: ContentData }) => (
             <span className="font-medium">{data.school.location}</span>
           </div>
         </div>
+        <div className="mt-6 text-sm text-white/70 italic">
+          <p>{data.school.extraText}</p>
+        </div>
       </motion.div>
     </div>
   </section>
@@ -648,6 +651,16 @@ const OrganizerCard = ({ organizer }: { organizer: any }) => (
       <h4 className="text-lg md:text-xl font-bold text-slate-900 dark:text-white">
         {organizer.name}
       </h4>
+      {organizer.link && (
+        <a
+          href={organizer.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-2 inline-block text-blue-600 dark:text-blue-400 font-semibold text-sm hover:underline"
+        >
+          View Profile →
+        </a>
+      )}
     </div>
   </motion.div>
 );
@@ -852,7 +865,7 @@ const Schedule = ({ schedule }: { schedule: DaySchedule[] }) => {
                         {isBreak ? (
                           <td
                             colSpan={schedule.length}
-                            className="border p-3 text-center italic bg-yellow-100 dark:bg-yellow-900/30"
+                            className="border p-3 text-center italic bg-yellow-400 dark:bg-yellow-400"
                           >
                             {rowEvents.find((e) => e)?.title}
                           </td>
@@ -897,11 +910,11 @@ const Schedule = ({ schedule }: { schedule: DaySchedule[] }) => {
             {/* Legend */}
             <div className="mt-6 flex flex-wrap gap-3 text-xs">
               {[
-                { label: "Plenary", color: "bg-blue-500" },
-                { label: "Lecture", color: "bg-green-500" },
-                { label: "Lab", color: "bg-purple-500" },
+                { label: "Plenary", color: "bg-purple-500" },
+                { label: "Lecture", color: "bg-blue-500" },
+                { label: "Lab", color: "bg-green-500" },
                 { label: "Visit", color: "bg-orange-500" },
-                { label: "Break", color: "bg-yellow-400 text-black" },
+                { label: "Break", color: "bg-yellow-400" },
                 { label: "Evening", color: "bg-pink-500" },
               ].map((item, idx) => (
                 <div
@@ -1429,8 +1442,7 @@ const Footer = ({
               <p>© 2026 IEEE CIS Summer School. All rights reserved.</p>
 
               <p className="mt-2">
-                Designed for the Computational Intelligence in Robotics
-                community.
+                Designed for the Automatic Control Group from Paderborn University.
               </p>
             </div>
 
