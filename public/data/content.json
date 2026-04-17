@@ -193,7 +193,7 @@
             {
               "start": "10:45",
               "end": "12:00",
-              "title": "Lecture 4",
+              "title": "Plenary Talk 4",
               "speaker": "Asst. Prof. Dr. Qinyu Chen"
             },
             { "start": "12:00", "end": "13:00", "title": "Lunch Break" },
@@ -217,14 +217,14 @@
             {
               "start": "09:00",
               "end": "10:15",
-              "title": "Plenary Talk 4",
+              "title": "Plenary Talk 5",
               "speaker": "Prof. Dr.-Ing. Oliver Wallscheid"
             },
             { "start": "10:15", "end": "10:45", "title": "Coffee Break" },
             {
               "start": "10:45",
               "end": "12:00",
-              "title": "Plenary Talk 5",
+              "title": "Lecture 4",
               "speaker": "Dr. Alper Yegenoglu"
             },
             { "start": "12:00", "end": "13:00", "title": "Lunch Break" },
