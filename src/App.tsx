@@ -239,7 +239,7 @@ const Navbar = ({
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         <a
           href="#"
-          className={`font-bold text-xl tracking-tight transition-colors ${
+          className={`font-bold text-md tracking-tight transition-colors ${
             isScrolled ? "text-slate-900 dark:text-white" : "text-white"
           }`}
         >
@@ -247,12 +247,12 @@ const Navbar = ({
         </a>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex gap-8 items-center">
+        <div className="hidden md:flex gap-4 items-center">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
-              className={`text-sm font-medium transition-colors hover:opacity-70 ${
+              className={`text-sm font-small transition-colors hover:opacity-70 ${
                 isScrolled
                   ? "text-slate-600 dark:text-slate-300"
                   : "text-white/90"
@@ -356,15 +356,15 @@ const Hero = ({ data }: { data: ContentData }) => (
               <img
                 src={sponsor.logo}
                 alt={sponsor.name}
-                className="h-6 sm:h-8 md:h-10 object-contain"
+                className="h-8 sm:h-10 md:h-12 object-contain"
               />
             </div>
           );
 
-          return sponsor.url ? (
+          return sponsor.link ? (
             <a
               key={i}
-              href={sponsor.url}
+              href={sponsor.link}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -881,9 +881,7 @@ const Schedule = ({ schedule }: { schedule: DaySchedule[] }) => {
           <div className="relative z-10 w-full max-w-7xl bg-white dark:bg-slate-900 rounded-2xl p-8 overflow-auto text-slate-900 dark:text-slate-100">
             {/* HEADER */}
             <div className="flex justify-between items-center mb-8">
-              <h2 className="text-2xl font-semibold">
-                Weekly Schedule – Grid View
-              </h2>
+              <h2 className="text-2xl font-semibold">Schedule</h2>
               <button className="text-lg" onClick={() => setShowPreview(false)}>
                 ✕
               </button>
@@ -1480,7 +1478,9 @@ const Footer = ({
         <div className="grid md:grid-cols-3 gap-12 items-start">
           {/* LEFT */}
           <div>
-            <h2 className="text-3xl font-bold mb-6">{data.school.pageTitle}</h2>
+            <p className="text-slate-600 dark:text-slate-300 text-sm mb-6">
+              {data.school.slogan}
+            </p>
 
             {/* Social Links */}
             <div className="flex gap-6 mb-6">
@@ -1536,25 +1536,6 @@ const Footer = ({
 
           {/* RIGHT */}
           <div className="flex flex-col items-start md:items-end text-slate-500 text-sm gap-4">
-            <div className="text-left md:text-right space-y-3">
-              <p className="text-slate-600 dark:text-slate-300">
-                {data.school.ieeeSlogan}
-              </p>
-
-              <p className="text-slate-600 dark:text-slate-300">
-                {data.school.coloursSlogan}
-              </p>
-
-              <a
-                href={`mailto:${data.school.coloursEmail}`}
-                aria-label="Send email to Colours Team"
-                className={`${linkClass} inline-flex items-center gap-2 justify-start md:justify-end`}
-              >
-                <Mail className="w-5 h-5 shrink-0" />
-                <span className="break-all">{data.school.coloursEmail}</span>
-              </a>
-            </div>
-
             {/* Legal Links */}
             <div className="flex gap-6 text-slate-400">
               <button
@@ -1624,8 +1605,14 @@ export default function App() {
   );
   const [theme, setTheme] = useState(() => {
     if (typeof window !== "undefined") {
-      return localStorage.getItem("theme") || "dark";
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme) return savedTheme;
+
+      return window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
     }
+
     return "light";
   });
 
@@ -1744,7 +1731,6 @@ export default function App() {
         ))}
       </main>
 
-      <Sponsors data={data} />
       <Footer data={data} openModal={openLegal} />
       <LegalModal
         show={showLegal}

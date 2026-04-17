@@ -1,7 +1,7 @@
 {
   "school": {
-    "pageTitle": "IEEE CIS Summer School 2026",
-    "chipText": "Co-sponsored by IEEE CIS and COLORS",
+    "pageTitle": "IEEE CIS & COLOURS Summer School 2026",
+    "chipText": "Supported by IEEE CIS & COLOURS",
     "title": "Foundational Models Meet Robotics",
     "subtitle": "From Language and Vision to Action",
     "dates": "July 27 - 30, 2026",
@@ -9,9 +9,7 @@
     "description": "Join us for an intensive four-day summer school focusing on the latest advancements in Computational Intelligence applied to Robotics. This program features world-renowned speakers, hands-on workshops, and networking opportunities for PhD students and early-career researchers.",
     "heroImage": "/ieee-summer-school/assets/PB.jpg",
     "extraText": "Free accommodation for all participants, provided in shared rooms (3 people per room).",
-    "ieeeSlogan": "An IEEE Computational Intelligence Society initiative hosted by Paderborn University.",
-    "coloursSlogan": "For more information about COLOURS in Paderborn",
-    "coloursEmail": "implementation.colours@upb.de"
+    "slogan": "An IEEE Computational Intelligence Society and COLOURS initiative hosted by Paderborn University."
   },
   "sections": [
     {
@@ -30,36 +28,12 @@
       "title": "Speakers",
       "items": [
         {
-          "name": "Prof. Dr. Erdal Kayacan",
-          "affiliation": "Paderborn University",
-          "topic": "Can we build drones that not only think but also adapt?",
-          "image": "/ieee-summer-school/assets/98838.png",
-          "website": "https://www.uni-paderborn.de/en/person/98838",
-          "abstract": "Automated co-design – the joint optimization of a robot’s morphology and its control policy – has recently caught more attention in robotics and artificial intelligence. Co-design frameworks explore the coupled space of structures and policies, allowing learning signals from control to inform morphology and, reciprocally, morphology to guide control."
-        },
-        {
           "name": "Asst. Prof. Dr. Qinyu Chen",
           "affiliation": "Leiden University",
           "topic": "Low-Latency LLMs at the Edge",
           "image": "/ieee-summer-school/assets/qinyu-chen.jpg",
           "website": "https://www.universiteitleiden.nl/en/staffmembers/qinyu-chen",
           "abstract": "Large Language Models (LLMs) have demonstrated remarkable capabilities in perception, reasoning, and decision-making. However, their high computational cost and latency remain major obstacles for real-time deployment on resource-constrained platforms. In applications such as robotics and unmanned aerial vehicles, systems are required to perceive dynamic environments and respond within strict time constraints, making low-latency inference a critical requirement. This talk focuses on enabling low-latency LLM inference on mobile and edge platforms, including edge GPUs and specialized hardware accelerators. We first analyze the main sources of latency in modern LLMs, covering model architecture, memory access, and runtime execution. We then introduce a series of techniques for reducing computational complexity and inference delay, such as model compression, quantization, efficient attention mechanisms, and hardware-aware optimization"
-        },
-        {
-          "name": "Prof. Dr. Axel Ngonga",
-          "affiliation": "Paderborn University",
-          "topic": "Foundation Models for Knowledge Graphs",
-          "image": "/ieee-summer-school/assets/65716.png",
-          "website": "https://www.uni-paderborn.de/person/65716",
-          "abstract": "Foundation models are changed the way we interact with data. In particular, large language models have heralded novel approaches to accessing, integrating, fusing and using data at scale. However, this family of foundation models has also been chosen to be intrinsically limited with respect to their entropy and hence also to the guarantees they can deliver. In this talk, we argue that large language models should be coupled with foundation models for knowledge and exemplify how such  built for knowledge graphs, a family of data representation mechanism that marry explicit semantics with scale. We present some of the most recent results in this field and point open questions that must be answered to achieve the link between large language models and foundation models for knowledge graphs."
-        },
-        {
-          "name": "Prof. Dr.-Ing. Oliver Wallscheid",
-          "affiliation": "Siegen University",
-          "topic": "Meta reinforcement learning – a step towards generalizable control policies",
-          "image": "/ieee-summer-school/assets/wallscheid06.jpg",
-          "website": "https://www.uni-siegen.de/person/oliver-wallscheid",
-          "abstract": "Meta reinforcement learning (meta-RL) aims to move from task-specific controllers toward generalizable control policies by learning from a distribution of optimal control problems rather than solving each instance from scratch. In the optimal control view, meta-RL learns how to adapt quickly—using only a small amount of new interaction data—to changes in dynamics, disturbances, constraints, or cost functions. This mini-lecture focuses on context-based meta-RL, where the policy is  on an inferred context variable that summarizes recent trajectories and rewards, yielding controllers of the form ut = π(xt, zt). The context zt acts as an online estimate of latent task properties (e.g., unknown parameters or regime shifts), connecting meta-RL to adaptive/Bayesian control while retaining RL scalability. We discuss key algorithmic patterns for context inference, and control-specific and deployment-relevant challenges."
         },
         {
           "name": "Jun. Prof. Dr. David Kappel",
@@ -70,12 +44,20 @@
           "abstract": "Diffusion models have emerged as a Swiss army knife of machine learning, capable of mastering complex and diverse tasks such as image generation, weather forecasting, and pattern completion. In recent years, they have also become one of the most powerful tools for solving complex planning problems. In this lecture, we will discuss the fundamentals of diffusion models, optimal transport and diffusion bridge models, exploring some of their theoretical properties and how they can be  complex probabilistic planning problems. We will also identify the computational bottlenecks of these models and discuss recently proposed methods for their efficient implementation."
         },
         {
-          "name": "Welf Peter Rehberg",
-          "affiliation": "Norwegian University of Science and Technology",
-          "topic": "Embodiment-Informed Foundational Models for Control and Navigation of Multirotor Systems",
-          "image": "/ieee-summer-school/assets/rehberg.jpg",
-          "website": "https://www.ntnu.edu/employees/welf.rehberg",
-          "abstract": "Classical control and learning-based methods that are trained for specific robotic embodiments often require substantial effort to transfer to new systems. While models designed to generalize across families of systems can alleviate this limitation, they still depend on accurate information about the particular embodiment they operate on. Embodiment-Informed Foundation Models address this by conditioning explicitly on available information about the system, rather than relying on implicitly inferring embodiment details from observation histories."
+          "name": "Prof. Dr. Erdal Kayacan",
+          "affiliation": "Paderborn University",
+          "topic": "Can we build drones that not only think but also adapt?",
+          "image": "/ieee-summer-school/assets/98838.png",
+          "website": "https://www.uni-paderborn.de/en/person/98838",
+          "abstract": "Automated co-design – the joint optimization of a robot’s morphology and its control policy – has recently caught more attention in robotics and artificial intelligence. Co-design frameworks explore the coupled space of structures and policies, allowing learning signals from control to inform morphology and, reciprocally, morphology to guide control."
+        },
+        {
+          "name": "Prof. Dr. Axel Ngonga",
+          "affiliation": "Paderborn University",
+          "topic": "Foundation Models for Knowledge Graphs",
+          "image": "/ieee-summer-school/assets/65716.png",
+          "website": "https://www.uni-paderborn.de/person/65716",
+          "abstract": "Foundation models are changed the way we interact with data. In particular, large language models have heralded novel approaches to accessing, integrating, fusing and using data at scale. However, this family of foundation models has also been chosen to be intrinsically limited with respect to their entropy and hence also to the guarantees they can deliver. In this talk, we argue that large language models should be coupled with foundation models for knowledge and exemplify how such  built for knowledge graphs, a family of data representation mechanism that marry explicit semantics with scale. We present some of the most recent results in this field and point open questions that must be answered to achieve the link between large language models and foundation models for knowledge graphs."
         },
         {
           "name": "Dr. Adrian Redder",
@@ -86,12 +68,12 @@
           "abstract": "Training DRL agents for robotic control is often less about algorithm choice and more about the rigorous design of a Markov Decision Process (MDP). This tutorial provides a deep dive into the critical components of training successful agents, with a specific focus on reward engineering. We will explore the ”dos and don’ts” of crafting reward signals, examining how to transition from sparse to dense rewards and how reward polarity (strictly positive vs. negative) fundamentally alters  agent’s approach to terminal states. Beyond reward shaping, we will cover essential preprocessing steps that stabilize training, such as state normalization techniques. We will also discuss common pitfalls, specifically explaining why regularization techniques such as dropout—while popular in supervised learning—often introduce detrimental variance in DRL contexts. Attendees will leave with a concrete checklist for debugging and refining their reinforcement learning setups."
         },
         {
-          "name": "Dr. Alper Yegenoglu",
-          "affiliation": "Paderborn University",
-          "topic": "Meta-learning for generalized trajectory tracking in aerial robotics",
-          "image": "/ieee-summer-school/assets/117951.png",
-          "website": "https://www.uni-paderborn.de/en/person/117951",
-          "abstract": "This lecture introduces meta-learning as a framework for enabling rapid adaptation and generalization in learning-based control systems. After an overview of core meta-learning and meta-reinforcement learning concepts and their relevance to robotics, we will focus on trajectory tracking in aerial robots as a motivating application. Drawing on recent work in meta-reinforcement learning, we will examine how control policies can be trained to generalize across a family of parameterized UAV trajectory tasks and adapt to new trajectories with minimal additional data. The lecture highlightshow shared structure can be exploited across tasks and how curriculum design influences generalization. The lecture aims to provide participants with both conceptual understanding and insight into applying meta-learning for generalized trajectory tracking in aerial robotics"
+          "name": "Welf Peter Rehberg",
+          "affiliation": "Norwegian University of Science and Technology",
+          "topic": "Embodiment-Informed Foundational Models for Control and Navigation of Multirotor Systems",
+          "image": "/ieee-summer-school/assets/rehberg.jpg",
+          "website": "https://www.ntnu.edu/employees/welf.rehberg",
+          "abstract": "Classical control and learning-based methods that are trained for specific robotic embodiments often require substantial effort to transfer to new systems. While models designed to generalize across families of systems can alleviate this limitation, they still depend on accurate information about the particular embodiment they operate on. Embodiment-Informed Foundation Models address this by conditioning explicitly on available information about the system, rather than relying on implicitly inferring embodiment details from observation histories."
         },
         {
           "name": "Dr. Erdi Sayar",
@@ -100,6 +82,22 @@
           "image": "/ieee-summer-school/assets/122059.png",
           "website": "https://www.uni-paderborn.de/en/person/122059",
           "abstract": "Diffusion models have recently emerged as a powerful tool for robotic motion planning, capable of generating diverse and multimodal trajectories. However, because these models frame planning as a problem of probabilistic inference, they often lack the intrinsic ability to enforce strict physical constraints. This can lead to generated trajectories that violate system dynamics or result in collisions with obstacles. While existing literature suggests using guided diffusion to encourage safer behaviors or sequential projection methods to force trajectories into a safe set, applying these effectively remains a challenge. In this talk, we will explore and implement various techniques to ensure safety in generated plans. We will demonstrate how to handle environments with randomly placed obstacles and unsafe regions without the need for retraining the diffusion model. Participants will learn how to adapt these models to maintain safety across both static and dynamic environments, ensuring that the flexibility of generative modeling meets the rigor of physical safety requirements."
+        },
+        {
+          "name": "Prof. Dr.-Ing. Oliver Wallscheid",
+          "affiliation": "Siegen University",
+          "topic": "Meta reinforcement learning – a step towards generalizable control policies",
+          "image": "/ieee-summer-school/assets/wallscheid06.jpg",
+          "website": "https://www.uni-siegen.de/person/oliver-wallscheid",
+          "abstract": "Meta reinforcement learning (meta-RL) aims to move from task-specific controllers toward generalizable control policies by learning from a distribution of optimal control problems rather than solving each instance from scratch. In the optimal control view, meta-RL learns how to adapt quickly—using only a small amount of new interaction data—to changes in dynamics, disturbances, constraints, or cost functions. This mini-lecture focuses on context-based meta-RL, where the policy is  on an inferred context variable that summarizes recent trajectories and rewards, yielding controllers of the form ut = π(xt, zt). The context zt acts as an online estimate of latent task properties (e.g., unknown parameters or regime shifts), connecting meta-RL to adaptive/Bayesian control while retaining RL scalability. We discuss key algorithmic patterns for context inference, and control-specific and deployment-relevant challenges."
+        },
+        {
+          "name": "Dr. Alper Yegenoglu",
+          "affiliation": "Paderborn University",
+          "topic": "Meta-learning for generalized trajectory tracking in aerial robotics",
+          "image": "/ieee-summer-school/assets/117951.png",
+          "website": "https://www.uni-paderborn.de/en/person/117951",
+          "abstract": "This lecture introduces meta-learning as a framework for enabling rapid adaptation and generalization in learning-based control systems. After an overview of core meta-learning and meta-reinforcement learning concepts and their relevance to robotics, we will focus on trajectory tracking in aerial robots as a motivating application. Drawing on recent work in meta-reinforcement learning, we will examine how control policies can be trained to generalize across a family of parameterized UAV trajectory tasks and adapt to new trajectories with minimal additional data. The lecture highlightshow shared structure can be exploited across tasks and how curriculum design influences generalization. The lecture aims to provide participants with both conceptual understanding and insight into applying meta-learning for generalized trajectory tracking in aerial robotics"
         }
       ]
     },
@@ -267,22 +265,10 @@
       "content": "The local team from Paderborn University will play a key role in the summer school by contributing to lectures, organizing hands-on sessions, and coordinating other on-site activities. Each member of the team brings extensive expertise in robotic simulation, navigation, and control algorithms, ensuring that participants gain both theoretical knowledge and practical skills. Their experience in designing, implementing, and testing robotic systems will allow attendees to engage deeply with advanced topics, receive personalized guidance during exercises, and benefit from real-world insights into state-of-the-art robotics research.",
       "organizers": [
         {
-          "name": "Dr. Adrian Redder",
+          "name": "Vikas Chidananda",
           "affiliation": "Paderborn University",
-          "image": "/ieee-summer-school/assets/52265.png",
-          "link": "https://www.uni-paderborn.de/person/52265"
-        },
-        {
-          "name": "Dr. Alper Yegenoglu",
-          "affiliation": "Paderborn University",
-          "image": "/ieee-summer-school/assets/117951.png",
-          "link": "https://www.uni-paderborn.de/person/117951"
-        },
-        {
-          "name": "Dr. Erdi Sayar",
-          "affiliation": "Paderborn University",
-          "image": "/ieee-summer-school/assets/122059.png",
-          "link": "https://www.uni-paderborn.de/person/122059"
+          "image": "/ieee-summer-school/assets/chidananda.png",
+          "link": "https://www.uni-paderborn.de/person/82373"
         },
         {
           "name": "Van Huyen Dang",
@@ -297,10 +283,16 @@
           "link": "https://www.uni-paderborn.de/person/114179"
         },
         {
-          "name": "Vikas Chidananda",
+          "name": "Dr. Marcus Hund",
           "affiliation": "Paderborn University",
-          "image": "/ieee-summer-school/assets/chidananda.png",
-          "link": "https://www.uni-paderborn.de/person/82373"
+          "image": "/ieee-summer-school/assets/hund.png",
+          "link": "https://www.uni-paderborn.de/person/238"
+        },
+        {
+          "name": "Dr. Adrian Redder",
+          "affiliation": "Paderborn University",
+          "image": "/ieee-summer-school/assets/52265.png",
+          "link": "https://www.uni-paderborn.de/person/52265"
         },
         {
           "name": "Hürkan Sahin",
@@ -315,10 +307,16 @@
           "link": "https://www.uni-paderborn.de/person/94456"
         },
         {
-          "name": "Dr. Marcus Hund",
+          "name": "Dr. Erdi Sayar",
           "affiliation": "Paderborn University",
-          "image": "/ieee-summer-school/assets/hund.png",
-          "link": "https://www.uni-paderborn.de/person/238"
+          "image": "/ieee-summer-school/assets/122059.png",
+          "link": "https://www.uni-paderborn.de/person/122059"
+        },
+        {
+          "name": "Dr. Alper Yegenoglu",
+          "affiliation": "Paderborn University",
+          "image": "/ieee-summer-school/assets/117951.png",
+          "link": "https://www.uni-paderborn.de/person/117951"
         }
       ]
     },
@@ -484,10 +482,6 @@
           "answer": "The summer school is primarily aimed at undergrads and PhD students as well as early-career researchers working in Reinforcement Learning or related fields."
         },
         {
-          "question": "Is there a registration fee?",
-          "answer": "Will be added soon."
-        },
-        {
           "question": "Will I receive a certificate of completion?",
           "answer": "Yes, all participants who attend all days of the summer school will receive an official certificate of completion."
         },
@@ -513,6 +507,17 @@
     }
   ],
   "sponsors": [
+
+    {
+      "name": "COLOURS in Paderborn",
+      "logo": "/ieee-summer-school/assets/colors-alliance.png",
+      "link": "https://colours-alliance.eu/"
+    },
+    {
+      "name": "Paderborn University",
+      "logo": "/ieee-summer-school/assets/upb-logo-de.svg",
+      "link": "https://www.uni-paderborn.de/"
+    },
     {
       "name": "IEEE CIS",
       "logo": "/ieee-summer-school/assets/cis-logo.png",
@@ -522,16 +527,6 @@
       "name": "European Union",
       "logo": "/ieee-summer-school/assets/eu-logo.svg",
       "link": "https://european-union.europa.eu/"
-    },
-        {
-      "name": "Paderborn University",
-      "logo": "/ieee-summer-school/assets/upb-logo-de.svg",
-      "link": "https://www.uni-paderborn.de/"
-    },
-    {
-      "name": "COLOURS in Paderborn",
-      "logo": "/ieee-summer-school/assets/colors-alliance.png",
-      "link": "https://colours-alliance.eu/"
     }
   ],
   "footer": {
