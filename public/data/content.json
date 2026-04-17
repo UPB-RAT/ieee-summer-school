@@ -1,12 +1,17 @@
 {
   "school": {
-    "title": "IEEE CIS Summer School 2026",
-    "subtitle": "Foundational Models Meet Robotics: From Language and Vision to Action",
+    "pageTitle": "IEEE CIS Summer School 2026",
+    "chipText": "Co-sponsored by IEEE CIS and COLORS",
+    "title": "Foundational Models Meet Robotics",
+    "subtitle": "From Language and Vision to Action",
     "dates": "July 27 - 30, 2026",
     "location": "Paderborn University, Germany",
     "description": "Join us for an intensive four-day summer school focusing on the latest advancements in Computational Intelligence applied to Robotics. This program features world-renowned speakers, hands-on workshops, and networking opportunities for PhD students and early-career researchers.",
     "heroImage": "/ieee-summer-school/assets/PB.jpg",
-    "extraText": "Free accommodation for all participants, provided in shared rooms (3 people per room)."
+    "extraText": "Free accommodation for all participants, provided in shared rooms (3 people per room).",
+    "ieeeSlogan": "An IEEE Computational Intelligence Society initiative hosted by Paderborn University.",
+    "coloursSlogan": "For more information about COLOURS in Paderborn",
+    "coloursEmail": "implementation.colours@upb.de"
   },
   "sections": [
     {
@@ -106,82 +111,71 @@
           "day": "Monday (July 27th, 2026)",
           "events": [
             {
-              "time": "09:00 - 10:15",
+              "start": "09:00",
+              "end": "09:30",
               "title": "Welcome Speech by Prof. Dr. Heike Trautmann"
             },
             {
-              "time": "09:30 - 10:15",
+              "start": "09:30",
+              "end": "10:15",
               "title": "Plenary Talk 1",
-              "speaker": "Prof. Dr. Erdal Kayacan"
+              "speaker": "TBA"
             },
+            { "start": "10:15", "end": "10:45", "title": "Coffee Break" },
             {
-              "time": "10:15 - 10:45",
-              "title": "Coffee Break"
-            },
-            {
-              "time": "10:45 - 12:00",
+              "start": "10:45",
+              "end": "12:00",
               "title": "Plenary Talk 2",
               "speaker": "Prof. Dr. Erdal Kayacan"
             },
+            { "start": "12:00", "end": "13:00", "title": "Lunch Break" },
             {
-              "time": "12:00 - 13:00",
-              "title": "Lunch Break"
-            },
-            {
-              "time": "13:00 - 14:15",
+              "start": "13:00",
+              "end": "14:15",
               "title": "Lecture 1",
               "speaker": "Dr. Adrian Redder"
             },
+            { "start": "14:15", "end": "14:45", "title": "Coffee Break" },
             {
-              "time": "14:15 - 14:45",
-              "title": "Coffee Break"
-            },
-            {
-              "time": "14:45 - 16:00",
+              "start": "14:45",
+              "end": "16:00",
               "title": "Lab Session (Hands-on)"
             },
-            {
-              "time": "17:00 - 21:00",
-              "title": "Welcome Dinner"
-            }
+            { "start": "17:00", "end": "21:00", "title": "Welcome Dinner" }
           ]
         },
         {
           "day": "Tuesday (July 28th, 2026)",
           "events": [
             {
-              "time": "09:00 - 10:15",
+              "start": "09:00",
+              "end": "10:15",
               "title": "Plenary Talk 2",
               "speaker": "Jun. Prof. Dr. David Kappel"
             },
+            { "start": "10:15", "end": "10:45", "title": "Coffee Break" },
             {
-              "time": "10:15 - 10:45",
-              "title": "Coffee Break"
-            },
-            {
-              "time": "10:45 - 12:00",
+              "start": "10:45",
+              "end": "12:00",
               "title": "Lecture 2",
               "speaker": "Dr. Erdi Sayar"
             },
+            { "start": "12:00", "end": "13:00", "title": "Lunch Break" },
             {
-              "time": "12:00 - 13:00",
-              "title": "Lunch Break"
-            },
-            {
-              "time": "13:00 - 14:15",
+              "start": "13:00",
+              "end": "14:15",
               "title": "Lecture 3",
               "speaker": "Welf Peter Rehberg"
             },
+            { "start": "14:15", "end": "14:45", "title": "Coffee Break" },
             {
-              "time": "14:15 - 14:45",
-              "title": "Coffee Break"
-            },
-            {
-              "time": "14:45 - 16:00",
+              "start": "14:45",
+              "end": "16:00",
               "title": "Lab Session (Hands-on)"
             },
             {
-              "time": "17:00 - 21:00",
+              "start": "17:00",
+              "end": "21:00",
               "title": "Guided City Pader Tour"
             }
           ]
@@ -190,78 +184,62 @@
           "day": "Wednesday (July 29th, 2026)",
           "events": [
             {
-              "time": "09:00 - 10:15",
+              "start": "09:00",
+              "end": "10:15",
               "title": "Plenary Talk 3",
               "speaker": "Prof. Dr. Axel Ngonga"
             },
+            { "start": "10:15", "end": "10:45", "title": "Coffee Break" },
             {
-              "time": "10:15 - 10:45",
-              "title": "Coffee Break"
-            },
-            {
-              "time": "10:45 - 12:00",
+              "start": "10:45",
+              "end": "12:00",
               "title": "Lecture 4",
-              "speaker": "Dr. Alper Yegenoglu"
+              "speaker": "Asst. Prof. Dr. Qinyu Chen"
             },
+            { "start": "12:00", "end": "13:00", "title": "Lunch Break" },
             {
-              "time": "12:00 - 13:00",
-              "title": "Lunch Break"
-            },
-            {
-              "time": "13:00 - 14:15",
+              "start": "13:00",
+              "end": "14:15",
               "title": "Lab Session (Hands-on)"
             },
+            { "start": "14:15", "end": "14:45", "title": "Coffee Break" },
             {
-              "time": "14:15 - 14:45",
-              "title": "Coffee Break"
-            },
-            {
-              "time": "14:45 - 16:00",
+              "start": "14:45",
+              "end": "16:00",
               "title": "Lab Session (Hands-on)"
             },
-            {
-              "time": "17:00 - 21:00",
-              "title": "Archery Activity"
-            }
+            { "start": "17:00", "end": "21:00", "title": "Archery Activity" }
           ]
         },
         {
           "day": "Thursday (July 30th, 2026)",
           "events": [
             {
-              "time": "09:00 - 10:15",
+              "start": "09:00",
+              "end": "10:15",
               "title": "Plenary Talk 4",
               "speaker": "Prof. Dr.-Ing. Oliver Wallscheid"
             },
+            { "start": "10:15", "end": "10:45", "title": "Coffee Break" },
             {
-              "time": "10:15 - 10:45",
-              "title": "Coffee Break"
-            },
-            {
-              "time": "10:45 - 12:00",
+              "start": "10:45",
+              "end": "12:00",
               "title": "Plenary Talk 5",
-              "speaker": "Asst. Prof. Dr. Qinyu Chen"
+              "speaker": "Dr. Alper Yegenoglu"
             },
+            { "start": "12:00", "end": "13:00", "title": "Lunch Break" },
             {
-              "time": "12:00 - 13:00",
-              "title": "Lunch Break"
-            },
-            {
-              "time": "13:00 - 14:15",
+              "start": "13:00",
+              "end": "14:15",
               "title": "Lab Session (Hands-on)"
             },
+            { "start": "14:15", "end": "14:45", "title": "Coffee Break" },
             {
-              "time": "14:15 - 14:45",
-              "title": "Coffee Break"
-            },
-            {
-              "time": "14:45 - 16:00",
+              "start": "14:45",
+              "end": "16:00",
               "title": "D-Space Visit (Industry Tour)"
             },
-            {
-              "time": "17:00 - 21:00",
-              "title": "Computer Museum"
-            }
+            { "start": "17:00", "end": "21:00", "title": "Computer Museum" }
           ]
         }
       ]
@@ -279,7 +257,7 @@
         {
           "title": "Isaac Sim Session 2",
           "description": "Isaac simulation session for training",
-          "image": "/ieee-summer-school/assets/isaacsim_task2.jpg" 
+          "image": "/ieee-summer-school/assets/isaacsim_task2.jpg"
         }
       ]
     },
@@ -472,7 +450,6 @@
         {
           "category": "Free Registration",
           "subcategories": [
-
             {
               "subcategory": "Merit",
               "details": "10 free registrations for exceptionally strong students, selected based on academic merit (e.g., CGPA, publications, and overall academic achievements)."
@@ -542,12 +519,17 @@
       "link": "https://cis.ieee.org/"
     },
     {
+      "name": "European Union",
+      "logo": "/ieee-summer-school/assets/eu-logo.svg",
+      "link": "https://european-union.europa.eu/"
+    },
+        {
       "name": "Paderborn University",
       "logo": "/ieee-summer-school/assets/upb-logo-de.svg",
       "link": "https://www.uni-paderborn.de/"
     },
     {
-      "name": "COLOURS",
+      "name": "COLOURS in Paderborn",
       "logo": "/ieee-summer-school/assets/colors-alliance.png",
       "link": "https://colours-alliance.eu/"
     }
@@ -571,7 +553,7 @@
         },
         {
           "heading": "Contact",
-          "text": "Phone: +49 15906175652\nEmail: ekansh@mail.uni-paderborn.de"
+          "text": "Email: ekansh@mail.uni-paderborn.de"
         },
         {
           "heading": "Consumer Dispute Resolution / Universal Arbitration Board",
