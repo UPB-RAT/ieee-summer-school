@@ -33,21 +33,22 @@ import {
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { ContentData, Section, Speaker, DaySchedule } from "./types";
+import { label } from "motion/react-client";
 
 const VITE_GOOGLE_ANALYTICS_ID = import.meta.env.VITE_GOOGLE_ANALYTICS_ID;
 
 const getEventMeta = (title: string) => {
   const t = title.toLowerCase();
 
+  if (t.includes("welcome speech")) return { icon: Sun, color: "bg-pink-500" };
   if (t.includes("plenary")) return { icon: Mic, color: "bg-purple-500" };
   if (t.includes("lecture")) return { icon: BookOpen, color: "bg-blue-500" };
   if (t.includes("lab")) return { icon: FlaskConical, color: "bg-green-500" };
   if (t.includes("break")) return { icon: Coffee, color: "bg-gray-400" };
-  if (t.includes("tour") || t.includes("visit"))
+  if (t.includes("tour") || t.includes("visit") || t.includes("museum"))
     return { icon: MapPin, color: "bg-orange-500" };
   if (t.includes("dinner")) return { icon: Users, color: "bg-pink-500" };
-  if (t.includes("activity")) return { icon: Target, color: "bg-indigo-500" };
-  if (t.includes("museum")) return { icon: Building, color: "bg-yellow-500" };
+  if (t.includes("activity")) return { icon: Target, color: "bg-indigo-700" };
 
   return { icon: BookOpen, color: "bg-slate-500" };
 };
@@ -242,7 +243,7 @@ const Navbar = ({
             isScrolled ? "text-slate-900 dark:text-white" : "text-white"
           }`}
         >
-          {data.school.title}
+          {data.school.pageTitle}
         </a>
 
         {/* Desktop Nav */}
@@ -335,6 +336,7 @@ const Navbar = ({
 
 const Hero = ({ data }: { data: ContentData }) => (
   <section className="relative h-screen flex items-center justify-center overflow-hidden bg-slate-900">
+    {/* Background */}
     <div className="absolute inset-0 z-0">
       <img
         src={data.school.heroImage}
@@ -345,6 +347,37 @@ const Hero = ({ data }: { data: ContentData }) => (
       <div className="absolute inset-0 bg-gradient-to-b from-slate-900/60 via-transparent to-slate-900" />
     </div>
 
+    {/* Sponsors Strip */}
+    <div className="absolute top-[96px] md:top-[120px] left-0 w-full z-20">
+      <div className="max-w-6xl mx-auto px-6 py-3 flex flex-wrap items-center justify-center gap-4 md:gap-6">
+        {data.sponsors?.map((sponsor, i) => {
+          const Logo = (
+            <div className="bg-white/90 dark:bg-slate-200/90 backdrop-blur-sm px-4 py-2 rounded-xl shadow-md hover:shadow-lg transition flex items-center">
+              <img
+                src={sponsor.logo}
+                alt={sponsor.name}
+                className="h-6 sm:h-8 md:h-10 object-contain"
+              />
+            </div>
+          );
+
+          return sponsor.url ? (
+            <a
+              key={i}
+              href={sponsor.url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {Logo}
+            </a>
+          ) : (
+            <div key={i}>{Logo}</div>
+          );
+        })}
+      </div>
+    </div>
+
+    {/* Content */}
     <div className="relative z-10 max-w-4xl mx-auto px-6 text-center text-white">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -352,12 +385,18 @@ const Hero = ({ data }: { data: ContentData }) => (
         transition={{ duration: 0.8 }}
       >
         <span className="inline-block px-4 py-1.5 mb-6 text-xs font-semibold tracking-widest uppercase bg-blue-600/20 border border-blue-500/30 rounded-full">
-          IEEE CIS Summer School 2026
+          {data.school.chipText}
         </span>
+
         <h1 className="text-5xl md:text-6xl font-bold mb-6 tracking-tight leading-tight">
-          {data.school.subtitle}
+          {data.school.title}
         </h1>
-        <p className="text-xl md:text-2xl text-white/80 mb-10 max-w-2xl mx-auto font-light leading-relaxed">
+
+        <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-white/90">
+          {data.school.subtitle}
+        </h2>
+
+        <p className="text-xl text-white/80 mb-10 max-w-2xl mx-auto font-light leading-relaxed">
           {data.school.description}
         </p>
 
@@ -366,12 +405,15 @@ const Hero = ({ data }: { data: ContentData }) => (
             <Calendar className="w-5 h-5 text-blue-400" />
             <span className="font-medium">{data.school.dates}</span>
           </div>
+
           <div className="hidden md:block w-px h-4 bg-white/20" />
+
           <div className="flex items-center gap-3 text-white/90">
             <MapPin className="w-5 h-5 text-blue-400" />
             <span className="font-medium">{data.school.location}</span>
           </div>
         </div>
+
         <div className="mt-6 text-sm text-white/70 italic">
           <p>{data.school.extraText}</p>
         </div>
@@ -713,11 +755,49 @@ const Schedule = ({ schedule }: { schedule: DaySchedule[] }) => {
   const [activeDay, setActiveDay] = useState(0);
   const [showPreview, setShowPreview] = useState(false);
 
+  const parseTime = (t: string) => {
+    const [h, m] = t.split(":").map(Number);
+    return h * 60 + m;
+  };
+
+  const formatTime = (m: number) => {
+    const h = String(Math.floor(m / 60)).padStart(2, "0");
+    const min = String(m % 60).padStart(2, "0");
+    return `${h}:${min}`;
+  };
+
+  // build boundaries
+  const timeSet = new Set<number>();
+  schedule.forEach((day) =>
+    day.events.forEach((e) => {
+      timeSet.add(parseTime(e.start));
+      timeSet.add(parseTime(e.end));
+    }),
+  );
+
+  const times = Array.from(timeSet).sort((a, b) => a - b);
+
+  const slots = [];
+  for (let i = 0; i < times.length - 1; i++) {
+    const start = times[i];
+    const end = times[i + 1];
+
+    // ✅ keep ONLY slots that have at least one event
+    const hasEvent = schedule.some((day) =>
+      day.events.some(
+        (e) => parseTime(e.start) <= start && parseTime(e.end) >= end,
+      ),
+    );
+
+    if (hasEvent) {
+      slots.push([start, end]);
+    }
+  }
+
   return (
     <div className="space-y-12">
-      {/* Header */}
+      {/* HEADER */}
       <div className="flex justify-between items-center">
-        {/* Day Selector */}
         <div className="flex flex-wrap gap-3 border-b border-slate-200 dark:border-slate-800 pb-6">
           {schedule.map((day, idx) => (
             <button
@@ -726,36 +806,27 @@ const Schedule = ({ schedule }: { schedule: DaySchedule[] }) => {
               className={`px-5 py-2 rounded-full text-sm font-semibold transition ${
                 activeDay === idx
                   ? "bg-blue-600 text-white shadow"
-                  : "bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-slate-200"
+                  : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700"
               }`}
             >
               {day.day}
             </button>
           ))}
+
           <button
             onClick={() => setShowPreview(true)}
-            className="px-8 py-2 rounded-2xl text-lg font-bold transition 
-             bg-orange-500 hover:bg-orange-600 
-             text-white shadow-lg hover:shadow-xl active:scale-95
-             focus:ring-4 focus:ring-orange-300 
-             transform hover:scale-105 active:scale-95"
+            className="px-6 py-2 rounded-xl text-sm font-semibold bg-orange-500 hover:bg-orange-600 text-white shadow"
           >
             Preview
           </button>
         </div>
       </div>
 
-      {/* Timeline View - Mobile-first with alternating layout on md+ */}
+      {/* TIMELINE (unchanged) */}
       <div className="relative">
-        {/* Vertical timeline line */}
         <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-[2px] bg-slate-200 dark:bg-slate-700" />
 
-        <motion.div
-          key={activeDay}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="space-y-12"
-        >
+        <motion.div key={activeDay} className="space-y-12">
           {schedule[activeDay].events.map((event, idx) => {
             const isLeft = idx % 2 === 0;
             const { icon: Icon, color } = getEventMeta(event.title);
@@ -767,35 +838,28 @@ const Schedule = ({ schedule }: { schedule: DaySchedule[] }) => {
                   isLeft ? "md:justify-start" : "md:justify-end"
                 }`}
               >
-                {/* Dot - centered on line (mobile left-aligned, desktop centered) */}
                 <div
-                  className={`absolute left-8 md:left-1/2 -translate-x-1/2 w-10 h-10 ${color} rounded-full flex items-center justify-center border-4 border-white dark:border-slate-900 z-10 shadow-md`}
+                  className={`absolute left-8 md:left-1/2 -translate-x-1/2 w-9 h-9 ${color} rounded-full flex items-center justify-center border-4 border-white dark:border-slate-900`}
                 >
-                  <Icon className="w-5 h-5 text-white" />
+                  <Icon className="w-4 h-4 text-white" />
                 </div>
 
-                {/* Card - full width on mobile (indented), alternating on desktop */}
                 <div
-                  className={`w-full md:w-[45%] p-6 rounded-2xl border border-slate-200 dark:border-slate-700 
-  bg-white/80 dark:bg-slate-800/80 backdrop-blur shadow-sm hover:shadow-lg 
-  transition-all duration-300 ml-12 md:ml-0 ${
-    isLeft ? "md:mr-auto md:pr-10" : "md:ml-auto md:pl-10"
-  }`}
+                  className={`w-full md:w-[45%] p-5 rounded-xl border bg-white/80 dark:bg-slate-800/80 ml-12 md:ml-0 ${
+                    isLeft ? "md:mr-auto md:pr-10" : "md:ml-auto md:pl-10"
+                  }`}
                 >
-                  {/* Time */}
-                  <div className="text-blue-600 dark:text-blue-400 font-mono text-xs font-semibold tracking-wide mb-2">
-                    {event.time}
+                  <div className="text-blue-600 dark:text-blue-400 font-mono text-xs mb-1">
+                    {event.start} - {event.end}
                   </div>
 
-                  {/* Title */}
-                  <div className="text-slate-900 dark:text-slate-100 font-semibold flex items-center gap-2 text-base">
-                    <Icon className="w-4 h-4 opacity-70 shrink-0" />
-                    <span>{event.title}</span>
+                  <div className="font-semibold flex gap-2 text-slate-800 dark:text-slate-100">
+                    <Icon className="w-4 h-4" />
+                    {event.title}
                   </div>
 
-                  {/* Speaker */}
                   {event.speaker && (
-                    <div className="mt-1 text-slate-600 dark:text-slate-400 text-sm">
+                    <div className="text-xs mt-1 text-slate-500 dark:text-slate-400">
                       {event.speaker}
                     </div>
                   )}
@@ -806,120 +870,137 @@ const Schedule = ({ schedule }: { schedule: DaySchedule[] }) => {
         </motion.div>
       </div>
 
-      {/* MODAL: Grid Schedule */}
+      {/* GRID MODAL */}
       {showPreview && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-          {/* Backdrop */}
           <div
-            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+            className="absolute inset-0 bg-slate-700/40"
             onClick={() => setShowPreview(false)}
           />
 
-          {/* Modal */}
-          <div className="relative z-10 w-full max-w-6xl bg-white dark:bg-slate-900 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700 p-6 overflow-auto">
-            <div className="flex justify-between items-center mb-6">
-              <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-200">
-                Weekly Schedule – Quick Preview
+          <div className="relative z-10 w-full max-w-7xl bg-white dark:bg-slate-900 rounded-2xl p-8 overflow-auto text-slate-900 dark:text-slate-100">
+            {/* HEADER */}
+            <div className="flex justify-between items-center mb-8">
+              <h2 className="text-2xl font-semibold">
+                Weekly Schedule – Grid View
               </h2>
-
-              <button
-                onClick={() => setShowPreview(false)}
-                className="text-slate-500 hover:text-slate-800 dark:hover:text-white"
-              >
+              <button className="text-lg" onClick={() => setShowPreview(false)}>
                 ✕
               </button>
             </div>
 
-            {/* TABLE */}
-            <div className="overflow-x-auto">
-              <table className="w-full border-collapse text-sm">
-                <thead>
-                  <tr className="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200">
-                    <th className="p-3 border">Time</th>
-                    {schedule.map((d, i) => (
-                      <th key={i} className="p-3 border font-semibold">
-                        {d.day}
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
+            {/* GRID */}
+            <div className="overflow-auto rounded-xl border border-white dark:border-slate-900">
+              <div
+                className="grid bg-slate-50 dark:bg-slate-900"
+                style={{
+                  gridTemplateColumns: `110px repeat(${schedule.length}, minmax(160px, 1fr))`,
+                  gridTemplateRows: `auto repeat(${slots.length}, minmax(56px, auto))`,
+                  gap: "8px",
+                  padding: "8px",
+                }}
+              >
+                {/* HEADER */}
+                <div className="sticky top-0 z-20 bg-white dark:bg-slate-500 rounded-md p-3 text-center text-sm font-semibold border border-slate-200 dark:border-slate-700">
+                  Time
+                </div>
 
-                <tbody>
-                  {getTimeSlots(schedule).map((slot, idx) => {
-                    const rowEvents = schedule.map((day) =>
-                      day.events.find((e) => e.time === slot),
-                    );
+                {schedule.map((d, i) => (
+                  <div
+                    key={i}
+                    className="sticky top-0 z-20 bg-white dark:bg-slate-500 rounded-md p-3 text-center text-sm font-semibold border border-slate-200 dark:border-slate-700"
+                  >
+                    {d.day}
+                  </div>
+                ))}
 
-                    const isBreak = rowEvents.some((e) =>
-                      e?.title.toLowerCase().includes("break"),
-                    );
+                {/* TIME */}
+                {slots.map(([s, e], i) => (
+                  <div
+                    key={i}
+                    className="sticky left-0 z-10 bg-white dark:bg-slate-500 rounded-md 
+               flex items-center justify-center 
+               text-xs font-mono border border-slate-200 dark:border-slate-700 px-2 py-1"
+                    style={{
+                      gridRow: i + 2,
+                      gridColumn: 1,
+                    }}
+                  >
+                    <div className="flex flex-col items-center leading-tight gap-1">
+                      <span className="font-medium">{formatTime(s)}</span>
+                      {"--"}
+                      <span className="font-medium">{formatTime(e)}</span>
+                    </div>
+                  </div>
+                ))}
+
+                {/* EVENTS */}
+                {schedule.map((day, colIdx) =>
+                  day.events.map((event, i) => {
+                    const start = parseTime(event.start);
+                    const end = parseTime(event.end);
+
+                    const rowStart = slots.findIndex(([s]) => s === start) + 2;
+
+                    const endIndex = slots.findIndex(([s]) => s >= end);
+                    const rowEnd =
+                      endIndex !== -1 ? endIndex + 2 : slots.length + 2;
+
+                    const { icon: Icon, color } = getEventMeta(event.title);
+                    const isBreak = event.title.toLowerCase().includes("break");
 
                     return (
-                      <tr key={idx}>
-                        {/* Time */}
-                        <td className="border p-3 font-mono text-blue-600 dark:text-blue-400 font-semibold">
-                          {slot}
-                        </td>
+                      <div
+                        key={`${colIdx}-${i}`}
+                        style={{
+                          gridColumn: colIdx + 2,
+                          gridRow: `${rowStart} / ${rowEnd}`,
+                        }}
+                      >
+                        <div
+                          className={`
+                      h-full w-full rounded-lg px-3 py-2 flex flex-col items-center justify-center text-center
+                      text-sm leading-snug font-medium
+                      ${
+                        isBreak
+                          ? "bg-yellow-200 dark:bg-yellow-400 text-yellow-900"
+                          : `${color} text-white`
+                      }
+                    `}
+                        >
+                          {!isBreak && (
+                            <Icon className="w-4 h-4 mb-1 opacity-90" />
+                          )}
 
-                        {/* Break row */}
-                        {isBreak ? (
-                          <td
-                            colSpan={schedule.length}
-                            className="border p-3 text-center italic bg-yellow-400 dark:bg-yellow-400"
-                          >
-                            {rowEvents.find((e) => e)?.title}
-                          </td>
-                        ) : (
-                          rowEvents.map((event, i) => {
-                            if (!event)
-                              return <td key={i} className="border p-3" />;
+                          <span className="break-words">{event.title}</span>
 
-                            const { icon: Icon, color } = getEventMeta(
-                              event.title,
-                            );
-
-                            return (
-                              <td
-                                key={i}
-                                className="border p-3 text-center align-middle"
-                              >
-                                <div
-                                  className={`inline-flex flex-col items-center justify-center gap-1 px-3 py-2 rounded-lg text-white ${color}`}
-                                >
-                                  <Icon className="w-4 h-4" />
-                                  <span className="font-semibold text-xs leading-tight">
-                                    {event.title}
-                                  </span>
-                                  {event.speaker && (
-                                    <span className="text-xs text-slate-200">
-                                      {event.speaker}
-                                    </span>
-                                  )}
-                                </div>
-                              </td>
-                            );
-                          })
-                        )}
-                      </tr>
+                          {event.speaker && !isBreak && (
+                            <span className="opacity-80 text-xs mt-1">
+                              {event.speaker}
+                            </span>
+                          )}
+                        </div>
+                      </div>
                     );
-                  })}
-                </tbody>
-              </table>
+                  }),
+                )}
+              </div>
             </div>
 
-            {/* Legend */}
-            <div className="mt-6 flex flex-wrap gap-3 text-xs">
+            {/* LEGEND */}
+            <div className="mx-2 mt-8 flex flex-wrap gap-3 text-sm">
               {[
                 { label: "Plenary", color: "bg-purple-500" },
                 { label: "Lecture", color: "bg-blue-500" },
                 { label: "Lab", color: "bg-green-500" },
                 { label: "Visit", color: "bg-orange-500" },
-                { label: "Break", color: "bg-yellow-400" },
-                { label: "Evening", color: "bg-pink-500" },
-              ].map((item, idx) => (
+                { label: "Break", color: "bg-yellow-400 text-black" },
+                { label: "Activity", color: "bg-indigo-700" },
+                { label: "Welcome Sessions", color: "bg-pink-500" },
+              ].map((item, i) => (
                 <div
-                  key={idx}
-                  className={`px-3 py-1 rounded-md text-white ${item.color}`}
+                  key={i}
+                  className={`px-3 py-1.5 rounded-md text-white bold ${item.color}`}
                 >
                   {item.label}
                 </div>
@@ -1391,18 +1472,15 @@ const Footer = ({
   const legalClass =
     "hover:text-white transition-colors cursor-pointer focus:outline-none focus:underline";
 
+  const linkClass = "text-slate-400 hover:text-white transition-colors";
+
   return (
     <footer className="bg-slate-900 dark:bg-slate-950 text-white py-20">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="grid md:grid-cols-3 gap-12 items-start">
           {/* LEFT */}
           <div>
-            <h2 className="text-3xl font-bold mb-6">{data.school.title}</h2>
-
-            <p className="text-slate-400 max-w-md mb-8">
-              An IEEE Computational Intelligence Society initiative hosted by
-              Paderborn University.
-            </p>
+            <h2 className="text-3xl font-bold mb-6">{data.school.pageTitle}</h2>
 
             {/* Social Links */}
             <div className="flex gap-6 mb-6">
@@ -1436,14 +1514,45 @@ const Footer = ({
             </div>
           </div>
 
+          {/* CENTER */}
+          <div className="flex flex-col items-center text-center">
+            <h3 className="text-lg font-semibold mb-4">Sponsors</h3>
+
+            <ul className="flex flex-col gap-3 text-sm items-center">
+              {data.sponsors.map((sponsor, idx) => (
+                <li key={idx}>
+                  <a
+                    href={sponsor.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={linkClass}
+                  >
+                    {sponsor.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
           {/* RIGHT */}
           <div className="flex flex-col items-start md:items-end text-slate-500 text-sm gap-4">
-            <div className="text-left md:text-right">
-              <p>© 2026 IEEE CIS Summer School. All rights reserved.</p>
-
-              <p className="mt-2">
-                Designed for the Automatic Control Group from Paderborn University.
+            <div className="text-left md:text-right space-y-3">
+              <p className="text-slate-600 dark:text-slate-300">
+                {data.school.ieeeSlogan}
               </p>
+
+              <p className="text-slate-600 dark:text-slate-300">
+                {data.school.coloursSlogan}
+              </p>
+
+              <a
+                href={`mailto:${data.school.coloursEmail}`}
+                aria-label="Send email to Colours Team"
+                className={`${linkClass} inline-flex items-center gap-2 justify-start md:justify-end`}
+              >
+                <Mail className="w-5 h-5 shrink-0" />
+                <span className="break-all">{data.school.coloursEmail}</span>
+              </a>
             </div>
 
             {/* Legal Links */}
