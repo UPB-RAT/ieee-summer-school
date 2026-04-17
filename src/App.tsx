@@ -184,7 +184,7 @@ const LegalModal = ({
 };
 
 const FloatingActions = () => (
-  <div className="fixed bottom-8 right-8 z-[9999] flex flex-col gap-3">
+  <div className="fixed bottom-8 right-8 z-[5555] flex flex-col gap-3">
     <motion.a
       href="#registration"
       whileHover={{ scale: 1.05 }}
@@ -872,7 +872,7 @@ const Schedule = ({ schedule }: { schedule: DaySchedule[] }) => {
 
       {/* GRID MODAL */}
       {showPreview && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-6666 flex items-center justify-center p-4">
           <div
             className="absolute inset-0 bg-slate-700/40"
             onClick={() => setShowPreview(false)}
