@@ -233,7 +233,7 @@ const Navbar = ({
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
           ? "bg-white/90 dark:bg-slate-900/90 backdrop-blur-md shadow-sm py-3"
-          : "bg-transparent py-6"
+          : "bg-transparent py-4 sm:py-6"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
@@ -314,9 +314,9 @@ const Navbar = ({
       {/* Mobile Menu */}
       {isMenuOpen && (
         <motion.div
-          initial={{ opacity: 0, y: -20 }}
+          initial={{ opacity: 0, y: -16 }}
           animate={{ opacity: 1, y: 0 }}
-          className="absolute top-full left-0 right-0 bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 p-6 flex flex-col gap-4 md:hidden"
+          className="absolute top-full left-0 right-0 bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 p-6 flex flex-col gap-4 md:hidden max-h-[70vh] overflow-y-auto"
         >
           {navLinks.map((link) => (
             <a
@@ -335,7 +335,7 @@ const Navbar = ({
 };
 
 const Hero = ({ data }: { data: ContentData }) => (
-  <section className="relative h-screen flex items-center justify-center overflow-hidden bg-slate-900">
+  <section className="relative min-h-[100svh] flex items-center justify-center overflow-hidden bg-slate-900 pt-24 sm:pt-28">
     {/* Background */}
     <div className="absolute inset-0 z-0">
       <img
@@ -347,77 +347,86 @@ const Hero = ({ data }: { data: ContentData }) => (
       <div className="absolute inset-0 bg-gradient-to-b from-slate-900/60 via-transparent to-slate-900" />
     </div>
 
-    {/* Sponsors Strip */}
-    <div className="absolute top-[96px] md:top-[120px] left-0 w-full z-20">
-      <div className="max-w-6xl mx-auto px-6 py-3 flex flex-wrap items-center justify-center gap-4 md:gap-6">
-        {data.sponsors?.map((sponsor, i) => {
-          const Logo = (
-            <div className="bg-white/90 dark:bg-slate-200/90 backdrop-blur-sm px-4 py-2 rounded-xl shadow-md hover:shadow-lg transition flex items-center">
-              <img
-                src={sponsor.logo}
-                alt={sponsor.name}
-                className="h-8 sm:h-10 md:h-12 object-contain"
-              />
-            </div>
-          );
-
-          return sponsor.link ? (
-            <a
-              key={i}
-              href={sponsor.link}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {Logo}
-            </a>
-          ) : (
-            <div key={i}>{Logo}</div>
-          );
-        })}
-      </div>
-    </div>
-
     {/* Content */}
-    <div className="relative z-10 max-w-4xl mx-auto px-6 text-center text-white">
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-      >
-        <span className="inline-block px-4 py-1.5 mb-6 text-xs font-semibold tracking-widest uppercase bg-blue-600/20 border border-blue-500/30 rounded-full">
-          {data.school.chipText}
-        </span>
+    <div className="relative z-10 px-4 sm:px-6">
+      <div className="max-w-5xl mx-auto text-center text-white">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="flex flex-col gap-12"
+        >
+          {/* Sponsors Strip */}
+          <div className="w-full">
+            <div className="max-w-6xl mx-auto flex flex-wrap justify-center items-center gap-3 sm:gap-4 md:gap-6 max-h-[30vh] overflow-hidden">
+              {data.sponsors?.map((sponsor, i) => {
+                const Logo = (
+                  <div className="bg-white/90 dark:bg-slate-200/90 backdrop-blur-sm px-3 sm:px-4 py-2 rounded-lg sm:rounded-xl shadow-sm hover:shadow-md transition flex items-center">
+                    <img
+                      src={sponsor.logo}
+                      alt={sponsor.name}
+                      className="h-8 sm:h-10 md:h-14 object-contain"
+                    />
+                  </div>
+                );
 
-        <h1 className="text-5xl md:text-6xl font-bold mb-6 tracking-tight leading-tight">
-          {data.school.title}
-        </h1>
-
-        <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-white/90">
-          {data.school.subtitle}
-        </h2>
-
-        <p className="text-xl text-white/80 mb-10 max-w-2xl mx-auto font-light leading-relaxed">
-          {data.school.description}
-        </p>
-
-        <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
-          <div className="flex items-center gap-3 text-white/90">
-            <Calendar className="w-5 h-5 text-blue-400" />
-            <span className="font-medium">{data.school.dates}</span>
+                return sponsor.link ? (
+                  <a
+                    key={i}
+                    href={sponsor.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {Logo}
+                  </a>
+                ) : (
+                  <div key={i}>{Logo}</div>
+                );
+              })}
+            </div>
           </div>
 
-          <div className="hidden md:block w-px h-4 bg-white/20" />
+          {/* Chip */}
+          <span className="inline-block px-3 sm:px-4 py-1.5 text-[10px] sm:text-xs font-semibold tracking-widest uppercase bg-blue-600/20 border border-blue-500/30 rounded-full mx-auto">
+            {data.school.chipText}
+          </span>
 
-          <div className="flex items-center gap-3 text-white/90">
-            <MapPin className="w-5 h-5 text-blue-400" />
-            <span className="font-medium">{data.school.location}</span>
+          {/* Title */}
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight">
+            {data.school.title}
+          </h1>
+
+          {/* Subtitle */}
+          <h2 className="text-lg sm:text-xl md:text-2xl font-semibold text-white/90">
+            {data.school.subtitle}
+          </h2>
+
+          {/* Description */}
+          <p className="text-base sm:text-lg md:text-xl text-white/80 max-w-2xl mx-auto font-light leading-relaxed">
+            {data.school.description}
+          </p>
+
+          {/* Meta Info */}
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center text-sm sm:text-base">
+            <div className="flex items-center gap-2 sm:gap-3 text-white/90">
+              <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-blue-400" />
+              <span className="font-medium">{data.school.dates}</span>
+            </div>
+
+            <div className="hidden sm:block w-px h-4 bg-white/20" />
+
+            <div className="flex items-center gap-2 sm:gap-3 text-white/90">
+              <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-blue-400" />
+              <span className="font-medium">{data.school.location}</span>
+            </div>
           </div>
-        </div>
 
-        <div className="mt-6 text-sm text-white/70 italic">
-          <p>{data.school.extraText}</p>
-        </div>
-      </motion.div>
+          {/* Extra Text */}
+          <p className="text-xs sm:text-sm text-white/70 italic max-w-xl mx-auto">
+            {data.school.extraText}
+          </p>
+        </motion.div>
+      </div>
     </div>
   </section>
 );
