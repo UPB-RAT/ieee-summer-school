@@ -416,52 +416,13 @@
           "accentColor": "bg-green-400"
         }
       ],
-      "link": "https://tally.so/r/b5r9jZ",
-      "fees": [
-        {
-          "category": "BSc & MSc Student",
-          "memberFee": "90 €",
-          "nonMemberFee": "120 €"
-        },
-        {
-          "category": "PhD Student",
-          "memberFee": "120 €",
-          "nonMemberFee": "180 €"
-        },
-        {
-          "category": "Post-doc",
-          "memberFee": "240 €",
-          "nonMemberFee": "300 €"
-        },
-        {
-          "category": "Industry",
-          "memberFee": "400 €",
-          "nonMemberFee": "500 €"
-        }
-      ]
+      "link": "https://tally.so/r/b5r9jZ"
     },
     {
       "id": "scholarships",
       "title": "Scholarships",
       "content": "We offer a variety of scholarships and support to encourage participation from outstanding students and underrepresented groups. All scholarships will be provided as reimbursements after successful participation. Students will be informed about scholarship decisions one week after the application deadline.",
       "categories": [
-        {
-          "category": "Free Registration",
-          "subcategories": [
-            {
-              "subcategory": "Merit",
-              "details": "10 free registrations for exceptionally strong students, selected based on academic merit (e.g., CGPA, publications, and overall academic achievements)."
-            },
-            {
-              "subcategory": "Females",
-              "details": "5 free registrations reserved for female applicants to encourage gender diversity."
-            },
-            {
-              "subcategory": "Developing Countries",
-              "details": "5 free registrations for participants from developing countries."
-            }
-          ]
-        },
         {
           "category": "Travel",
           "details": "Travel support of up to €300 for 3 selected students."
