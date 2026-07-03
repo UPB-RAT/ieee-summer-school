@@ -1196,6 +1196,7 @@ const SectionWrapper = ({ section }: { section: Section }) => {
                       <a
                         href={section.link}
                         target="_blank"
+                        disabled
                         rel="noopener noreferrer"
                         className="w-full max-w-md py-4 px-6 bg-gradient-to-r from-blue-600 to-blue-500 dark:from-blue-500 dark:to-blue-400 text-white font-bold rounded-2xl text-center hover:scale-105 hover:shadow-2xl active:scale-95 transition transform cursor-pointer flex items-center justify-center gap-3"
                       >
