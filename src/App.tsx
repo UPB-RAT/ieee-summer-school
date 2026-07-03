@@ -887,15 +887,17 @@ const Schedule = ({ schedule }: { schedule: DaySchedule[] }) => {
             onClick={() => setShowPreview(false)}
           />
 
-          <div className="relative z-10 w-full max-w-7xl bg-white dark:bg-slate-900 rounded-2xl p-8 overflow-auto text-slate-900 dark:text-slate-100">
+          <div className="relative z-10 w-full max-w-7xl max-h-[90vh] flex flex-col bg-white dark:bg-slate-900 rounded-2xl p-8 text-slate-900 dark:text-slate-100">
             {/* HEADER */}
-            <div className="flex justify-between items-center mb-8">
+            <div className="flex justify-between items-center mb-8 shrink-0">
               <h2 className="text-2xl font-semibold">Schedule</h2>
               <button className="text-lg" onClick={() => setShowPreview(false)}>
                 ✕
               </button>
             </div>
 
+            {/* SCROLLABLE CONTENT */}
+            <div className="overflow-auto flex-1 min-h-0">
             {/* GRID */}
             <div className="overflow-auto rounded-xl border border-white dark:border-slate-900">
               <div
@@ -1012,6 +1014,7 @@ const Schedule = ({ schedule }: { schedule: DaySchedule[] }) => {
                   {item.label}
                 </div>
               ))}
+            </div>
             </div>
           </div>
         </div>
