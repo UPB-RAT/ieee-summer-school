@@ -110,18 +110,18 @@
           "events": [
             {
               "start": "09:00",
-              "end": "09:30",
+              "end": "09:45",
               "title": "Welcome Speech by Prof. Dr. René Fahr (Vice-Pres­id­ent for Trans­fer and Sus­tain­ab­il­ity)"
             },
             {
-              "start": "09:30",
-              "end": "10:15",
+              "start": "09:45",
+              "end": "10:30",
               "title": "Plenary Talk 1",
-              "speaker": "TBA"
+              "speaker": "Prof. Dr. rer. nat. Klaus Neumann"
             },
-            { "start": "10:15", "end": "10:45", "title": "Coffee Break" },
+            { "start": "10:30", "end": "11:00", "title": "Coffee Break" },
             {
-              "start": "10:45",
+              "start": "11:00",
               "end": "12:00",
               "title": "Plenary Talk 2",
               "speaker": "Prof. Dr. Erdal Kayacan"
