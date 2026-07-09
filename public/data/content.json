@@ -28,6 +28,14 @@
       "title": "Speakers",
       "items": [
         {
+          "name": "Prof. Dr. rer. nat. Klaus Neumann",
+          "affiliation": "Bielefeld University",
+          "topic": "",
+          "image": "/ieee-summer-school/assets/Skaliert_26109209.jpeg",
+          "website": "https://ekvv.uni-bielefeld.de/pers_publ/publ/PersonDetail.jsp?personId=26109209&lang=EN",
+          "abstract": ""
+        },
+        {
           "name": "Asst. Prof. Dr. Qinyu Chen",
           "affiliation": "Leiden University",
           "topic": "Low-Latency LLMs at the Edge",
