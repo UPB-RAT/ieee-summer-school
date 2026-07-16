@@ -30,10 +30,10 @@
         {
           "name": "Prof. Dr. rer. nat. Klaus Neumann",
           "affiliation": "Bielefeld University",
-          "topic": "",
+          "topic": "AI-Robotics",
           "image": "/ieee-summer-school/assets/Skaliert_26109209.jpeg",
           "website": "https://ekvv.uni-bielefeld.de/pers_publ/publ/PersonDetail.jsp?personId=26109209&lang=EN",
-          "abstract": ""
+          "abstract": "Robotics is increasingly evolving from a model- and rule-based discipline into a data-driven science. This talk examines this transformation in the context of AI-robotics and draws parallels with developments in computer vision and natural language processing. At the same time, it highlights several fundamental differences: robots act physically in the real world and must cope with uncertainty, physical contact, safety requirements, real-time constraints, and a high degree of variability.The talk focuses on the specific challenges of industrial automation, including small batch sizes, frequently changing products, unstructured processes, and limited training data. Drawing on concrete examples from the work of Fraunhofer IOSB-INA and Bielefeld University, it demonstrates how AI-robotics is already being successfully applied today and discusses the requirements for sustainably transferring learning-enabled robotic systems into industrial practice."
         },
         {
           "name": "Asst. Prof. Dr. Qinyu Chen",
